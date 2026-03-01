@@ -1,0 +1,23 @@
+# Environment & Secrets
+.env
+.env.local
+*.key
+*.pem
+
+# Node
+node_modules/
+package-lock.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp
+*.tmp
+*.log

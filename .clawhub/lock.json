@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "skills": {
+    "gog": {
+      "version": "1.0.0",
+      "installedAt": 1771548842473
+    },
+    "nano-banana-pro": {
+      "version": "1.0.1",
+      "installedAt": 1771548851123
+    },
+    "humanize-ai-text": {
+      "version": "1.0.0",
+      "installedAt": 1771548852583
+    },
+    "free-ride": {
+      "version": "1.0.4",
+      "installedAt": 1771548853828
+    },
+    "auto-updater": {
+      "version": "1.0.0",
+      "installedAt": 1771548854933
+    },
+    "openai-whisper": {
+      "version": "1.0.0",
+      "installedAt": 1771548857132
+    },
+    "youtube-api-skill": {
+      "version": "1.0.3",
+      "installedAt": 1771548858642
+    },
+    "clawddocs": {
+      "version": "1.2.2",
+      "installedAt": 1771548860064
+    },
+    "self-improving-agent": {
+      "version": "1.0.5",
+      "installedAt": 1771551024276
+    },
+    "agent-browser": {
+      "version": "0.2.0",
+      "installedAt": 1771551025290
+    },
+    "summarize": {
+      "version": "1.0.0",
+      "installedAt": 1771551026099
+    },
+    "find-skills": {
+      "version": "0.1.0",
+      "installedAt": 1771551027286
+    },
+    "github": {
+      "version": "1.0.0",
+      "installedAt": 1771551028311
+    },
+    "proactive-agent": {
+      "version": "3.1.0",
+      "installedAt": 1771551029805
+    },
+    "ontology": {
+      "version": "0.1.2",
+      "installedAt": 1771551030941
+    }
+  }
+}
