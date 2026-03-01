@@ -2,11 +2,12 @@
 
 _Learn about the person you're helping. Update this as you go._
 
-- **Name:**
-- **What to call them:**
-- **Pronouns:** _(optional)_
-- **Timezone:**
-- **Notes:**
+- **Name:** MixedbyBazzy (Discord username: mixedbybazzy)
+- **What to call them:** Bazzy
+- **Pronouns:** _(not specified)_
+- **Timezone:** America/New_York (EST)
+- **Discord ID:** 583319870511513611
+- **Notes:** Owner. Primary communication channel is Discord (#odin-general). Direct, no-nonsense — wants things done right the first time.
 
 ## Context
 
