@@ -151,6 +151,8 @@ Use Odin to grow music audience AND scale IT/AI career — aiming for wealth + f
 - Old Music Growth, IT Professional, Integrated Artist Toolkit folders → Agent ownership
 - All data + memory preserved
 - Agents now own their respective workflows (see SIGNALS.md)
+- Qin Shi Huang now owns Usage Limits / Cost Control (also outputs to Telegram)
+- Discord + Telegram both receive spending updates (coordinated output)
 
 **QUEUED (Waiting for APIs or dependencies)**:
 4. **Hermes** — Collab Leads Agent (weekly artist discovery + outreach)

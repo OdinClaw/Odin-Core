@@ -19,6 +19,7 @@ Updated: March 2, 2026 (Consolidated to Agent Ownership)
 | Insurance Analysis | Zeus | #zeus | Research only |
 | Toolkit Documentation | Adam | #adam | Framework ready |
 | Toolkit Development | Sasaki | #sasaki | Tracking phases |
+| Cost Control / Usage Tracking | Qin Shi Huang | #qin | Ready (Telegram + Discord) |
 
 ---
 
