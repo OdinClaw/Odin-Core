@@ -1,6 +1,24 @@
 # SIGNALS.md — Active Projects + Trends to Track
 
-Updated: March 2, 2026
+Updated: March 2, 2026 (Consolidated to Agent Ownership)
+
+---
+
+## System Status
+
+**Consolidation Complete**: Old Music Growth, IT Professional, and Integrated Artist Toolkit folders have been consolidated into agent ownership.
+
+| Responsibility | Agent Owner | Channel | Status |
+|---|---|---|---|
+| Social Media Analytics | Apollo | #apollo | Awaiting API keys |
+| Fan Community | Hercules | #hercules | Queued (Phase 2) |
+| Collab Leads | Hermes | #hermes | Queued (Phase 2) |
+| Content Scheduler | Chronus | #chronus | Queued (Phase 2) |
+| Thought Leadership | Buddha | #buddha | Ready (starts Mon) |
+| Portfolio Showcase | Tesla | #tesla | Planning |
+| Insurance Analysis | Zeus | #zeus | Research only |
+| Toolkit Documentation | Adam | #adam | Framework ready |
+| Toolkit Development | Sasaki | #sasaki | Tracking phases |
 
 ---
 

@@ -143,9 +143,14 @@ Use Odin to grow music audience AND scale IT/AI career — aiming for wealth + f
 ### Pantheon Roster (Active/Queued/Paused)
 
 **ACTIVE NOW**:
-1. **Odin** — Environment Orchestrator (overseer)
+1. **Odin** — Environment Orchestrator (overseer, operations)
 2. **Apollo** — Social Media Analytics Agent (Instagram, TikTok, YouTube, Spotify daily)
 3. **Buddha** — Thought Leadership Agent (LinkedIn 3x/week)
+
+**CONSOLIDATION COMPLETE (March 2, 2026)**:
+- Old Music Growth, IT Professional, Integrated Artist Toolkit folders → Agent ownership
+- All data + memory preserved
+- Agents now own their respective workflows (see SIGNALS.md)
 
 **QUEUED (Waiting for APIs or dependencies)**:
 4. **Hermes** — Collab Leads Agent (weekly artist discovery + outreach)
