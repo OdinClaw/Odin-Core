@@ -1,6 +1,7 @@
 """Agent routing logic - maps Discord channels to agents"""
 
 from pathlib import Path
+from typing import Optional, Dict
 from config import WORKSPACE_PATH
 
 # Channel name to agent name mapping
@@ -20,7 +21,7 @@ CHANNEL_TO_AGENT = {
     "qin": "Qin",
 }
 
-def get_agent_for_channel(channel_name: str) -> dict | None:
+def get_agent_for_channel(channel_name: str) -> Optional[Dict]:
     """
     Get agent info for a channel
     

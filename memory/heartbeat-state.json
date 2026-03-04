@@ -1,10 +1,47 @@
 {
-  "lastChecks": {
-    "email": 1741027020,
-    "calendar": 1741027020,
-    "projects": 1741028620,
-    "system": 1741028620,
-    "messageQueue": 1741028620,
-    "timestamp": "2026-03-02T14:23:40-05:00"
-  }
+  "lastHeartbeat": "2026-03-03T22:53:00Z",
+  "lastStatus": "warning",
+  "checksPerformed": ["system-status", "cron-jobs"],
+  "timestamp": "Tue Mar 3 5:53 PM EST 2026",
+  "systemHealth": {
+    "disk": "12% used (132GB free) — healthy",
+    "memory": "15GB / 16GB in use (437MB unused) — healthy",
+    "cpu": "1.33% user, 88% idle — excellent",
+    "uptime": "12 days 20 hours",
+    "processes": "gateway + browser active"
+  },
+  "cronJobStatus": {
+    "status": "3 jobs in error state",
+    "jobsWithErrors": [
+      {
+        "name": "Daily Music Analytics Digest",
+        "error": "Unknown Channel 1477765001342091305",
+        "consecutiveErrors": 2,
+        "nextRun": "2026-03-04 08:00 AM EST",
+        "action": "Verify channel exists in Discord"
+      },
+      {
+        "name": "Artist Analytics Dashboard",
+        "error": "Unknown Channel 1477765001342091305",
+        "consecutiveErrors": 2,
+        "nextRun": "2026-03-04 08:00 AM EST",
+        "action": "Verify channel exists in Discord"
+      },
+      {
+        "name": "Weekly LinkedIn Content Draft",
+        "error": "Ambiguous Discord recipient format",
+        "consecutiveErrors": 1,
+        "nextRun": "2026-03-10 09:00 AM EST (Monday)",
+        "action": "Update delivery format; use 'channel:CHANNELID' or 'user:USERID'"
+      }
+    ],
+    "actionRequired": "HIGH: Verify Discord channels before 8 AM Mar 4; MEDIUM: Fix LinkedIn format before Mar 10"
+  },
+  "discordPostingStatus": "Not available in WhatsApp session; heartbeat logged to memory file instead",
+  "summary": [
+    "✅ System is healthy (CPU, memory, disk all normal)",
+    "⚠️ 3 cron jobs failing with Discord channel/format errors",
+    "📋 Detailed report: memory/heartbeat-2026-03-03.md",
+    "🔧 Action required before tomorrow's 8 AM run"
+  ]
 }

@@ -74,6 +74,20 @@ Every message should be useful on first read.
 
 ---
 
+## Real Isolated Agents (Separate OpenClaw Instances)
+
+These are NOT Odin role-playing. They are separate agent processes with their own bots and workspaces.
+
+### Loki — Monitor/Relay (@Loki in #loki)
+
+- **What he does**: Reads heartbeat reports, surfaces anomalies, answers status questions in #loki
+- **His channel**: #loki (ID: 1478591775558996122) — his own Discord bot handles this channel
+- **How to hand off to Loki**: Post a summary or heartbeat report to #loki. Loki will read it and respond to the user there.
+- **What NOT to do**: Don't impersonate Loki. Don't respond in #loki via Odin's bot. That's his space.
+- **Building new agents**: Read `AGENT-CREATION-GUIDE.md` — it documents the full process used to build Loki (CLI registration, workspace files, Discord routing via separate bot token, etc.)
+
+---
+
 ## Agent Coordination (Pantheon Rules)
 
 ### One writer per file

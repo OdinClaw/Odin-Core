@@ -140,6 +140,22 @@ Use Odin to grow music audience AND scale IT/AI career — aiming for wealth + f
 - **Feedback-driven improvement**: Agents get smarter through corrections, not model swaps
 - **Transparent operations**: Every agent's workflow is documented + visible
 
+### Real Isolated OpenClaw Agents (Distinct from Pantheon Concept Agents)
+
+These are **real, separate OpenClaw agent instances** with their own bot tokens, their own processes, their own workspace files, and their own Discord bots. They are NOT Odin pretending to be someone else.
+
+**LIVE NOW**:
+- **Loki** — All-Things Heartbeat Monitor (ACTIVATED March 4, 2026)
+  - Discord bot: @Loki (ID: 1478590584372461641), accountId: `loki`
+  - Channel: #loki (ID: 1478591775558996122) — his dedicated channel
+  - Role: **24/7 heartbeat monitoring**. Checks all cron jobs every 30 minutes. Reports failures with diagnostics + fix suggestions. Automatically detects new jobs (dynamic, not hardcoded).
+  - Model: qwen3.5:4b primary (local, free, fast — right for status work)
+  - Workspace: `~/.openclaw-odin/workspace/agents/loki/`
+  - **Activation**: launchd plist loaded → runs every 1800 seconds (30 min) → trigger script → Loki's agent invoked → findings posted to #loki
+  - **Key feature**: Queries `cron list` dynamically. Add 10 new cron jobs? Loki detects them at next heartbeat. No reconfig needed.
+  - Management: `check-status.sh` shows launchd status, recent logs, manual trigger
+  - How Loki was built: CLI registration + Discord bot routing + identity stack + permanent heartbeat trigger via launchd. See `AGENT-CREATION-GUIDE.md` + `LOKI-ACTIVATION.md`.
+
 ### Pantheon Roster (Active/Queued/Paused)
 
 **ACTIVE NOW**:
