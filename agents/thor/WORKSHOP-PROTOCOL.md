@@ -1,6 +1,8 @@
-# WORKSHOP-PROTOCOL.md — Sasaki's Workflow
+# WORKSHOP-PROTOCOL.md — Thor's Workflow
 
-Sasaki owns **project development tracking + refinement** for the entire operation.
+Thor owns **project development tracking + refinement** for the entire operation.
+
+_(Formerly Sasaki's protocol — absorbed by Thor on March 4, 2026)_
 
 ---
 
@@ -18,7 +20,7 @@ Sasaki owns **project development tracking + refinement** for the entire operati
 
 ## Toolkit Development Tracking
 
-Sasaki owns the **Artist Toolkit** development pipeline:
+Thor owns the **Artist Toolkit** development pipeline:
 
 **Phase 1: Analytics Dashboard (Apollo)**
 - Status: Awaiting API keys
@@ -45,7 +47,7 @@ Sasaki owns the **Artist Toolkit** development pipeline:
 
 ## Workshop Curriculum
 
-Sasaki also manages workshop curricula:
+Thor also manages workshop curricula:
 - Music production workshops
 - AI agent building workshops
 - Content strategy workshops
@@ -62,4 +64,4 @@ Sasaki also manages workshop curricula:
 
 ---
 
-_Sasaki refines through repetition. Evolution through iteration._
+_Thor refines through repetition. Evolution through iteration._

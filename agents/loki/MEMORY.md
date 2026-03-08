@@ -18,7 +18,7 @@ Created as the first real isolated OpenClaw agent instance (beyond the main Odin
 - Loki reads those reports, surfaces anything that looks wrong, answers direct status questions
 - Primary Discord channel: #loki (1478591775558996122)
 - Own Discord bot: @Loki (ID: 1478590584372461641)
-- Model: qwen3.5:4b primary → qwen3.5:9b → haiku → sonnet (local-first, cloud as fallback)
+- Model: ollama/llama3.2:3b (local-only for monitoring). Anthropic Haiku fallback ONLY if Ollama system failure. Groq never used for heartbeat work.
 - Auth: Shared Anthropic OAuth subscription + Ollama local
 
 ## Setup Notes

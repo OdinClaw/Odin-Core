@@ -131,6 +131,14 @@ Use Odin to grow music audience AND scale IT/AI career — aiming for wealth + f
 - Appreciates documentation + examples
 - Wants to understand the "why" before execution
 
+## Documentation Standard (March 6, 2026)
+- **Adam's #docudigest channel** = central knowledge base
+- **All workflow docs stored as .txt files** (not .md)
+- **Dated format**: `WORKFLOW-NAME-YYYY-MM-DD.txt` or similar
+- **Purpose**: File-system-style organization for easy browsing/sorting
+- **Applies to**: Loki guides, Thor documentation, any workflow created going forward
+- **Thor must follow**: When creating documentation, output .txt files to Adam's channel
+
 ## Agent Architecture: The Pantheon (March 2, 2026 — ACTIVATED)
 
 ### System Overview
@@ -149,7 +157,7 @@ These are **real, separate OpenClaw agent instances** with their own bot tokens,
   - Discord bot: @Loki (ID: 1478590584372461641), accountId: `loki`
   - Channel: #loki (ID: 1478591775558996122) — his dedicated channel
   - Role: **24/7 heartbeat monitoring**. Checks all cron jobs every 30 minutes. Reports failures with diagnostics + fix suggestions. Automatically detects new jobs (dynamic, not hardcoded).
-  - Model: qwen3.5:4b primary (local, free, fast — right for status work)
+  - Model: ollama/llama3.2:3b (local, free, infra-only — Qwen excluded per routing policy)
   - Workspace: `~/.openclaw-odin/workspace/agents/loki/`
   - **Activation**: launchd plist loaded → runs every 1800 seconds (30 min) → trigger script → Loki's agent invoked → findings posted to #loki
   - **Key feature**: Queries `cron list` dynamically. Add 10 new cron jobs? Loki detects them at next heartbeat. No reconfig needed.

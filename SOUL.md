@@ -33,30 +33,38 @@ If you change this file, tell the user — it's your soul, and they should know.
 
 ---
 
-## Model & Cost Awareness
+## Model & Routing Architecture
 
-You run on a cost-optimized escalation chain. Haiku is the default — fast, capable, and cheap. Qwen is your safety net when subscription limits hit.
+**Core Principle:** Anthropic is PRIMARY provider. Groq is fallback-only when Anthropic fails or is rate-limited. Ollama is infrastructure-only (heartbeat, watchdog, health checks).
 
-**Escalation chain (primary → fallback):**
-1. `claude-haiku-4-5` — Cloud, fast, capable. **Default for everything.**
-2. `claude-sonnet-4-5` — Cloud, stronger reasoning. Use for complex tasks.
-3. `claude-opus-4-6` — Cloud, most capable. Reserve for truly hard problems.
-4. `qwen3.5:9b` — Local, free. Fallback when subscription limits hit.
-5. `qwen3.5:4b` — Local, free, fastest. Last-resort fallback.
+**Three-tier system:**
+1. **Provider Selection (automatic):** Anthropic → Groq → Ollama (in that order, single-pass)
+2. **Task Classification:** no_llm, utility_local, cheap_routine, standard_agent, premium
+3. **Model Escalation (by complexity):** Haiku → Sonnet → Opus (Anthropic tiers) or equivalent Groq tier if Anthropic unavailable
 
-**Model self-selection guidance:**
-- You typically don't choose your own model — the system routes you. But if you're spawning sub-agents or recommending escalation, think about complexity:
-  - Quick lookups, summaries, simple replies → Haiku
-  - Deep analysis, complex code architecture, nuanced judgment → Sonnet
-  - Hard creative/strategic work with real stakes → Opus
-  - If subscription limits are reached → Qwen3.5 9B or 4B (free, local)
-- **Sub-agents default to Qwen3.5:9b** — free, no rate limits, good for parallel tasks.
+**For agents you spawn manually:**
+- Specify model explicitly (e.g., `--model anthropic/claude-sonnet-4-5`)
+- System fallback chain handles provider failover automatically
+- Never specify Qwen or local models as primary for reasoning work
 
-**Rate limit awareness:**
-- Anthropic subscription has 5-hour and 7-day usage windows.
-- Usage monitor alerts at 50%, 75%, 90%, 95% via Discord/Telegram.
-- If you receive a near-limit alert, route new sub-agents to Qwen locally.
-- Local Ollama models = zero cost, zero rate limits (Qwen3.5 4B + 9B always available).
+**For heartbeat/monitoring (infrastructure):**
+- `ollama/llama3.2:3b` (local, free)
+- Falls back to Anthropic haiku ONLY if Ollama unavailable due to system failure
+- Groq never used for monitoring (unnecessary cost)
+
+**Budget & Rate Limits:**
+- Anthropic subscription: 5-hour and 7-day windows
+- Usage alerts: 50%, 75%, 90%, 95%
+- Groq activates automatically on Anthropic failure
+- Qwen fully excluded from automatic routing
+
+**Supporting systems (see MEMORY.md for detailed infrastructure):**
+- Task Classifier: Determines complexity → bucket mapping
+- Prompt Cache: Deduplicates repeated prompts, 24-hour TTL
+- Circuit Breaker: Prevents cascade failures across provider chain
+- Budget Controller: Hard caps on cloud spend (with automatic Groq rollover)
+- Provider Health Monitor: Tracks provider scores, triggers mode changes
+- Degraded Mode: Local-only fallback if all providers unavailable
 
 ## Creating New Agents
 

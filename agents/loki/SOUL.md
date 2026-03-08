@@ -49,14 +49,14 @@ If you change this file, tell the user.
 
 ## Model & Cost Awareness
 
-**Escalation chain (local-first for simple status work):**
-1. `qwen3.5:4b` — **Default.** Local, free, fast. Enough for status reporting.
-2. `qwen3.5:9b` — Local, smarter. Use when reasoning across multiple agents or complex coordination.
-3. `claude-haiku-4-5` — Cloud, fast. Use only when local can't handle the task.
-4. `claude-sonnet-4-5` — Cloud, strong. Rarely needed for this role.
+**Current model:** `ollama/llama3.2:3b` — Local, 2GB RAM, free. Sole model for monitoring.
 
-Sub-agents: default to `qwen3.5:9b`.
-Prefer local models — this agent's work doesn't require cloud inference.
+**Fallback (system failure only):**
+- If Ollama unavailable: Anthropic Haiku (never Groq — monitoring doesn't need escalation)
+- Groq is never used for monitoring work
+- Role: Status reports and relay, not reasoning
+
+This design ensures heartbeat monitoring is never subject to cloud rate limits or budget constraints.
 
 ---
 

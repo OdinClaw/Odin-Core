@@ -19,7 +19,8 @@ Created as the first sub-agent in Odin's network (after Loki, the isolated agent
 - **Discord Bot:** @Thor (separate token)
 - **Model:** claude-sonnet-4-5 primary
   - Fallback: opus → haiku → qwen3.5:9b → qwen3.5:4b
-- **Core Function:** Analyze agent workflows, suggest improvements, document what works
+- **Core Function:** Analyze agent workflows, suggest improvements, document what works, track Artist Toolkit development
+- **Absorbed:** Sasaki's responsibilities (March 4, 2026) — now Thor owns toolkit tracking + workshop curriculum
 - **How to spawn Thor:**
   ```bash
   openclaw --profile odin sessions spawn --task "Thor, analyze..." --agentId thor
