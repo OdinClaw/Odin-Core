@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  ai.openclaw.tesla.weekly.plist.template
+  Tesla Weekly Export LaunchAgent for macOS.
+
+  SETUP:
+    1. Copy this file to:
+         ~/Library/LaunchAgents/ai.openclaw.tesla.weekly.plist
+
+    2. Set GITHUB_TOKEN and GITHUB_USERNAME in your environment.
+       The safest approach is a wrapper script (see step 3).
+
+    3. Create a wrapper script at:
+         ~/.openclaw-odin/tesla/launchd/run_weekly_export.sh
+       with content:
+         #!/bin/bash
+         export GITHUB_TOKEN="$(security find-generic-password -s 'tesla-github-token' -w)"
+         export GITHUB_USERNAME="your_github_username"
+         exec /usr/local/bin/node ~/.openclaw-odin/tesla/scripts/weekly_export.js
+
+    4. Make it executable:
+         chmod +x ~/.openclaw-odin/tesla/launchd/run_weekly_export.sh
+
+    5. Load the agent:
+         launchctl load ~/Library/LaunchAgents/ai.openclaw.tesla.weekly.plist
+
+    6. Test immediately:
+         launchctl start ai.openclaw.tesla.weekly
+
+    7. Store GitHub token in macOS Keychain (optional but recommended):
+         security add-generic-password -s tesla-github-token -a tesla -w "ghp_your_token"
+
+  SCHEDULE:
+    Runs every Sunday at 03:00 local time (adjustable via StartCalendarInterval).
+
+  LOGS:
+    stdout → ~/.openclaw-odin/tesla/logs/weekly.log
+    stderr → ~/.openclaw-odin/tesla/logs/weekly-error.log
+-->
+<plist version="1.0">
+<dict>
+
+  <key>Label</key>
+  <string>ai.openclaw.tesla.weekly</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <!-- Replace with path from: which node -->
+    <string>/usr/local/bin/node</string>
+    <string>${HOME}/.openclaw-odin/tesla/scripts/weekly_export.js</string>
+  </array>
+
+  <!-- Environment variables — prefer a wrapper script over hardcoding here -->
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>HOME</key>
+    <string>/Users/REPLACE_USERNAME</string>
+    <!-- GITHUB_TOKEN: set via wrapper script or macOS Keychain, not here -->
+    <!-- GITHUB_USERNAME: set via wrapper script -->
+  </dict>
+
+  <!-- Run every Sunday at 03:00 -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key>
+    <integer>0</integer>
+    <key>Hour</key>
+    <integer>3</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>${HOME}/.openclaw-odin/tesla/logs/weekly.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>${HOME}/.openclaw-odin/tesla/logs/weekly-error.log</string>
+
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>KeepAlive</key>
+  <false/>
+
+  <key>WorkingDirectory</key>
+  <string>${HOME}/.openclaw-odin</string>
+
+</dict>
+</plist>

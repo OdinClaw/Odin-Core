@@ -1,0 +1,137 @@
+{
+  "main": {
+    "functional_id": "orchestrator",
+    "display_name": "Odin",
+    "role": "orchestration",
+    "status": "live",
+    "path_key": "main",
+    "description": "Primary orchestrator — routes tasks, manages handoffs, governance authority, memory gatekeeper",
+    "aliases": ["odin_core", "orchestrator"]
+  },
+  "loki": {
+    "functional_id": "monitor_agent",
+    "display_name": "Loki",
+    "role": "monitoring",
+    "status": "live",
+    "path_key": "loki",
+    "description": "System monitor — heartbeats, cron watchdog, connectivity probes every 30 minutes",
+    "aliases": ["monitor_agent"]
+  },
+  "thor": {
+    "functional_id": "reasoning_engine",
+    "display_name": "Thor",
+    "role": "reasoning",
+    "status": "live",
+    "path_key": "thor",
+    "description": "Reasoning and deep analysis engine — on-demand systems specialist, workflow optimization",
+    "aliases": ["reasoning_engine"]
+  },
+  "adam": {
+    "functional_id": "documentation_agent",
+    "display_name": "Adam",
+    "role": "documentation",
+    "status": "live",
+    "path_key": "adam",
+    "description": "Documentation and knowledge base agent — writes, archives, and maintains structured docs",
+    "aliases": ["documentation_agent"]
+  },
+  "apollo": {
+    "functional_id": "social_analytics_agent",
+    "display_name": "Apollo",
+    "role": "social_analytics",
+    "status": "queued",
+    "path_key": "apollo",
+    "description": "Social media analytics agent — daily metrics tracking and reporting",
+    "aliases": []
+  },
+  "buddha": {
+    "functional_id": "thought_leadership_agent",
+    "display_name": "Buddha",
+    "role": "thought_leadership",
+    "status": "queued",
+    "path_key": "buddha",
+    "description": "Thought leadership agent — LinkedIn content strategy and publishing",
+    "aliases": []
+  },
+  "beelzebub": {
+    "functional_id": "rnd_lab_agent",
+    "display_name": "Beelzebub",
+    "role": "rnd_lab",
+    "status": "queued",
+    "path_key": "beelzebub",
+    "description": "R&D lab agent — experimental Odin development and ideation",
+    "aliases": []
+  },
+  "chronus": {
+    "functional_id": "content_scheduler_agent",
+    "display_name": "Chronus",
+    "role": "content_scheduler",
+    "status": "queued",
+    "path_key": "chronus",
+    "description": "Content scheduler agent — optimal post timing and publishing queue",
+    "aliases": []
+  },
+  "hades": {
+    "functional_id": "security_auditor_agent",
+    "display_name": "Hades",
+    "role": "security_auditor",
+    "status": "paused",
+    "path_key": "hades",
+    "description": "Security auditor agent — vulnerability assessment and access review",
+    "aliases": []
+  },
+  "hercules": {
+    "functional_id": "community_bot_agent",
+    "display_name": "Hercules",
+    "role": "community_bot",
+    "status": "queued",
+    "path_key": "hercules",
+    "description": "Community bot agent — fan community management and engagement",
+    "aliases": []
+  },
+  "hermes": {
+    "functional_id": "collab_leads_agent",
+    "display_name": "Hermes",
+    "role": "collab_leads",
+    "status": "queued",
+    "path_key": "hermes",
+    "description": "Collaboration leads agent — opportunity discovery and outreach coordination",
+    "aliases": []
+  },
+  "qin": {
+    "functional_id": "usage_tracker_agent",
+    "display_name": "Qin",
+    "role": "usage_tracker",
+    "status": "paused",
+    "path_key": "qin",
+    "description": "Usage tracker agent — API cost monitoring and spending analytics",
+    "aliases": []
+  },
+  "shiva": {
+    "functional_id": "trading_bot_agent",
+    "display_name": "Shiva",
+    "role": "trading_bot",
+    "status": "paused",
+    "path_key": "shiva",
+    "description": "Trading bot agent — automated market execution and strategy management",
+    "aliases": []
+  },
+  "tesla": {
+    "functional_id": "portfolio_curator_agent",
+    "display_name": "Tesla",
+    "role": "portfolio_curator",
+    "status": "queued",
+    "path_key": "tesla",
+    "description": "Portfolio curator agent — AI content curation and publishing pipeline",
+    "aliases": []
+  },
+  "zeus": {
+    "functional_id": "insurance_analyzer_agent",
+    "display_name": "Zeus",
+    "role": "insurance_analyzer",
+    "status": "research",
+    "path_key": "zeus",
+    "description": "Insurance analyzer agent — policy analysis and risk assessment",
+    "aliases": []
+  }
+}

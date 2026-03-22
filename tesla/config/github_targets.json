@@ -1,0 +1,21 @@
+{
+  "_comment": "GitHub push targets for Tesla exports. Remote URLs are constructed from env vars — never hardcoded.",
+
+  "full_export": {
+    "description": "Full system export to odin-core snapshot branch",
+    "repo_name": "odin-core",
+    "remote_env_var": "GITHUB_REMOTE_ODIN_CORE",
+    "remote_template": "https://github.com/{GITHUB_USERNAME}/odin-core.git",
+    "branch_template": "export/snapshot-{DATE}",
+    "commit_template": "Tesla weekly full export {DATE}"
+  },
+
+  "agent_export": {
+    "description": "Single agent export to odin-agents repo",
+    "repo_name": "odin-agents",
+    "remote_env_var": "GITHUB_REMOTE_ODIN_AGENTS",
+    "remote_template": "https://github.com/{GITHUB_USERNAME}/odin-agents.git",
+    "branch_template": "export/{AGENT_ID}-{DATE}",
+    "commit_template": "Tesla agent export {AGENT_ID} {DATE}"
+  }
+}

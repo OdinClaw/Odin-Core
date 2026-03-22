@@ -1,0 +1,37 @@
+{
+  "version": "1.0",
+  "name": "agent_export",
+  "description": "Single agent export manifest — config + workspace files for one agent",
+  "source_base": "~/.openclaw-odin",
+
+  "items": [
+    { "path": "config/agents.json",    "type": "file", "required": true,  "note": "Full agent registry — consumer can filter by platform_id" },
+    { "path": "config/system.json",    "type": "file", "required": true,  "note": "System identity config" },
+    { "path": "config/agent_ids.js",   "type": "file", "required": false, "note": "Platform ID constants" },
+    { "path": "config/names.js",       "type": "file", "required": false, "note": "Config-driven name resolution" },
+    { "path": "config/paths.js",       "type": "file", "required": false, "note": "Path abstraction helpers" }
+  ],
+
+  "workspace_items": [
+    { "path": "workspace/agents/{path_key}/IDENTITY.md",  "type": "file",      "required": false, "note": "Agent identity and role document" },
+    { "path": "workspace/agents/{path_key}/HEARTBEAT.md", "type": "file",      "required": false, "note": "Agent heartbeat / health protocol" },
+    { "path": "workspace/agents/{path_key}/templates/",   "type": "directory", "required": false, "note": "Agent document templates" },
+    { "path": "workspace/agents/{path_key}/skills.md",    "type": "file",      "required": false, "note": "Agent skills manifest" },
+    { "path": "workspace/agents/{path_key}/mission.md",   "type": "file",      "required": false, "note": "Agent mission document" }
+  ],
+
+  "always_generate": [
+    ".env.example",
+    "agent_manifest.json"
+  ],
+
+  "never_include": [
+    ".env",
+    "openclaw.json",
+    "workspace/agents/{path_key}/memory/",
+    "workspace/agents/{path_key}/handoffs/",
+    "workspace/agents/{path_key}/sessions/",
+    "node_modules/",
+    "logs/"
+  ]
+}
