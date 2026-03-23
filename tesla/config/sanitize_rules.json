@@ -1,0 +1,111 @@
+{
+  "_comment": "Tesla sanitization rules. abort_on_match = fail export immediately. redact_patterns = replace before writing.",
+
+  "abort_on_match": [
+    {
+      "id": "anthropic_api_key",
+      "description": "Anthropic API key (sk-ant-...)",
+      "pattern": "sk-ant-[A-Za-z0-9_\\-]{20,}",
+      "severity": "critical"
+    },
+    {
+      "id": "anthropic_oauth_token",
+      "description": "Anthropic OAuth subscription token (sk-ant-oat...)",
+      "pattern": "sk-ant-oat[A-Za-z0-9_\\-]{20,}",
+      "severity": "critical"
+    },
+    {
+      "id": "openai_api_key",
+      "description": "OpenAI API key (sk-...)",
+      "pattern": "sk-(?!ant)[A-Za-z0-9]{40,}",
+      "severity": "critical"
+    },
+    {
+      "id": "github_token_classic",
+      "description": "GitHub personal access token (ghp_...)",
+      "pattern": "ghp_[A-Za-z0-9]{36,}",
+      "severity": "critical"
+    },
+    {
+      "id": "github_token_fine",
+      "description": "GitHub fine-grained token (github_pat_...)",
+      "pattern": "github_pat_[A-Za-z0-9_]{80,}",
+      "severity": "critical"
+    },
+    {
+      "id": "discord_bot_token",
+      "description": "Discord bot token (base64.base64.base64)",
+      "pattern": "MT[A-Za-z0-9]{20,}\\.[A-Za-z0-9_\\-]{6}\\.[A-Za-z0-9_\\-]{27,}",
+      "severity": "critical"
+    },
+    {
+      "id": "groq_api_key",
+      "description": "Groq API key (gsk_...)",
+      "pattern": "gsk_[A-Za-z0-9]{50,}",
+      "severity": "critical"
+    },
+    {
+      "id": "gateway_auth_token",
+      "description": "OpenClaw gateway auth token (40-char hex)",
+      "pattern": "1b10607665b5a745cd27b22a77fa7957a2e5b297452c8e39",
+      "severity": "critical"
+    },
+    {
+      "id": "bearer_auth_header",
+      "description": "HTTP Bearer authorization value",
+      "pattern": "Bearer [A-Za-z0-9._\\-]{30,}",
+      "severity": "critical"
+    },
+    {
+      "id": "telegram_bot_token",
+      "description": "Telegram bot token (numeric:alphanumeric)",
+      "pattern": "[0-9]{8,10}:[A-Za-z0-9_\\-]{35}",
+      "severity": "critical"
+    }
+  ],
+
+  "redact_patterns": [
+    {
+      "id": "absolute_users_path",
+      "description": "macOS /Users/<username>/ path",
+      "pattern": "/Users/[A-Za-z0-9_\\.\\-]+/",
+      "replacement": "${HOME}/"
+    },
+    {
+      "id": "absolute_home_path",
+      "description": "Linux /home/<username>/ path",
+      "pattern": "/home/[A-Za-z0-9_\\.\\-]+/",
+      "replacement": "${HOME}/"
+    }
+  ],
+
+  "always_exclude_filenames": [
+    ".env",
+    ".env.local",
+    ".env.production",
+    ".env.development",
+    "*.log",
+    "*.jsonl",
+    "*.sqlite",
+    "*.db",
+    ".DS_Store",
+    "*.bak",
+    "Thumbs.db"
+  ],
+
+  "always_exclude_dirs": [
+    "node_modules",
+    ".git",
+    "logs",
+    "temp",
+    "workspace",
+    "agents",
+    "snapshots",
+    "cache",
+    "tmp",
+    ".openclaw",
+    "credentials",
+    "browser",
+    "devices"
+  ]
+}

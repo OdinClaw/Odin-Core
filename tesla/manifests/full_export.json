@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "name": "full_system_export",
+  "description": "Complete OpenClaw/Odin system export — source code and config only, no runtime data",
+  "source_base": "~/.openclaw-odin",
+
+  "items": [
+    { "path": "config/",                                    "type": "directory", "required": true,  "note": "Core config layer: agents.json, system.json, names.js, paths.js, agent_ids.js, validate.js" },
+    { "path": "task_bus/router/",                           "type": "directory", "required": true,  "note": "Task classification, routing, preprocessing, model routing" },
+    { "path": "task_bus/workers/dispatcher.js",             "type": "file",      "required": true,  "note": "Task dispatch worker" },
+    { "path": "task_bus/discord_bridge/send_reply.js",      "type": "file",      "required": true,  "note": "Discord reply bridge" },
+    { "path": "task_bus/submit_task.js",                    "type": "file",      "required": false, "note": "Task submission CLI" },
+    { "path": "task_bus/provider_lab/bench_runner.js",      "type": "file",      "required": false, "note": "Provider benchmark runner" },
+    { "path": "task_bus/provider_lab/providers/",           "type": "directory", "required": false, "note": "LLM provider adapters" },
+    { "path": "tesla/",                                     "type": "directory", "required": true,  "note": "Tesla export module — self-included" },
+    { "path": "memory_index/index_manager.js",              "type": "file",      "required": false, "note": "Memory index core" },
+    { "path": "memory_index/document_indexer.js",           "type": "file",      "required": false, "note": "Document watcher + indexer" },
+    { "path": "memory_index/query.js",                      "type": "file",      "required": false, "note": "Index query CLI" },
+    { "path": "system_watchers/architecture_watcher.js",    "type": "file",      "required": false, "note": "Architecture change watcher" },
+    { "path": "scripts/usage-monitor.mjs",                  "type": "file",      "required": false, "note": "Claude usage monitor + Telegram alerts" },
+    { "path": "scripts/degraded-mode.mjs",                  "type": "file",      "required": false, "note": "Degraded mode handler" }
+  ],
+
+  "always_generate": [
+    ".env.example"
+  ],
+
+  "never_include": [
+    ".env",
+    "openclaw.json",
+    "workspace/",
+    "agents/",
+    "node_modules/",
+    "logs/",
+    "tesla/temp/",
+    "tesla/logs/"
+  ]
+}
