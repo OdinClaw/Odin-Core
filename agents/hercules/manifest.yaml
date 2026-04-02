@@ -1,0 +1,60 @@
+# manifest.yaml — Hercules
+
+id: hercules
+name: Hercules
+type: isolated
+status: queued
+version: "1.0"
+created: 2026-03-08
+updated: 2026-03-08
+
+identity:
+  emoji: 💪
+  mythology: "Hercules — Greek demigod of strength, Record of Ragnarok (overwhelming force, community protection, labor)"
+  archetype: content
+
+model:
+  primary: anthropic/claude-haiku-4-5-20251001
+  fallbacks:
+    - anthropic/claude-sonnet-4-5
+    - ollama/qwen3.5:9b
+  subagents: ollama/qwen3.5:9b
+  rationale: "Community engagement messages are short, structured — Haiku handles it."
+
+discord:
+  channel: "#hercules"
+  channelId: ""
+  botId: ""
+  botName: "@Hercules"
+  accountId: hercules
+
+workspace:
+  path: "~/.openclaw-odin/workspace/agents/hercules"
+  agentDir: "~/.openclaw-odin/agents/hercules/agent"
+
+role:
+  summary: "Fan community bot. Runs Discord engagement: daily studio vibe posts, weekly listening parties, fan shoutouts, polls. Keeps Bazzy's community alive between drops."
+  schedule: "daily + event-triggered"
+  output: "#hercules + Bazzy's fan Discord server"
+
+dependencies:
+  reads:
+    - shared-context/THESIS.md
+    - intel/SOCIAL-METRICS.md
+  writes:
+    - agents/hercules/memory/YYYY-MM-DD.md
+  notifies:
+    - main
+
+tags:
+  - music
+  - community
+  - content
+  - scheduled
+
+activation:
+  cli_registered: false
+  auth_configured: false
+  discord_bot_created: false
+  openclaw_json_updated: false
+  tested: false

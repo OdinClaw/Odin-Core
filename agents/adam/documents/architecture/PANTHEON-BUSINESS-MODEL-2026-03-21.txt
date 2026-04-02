@@ -1,0 +1,112 @@
+ARCHITECTURE DOCUMENT: The Pantheon Business Model — AI Infrastructure MSP
+=========================================================================
+
+Date: 2026-03-21
+Timestamp: 2026-03-21T18:21:52.123Z
+Source: Odin (preview-business-model.jpg)
+Category: Strategic / Business Architecture
+
+---
+
+OVERVIEW
+
+The Pantheon is positioned as a **next-generation AI Infrastructure Managed Service Provider (MSP)**.
+
+Instead of managing traditional IT infrastructure (servers, networks, endpoints), the Pantheon manages:
+- AI agent infrastructure
+- Automated workflows
+- Digital labor systems
+
+**Core Positioning Statement:**
+"We design, deploy, and manage custom AI-powered operational systems tailored to each client's business."
+
+---
+
+WHAT PANTHEON ACTUALLY SELLS
+
+NOT: AI technology, Odin platform, or agents themselves
+NOT: Software licenses or API access
+
+YES: Business outcomes—
+- Time Recovery (reclaim staff hours from automation)
+- Operational Efficiency (streamline workflows, reduce friction)
+- Scalable Automation (grow operations without proportional cost)
+- Decision Support Systems (AI-powered insights for leadership)
+
+---
+
+OFFER STRUCTURE: PRODUCTIZED SERVICES (Tiered Model)
+
+**Tier 1: BUILD (Implementation)**
+
+What it includes:
+- Business workflow analysis (map existing processes)
+- Custom agent mapping (design which agents do what)
+- Odin environment deployment (set up infrastructure)
+- Initial automation setup (get first automations live)
+
+*Note: Document preview cuts off; additional tiers likely include Manage, Optimize, Extend, etc.*
+
+---
+
+BUSINESS MODEL CHARACTERISTICS
+
+1. **Services-Based (Not Software-Based)**
+   - Revenue from implementation, management, optimization
+   - Not SaaS subscriptions or per-API-call pricing
+
+2. **Outcome-Driven Sales**
+   - Sales conversation: "We recover X hours/month"
+   - Not: "We provide AI agents"
+
+3. **Productized Tiers**
+   - Standardized service packages
+   - Reduces custom quote overhead
+   - Scales better than pure consulting
+
+4. **Infrastructure Lock-In**
+   - Client depends on Pantheon for ongoing Odin management
+   - Recurring revenue from "Manage" tier (ongoing support)
+
+---
+
+STRATEGIC IMPLICATIONS
+
+**For Bazzy (Owner):**
+- Pantheon is a services business, not a product business
+- Revenue growth comes from:
+  1. Client acquisition (sell tier 1)
+  2. Retention (manage tier recurring)
+  3. Upsell (optimize tier expansion)
+
+**For the Agent Network:**
+- Agents (Odin + team) are production infrastructure, not R&D
+- Every agent action translates to client value delivery
+- Optimization = revenue optimization (better efficiency = better margins)
+
+**For Model Selection:**
+- The rapid model cycling observed today (2026-03-21) likely reflects:
+  - Cost optimization for production workloads
+  - Efficiency testing (which model gives best bang for buck?)
+  - Quality assurance (which model delivers most reliable outcomes?)
+
+---
+
+FRAMEWORK ALIGNMENT
+
+This business model aligns with the Pantheon's **knowledge architecture**:
+- Adam documents operational decisions (for client deliverables + internal optimization)
+- Each agent's work contributes to client outcomes (automation, efficiency, decisions)
+- Memory preservation ensures consistency across client engagements
+
+---
+
+DOCUMENT CLASSIFICATION
+
+This document captures the strategic business context for the Pantheon network. It explains **why** the technical decisions matter—the agent infrastructure isn't an exercise in AI engineering; it's the production backbone of a services business.
+
+---
+
+STATUS: Foundation document for strategic context
+CREATED: 2026-03-21T18:21:52.123Z
+SOURCE ARTIFACT: preview-business-model.jpg (uploaded to workspace)

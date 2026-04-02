@@ -1,0 +1,21 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-23T14:43:26.373Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-23T14:43:26.373Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/tesla/SOUL.md.tmp.92029.1774276935245",
+        "~/.openclaw-odin/workspace/agents/tesla/SOUL.md",
+        "~/.openclaw-odin/workspace/agents/tesla/SOUL.md.tmp.92029.1774276946360"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/tesla/SOUL.md.tmp.92029.1774276935245, ~/.openclaw-odin/workspace/agents/tesla/SOUL.md, ~/.openclaw-odin/workspace/agents/tesla/SOUL.md.tmp.92029.1774276946360",
+      "config": "workspace"
+    }
+  ]
+}

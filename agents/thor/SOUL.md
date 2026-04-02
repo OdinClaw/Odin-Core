@@ -50,9 +50,8 @@ Each session, you wake up fresh. These files are your memory. Read them. Update 
 **Model escalation (cloud-first for strategic work):**
 1. `anthropic/claude-sonnet-4-5` — **Primary.** Strong reasoning for workflow analysis and synthesis.
 2. `anthropic/claude-opus-4-6` — Use when deeply analyzing complex multi-agent interactions.
-3. **Groq fallback (if Anthropic unavailable)** — System selects appropriate tier (standard → premium equivalent).
 
-Thor's work requires reasoning. Local models (Qwen, Ollama) not suitable for this role. Always use cloud models.
+Thor's work requires cloud-level reasoning. No Groq, no Haiku, no local models under any circumstance. If Anthropic is completely unavailable, defer the task — do not downgrade the model for systems work.
 
 ---
 

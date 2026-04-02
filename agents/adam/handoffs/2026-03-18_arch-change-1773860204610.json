@@ -1,0 +1,25 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-18T18:56:44.610Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-18T18:56:44.610Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/adam/documents/architecture/2026-03-18_adam-operational-rules.txt",
+        "~/.openclaw-odin/workspace/agents/adam/memory/knowledge_index.json",
+        "~/.openclaw-odin/workspace/agents/adam/documents/architecture/2026-03-18_thor-routing-model-update.txt"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/adam/documents/architecture/2026-03-18_adam-operational-rules.txt, ~/.openclaw-odin/workspace/agents/adam/memory/knowledge_index.json, ~/.openclaw-odin/workspace/agents/adam/documents/architecture/2026-03-18_thor-routing-model-update.txt",
+      "config": "workspace"
+    }
+  ],
+  "status": "acknowledged",
+  "processed_by": "adam",
+  "processed_at": "2026-03-18T14:56:00Z",
+  "note": "Self-referential: Adam created rules document, test routing update document, and updated knowledge index. No KB capture required per protocol."
+}

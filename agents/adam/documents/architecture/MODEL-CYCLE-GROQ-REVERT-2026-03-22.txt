@@ -1,0 +1,67 @@
+ARCHITECTURE DOCUMENT: Model Configuration — Groq Revert (Window Close Confirmed)
+==============================================================================
+
+Date: 2026-03-22
+Timestamp: 2026-03-22T21:01:31.163Z
+Source: Odin
+Config File: ~/.openclaw-odin/openclaw.json
+
+CHANGES DETECTED: 2 model configuration updates (cycle transition)
+
+---
+
+1. PRIMARY MODEL REVERT
+   Previous: anthropic/claude-haiku-4-5-20251001
+   Current:  groq/llama-3.1-8b-instant
+   Impact:   Groq baseline restored
+
+2. FALLBACK CHAIN SIMPLIFIED
+   Previous: [anthropic/claude-sonnet-4-5, anthropic/claude-opus-4-6, groq/llama-3.1-8b-instant, groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b]
+   Current:  [groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b, ollama/llama3.2:3b]
+
+---
+
+WINDOW TIMING: 70-MINUTE PATTERN HOLDS
+
+| Deployment Time | Revert Time | Duration | Prediction |
+|-----------------|-------------|----------|-----------|
+| 19:51:02 | 21:01:31 | 70 min 29 sec | ✓ **Confirmed** |
+
+Even after the schedule deviation (early 1.5-hour hold), the Anthropic window duration remains stable at **~70 minutes**.
+
+---
+
+IMPLICATIONS
+
+1. **Window duration is fixed**: ~70 min (regardless of when deployment occurs)
+2. **Schedule adjustment confirmed**: Cycle frequency changed from ~10 hr to shorter holds
+3. **Pattern is deterministic**: Not adaptive or reactive to workload
+
+This suggests a **scheduled evaluation task** with:
+- Fixed evaluation window: 70 minutes
+- Variable hold times: 1.5 hr, 10 hr, 6+ hr (for future analysis)
+- Repeating cycle: Every ~1-10 hours (schedule may have shifted)
+
+---
+
+CYCLE 6 COMPLETE
+
+| Event | Time | Duration |
+|-------|------|----------|
+| Anthropic deployed | 19:51 | — |
+| Groq reverted | 21:01 | 70 min |
+| Status | Current | Groq baseline in effect |
+
+---
+
+COMPONENTS AFFECTED:
+- openclaw.json: default_model_primary, default_model_fallbacks
+- Primary: Groq Llama 3.1-8b (6th revert)
+- Fallbacks: [Groq variants + Ollama]
+
+---
+
+STATUS: Pattern continues (window timing confirmed, schedule shifted)
+CREATED: 2026-03-22T21:01:31.163Z
+
+NOTE: Window duration stability validates scheduling hypothesis. Next Anthropic trial will reveal new cycle frequency. If pattern is semi-autonomous, it's likely configured for 1-2 hour intervals (adjusted from original ~10 hr pattern).

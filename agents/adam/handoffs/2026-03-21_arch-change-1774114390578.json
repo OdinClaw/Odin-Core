@@ -1,0 +1,39 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-21T17:33:10.578Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "component": "default_model_primary",
+      "previous": "groq/llama-3.1-8b-instant",
+      "current": "anthropic/claude-haiku-4-5-20251001",
+      "timestamp": "2026-03-21T17:33:10.577Z",
+      "config": "~/.openclaw-odin/openclaw.json"
+    },
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "component": "default_model_fallbacks",
+      "previous": "[groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b, ollama/llama3.2:3b]",
+      "current": "[anthropic/claude-sonnet-4-5, anthropic/claude-opus-4-6, groq/llama-3.1-8b-instant, groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b]",
+      "timestamp": "2026-03-21T17:33:10.577Z",
+      "config": "~/.openclaw-odin/openclaw.json"
+    },
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-21T17:33:10.578Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/adam/documents/architecture/MODEL-REVERT-GROQ-2026-03-21.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md",
+        "~/.openclaw-odin/workspace/agents/adam/MEMORY.md"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/adam/documents/architecture/MODEL-REVERT-GROQ-2026-03-21.txt, ~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md, ~/.openclaw-odin/workspace/agents/adam/MEMORY.md",
+      "config": "workspace"
+    }
+  ]
+}

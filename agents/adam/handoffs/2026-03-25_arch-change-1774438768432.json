@@ -1,0 +1,25 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-25T11:39:28.432Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "component": "default_model_primary",
+      "previous": "anthropic/claude-haiku-4-5-20251001",
+      "current": "groq/llama-3.1-8b-instant",
+      "timestamp": "2026-03-25T11:39:28.431Z",
+      "config": "~/.openclaw-odin/openclaw.json"
+    },
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "component": "default_model_fallbacks",
+      "previous": "[anthropic/claude-sonnet-4-5, anthropic/claude-opus-4-6, groq/llama-3.1-8b-instant, groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b]",
+      "current": "[groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b, ollama/llama3.2:3b]",
+      "timestamp": "2026-03-25T11:39:28.431Z",
+      "config": "~/.openclaw-odin/openclaw.json"
+    }
+  ]
+}

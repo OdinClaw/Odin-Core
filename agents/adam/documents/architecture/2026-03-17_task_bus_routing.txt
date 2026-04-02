@@ -1,0 +1,7 @@
+Architecture Note
+Date: 2026-03-17
+System: Odin AI
+Change: Task Bus model routing layer added
+Details: A model_router.js module was added to task_bus/router/. Each task class now has an assigned model lane (primary + fallbacks). orchestration tasks go to Haiku, reasoning to Sonnet, documentation to groq.
+Impact: All agent dispatches now carry assigned_agent, model_lane, and fallback_models fields. Dispatcher overhead is minimal.
+Related Agents: odin, thor, adam

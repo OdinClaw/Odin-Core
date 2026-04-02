@@ -1,0 +1,20 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-24T13:27:47.691Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-24T13:27:47.691Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/adam/documents/architecture/MODEL-ANTHROPIC-READOPT-2026-03-24.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/adam/documents/architecture/MODEL-ANTHROPIC-READOPT-2026-03-24.txt, ~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md",
+      "config": "workspace"
+    }
+  ]
+}

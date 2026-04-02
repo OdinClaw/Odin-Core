@@ -1,0 +1,91 @@
+ARCHITECTURE DOCUMENT: Tesla SOUL.md Update — Tesla V4 Template Generation Model
+===========================================================================
+
+Date: 2026-03-23
+Timestamp: 2026-03-23T14:43:26.373Z
+Source: Tesla SOUL.md revision
+Category: System / Agent Configuration
+
+---
+
+TESLA SOUL.MD REVISION: TEMPLATE GENERATION CONFIRMED
+
+**Status:** Tesla V4 template generation is DEPLOYED AND OPERATIONAL
+**Location:** `~/.openclaw-odin/tesla_v4/`
+**Verification:** Generator presence confirmed in updated SOUL.md
+
+---
+
+KEY UPDATES TO TESLA OPERATING MODEL
+
+### 1. Template Generation Layer Status
+
+**CHANGED:** From legacy export references to active Tesla V4 template generation
+
+Active components:
+- `generate_template.js` — template-based export system (Tesla V4)
+- `tesla_template/` — generated portable template output
+- `install.sh` — onboarding installer
+- `INSTALL.md` — installation guide
+- `template_manifest.json` — generation summary
+
+**IMPORTANT:** Tesla SOUL.md now explicitly points to the active Tesla V4 generator rather than legacy pipeline paths.
+
+---
+
+### 2. Tool Execution Model
+
+Tesla remains an execution-oriented agent, and its documented export identity is now centered on template generation.
+
+---
+
+### 3. Context Hierarchy for System State
+
+Tesla now relies on the current generation context:
+
+**Priority 1:** `tesla/context/LIVE_STATUS.json`
+- Current generator and template status
+- Fastest source for operational state
+
+**Priority 2:** `tesla_template/setup/template_manifest.json`
+- Latest generated template summary
+- Portable output record
+
+**Priority 3:** `tesla/logs/weekly.log`
+- Weekly automation output
+- Useful for historical run traces
+
+---
+
+### 4. Operational Confidence
+
+Tesla can now reason from the active template-based export system (Tesla V4) without stale references to legacy scheduler entry points.
+
+---
+
+## STRATEGIC IMPLICATIONS
+
+### For Tesla's Operation
+
+1. Tesla's documented export capability now matches the live Tesla V4 generator.
+2. Context references now point at current template outputs instead of legacy scripts.
+3. Weekly automation references now align with `tesla_v4/generate_template.js`.
+
+### For the Pantheon
+
+1. Export capability remains active through a portable template workflow.
+2. Safety remains centered on sanitization, normalization, and portable packaging.
+3. Weekly automation is ready through the Tesla V4 generator.
+
+### For Adam's Knowledge Base
+
+1. Tesla's actual capabilities are documented in current-state terms.
+2. Legacy pipeline references are removed from the architecture record.
+3. The template-based export system (Tesla V4) is now the documented baseline.
+
+---
+
+STATUS: Tesla operational with confirmed Tesla V4 template generation
+CREATED: 2026-03-23T14:43:26.373Z
+
+NOTE: This update keeps Tesla aligned with the operational Tesla V4 template-based export system and removes stale legacy pipeline references from the documented capability map.

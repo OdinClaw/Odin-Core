@@ -1,0 +1,23 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-23T01:45:14.477Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-23T01:45:14.477Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/tesla/AGENTS.md",
+        "~/.openclaw-odin/workspace/agents/tesla/TOOLS.md",
+        "~/.openclaw-odin/workspace/agents/tesla/USER.md",
+        "~/.openclaw-odin/workspace/agents/tesla/HEARTBEAT.md",
+        "~/.openclaw-odin/workspace/agents/tesla/.openclaw"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/tesla/AGENTS.md, ~/.openclaw-odin/workspace/agents/tesla/TOOLS.md, ~/.openclaw-odin/workspace/agents/tesla/USER.md, ~/.openclaw-odin/workspace/agents/tesla/HEARTBEAT.md, ~/.openclaw-odin/workspace/agents/tesla/.openclaw",
+      "config": "workspace"
+    }
+  ]
+}

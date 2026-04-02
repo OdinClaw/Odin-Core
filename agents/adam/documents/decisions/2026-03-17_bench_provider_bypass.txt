@@ -1,0 +1,7 @@
+Decision Record
+Date: 2026-03-17
+System: Odin AI
+Decision: Benchmark tasks with test_lane bypass normal agent routing
+Reason: Provider benchmarks should not consume agent context or session tokens. Direct API calls give accurate latency metrics without gateway overhead.
+Impact: Tasks with test_lane=kimi or test_lane=nemotron are routed to bench_runner.js and results stored in provider_lab/benchmarks/.
+Related Components: task_bus, bench_runner, kimi, nemotron

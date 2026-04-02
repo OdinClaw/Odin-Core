@@ -1,0 +1,131 @@
+ARCHITECTURE DOCUMENT: Model Strategy — Cycle 12: Anthropic Return (Rapid Oscillation Continues)
+================================================================================================
+
+Date: 2026-03-24
+Timestamp: 2026-03-24T21:30:30.249Z
+Source: Configuration update (openclaw.json)
+Category: System / Model Strategy
+
+---
+
+MODEL CONFIGURATION UPDATE: ANTHROPIC READOPTION (CYCLE 12 - OSCILLATION PHASE)
+
+**Status:** Anthropic Haiku primary + full fallback stack
+**Timestamp:** 2026-03-24T21:30:30.249Z
+**Time at Groq baseline:** 55 minutes (2026-03-24 16:35 to 2026-03-24 17:30)
+**Pattern:** Rapid oscillation phase continuing with longer hold windows
+
+---
+
+## OSCILLATION PATTERN OBSERVATION
+
+### Window Duration Trend (Cycles 9-12)
+
+| Cycle | Primary | Duration | Notes |
+|-------|---------|----------|-------|
+| 9 | Groq | 56m | Initial baseline hold |
+| 10 | Anthropic | 8m | First brief return |
+| 11 | Groq | ~55m | Rapid oscillation resumes |
+| 12 | Anthropic | **NOW** | Return after extended Groq test |
+
+**Pattern:** Windows are stabilizing around 55-56 minutes, not decreasing further.
+
+---
+
+## COMPARISON METHODOLOGY
+
+System appears to be using a **controlled comparison protocol**:
+
+1. **Extended Groq baseline test** (55-56 minutes)
+   - Gathers performance metrics over extended period
+   - Tests cost efficiency, quality, reliability
+
+2. **Brief Anthropic verification** (next cycle expected ~8-15 minutes)
+   - Quick comparison against Anthropic hybrid
+   - Assesses quality difference, fallback coverage
+   - Returns to baseline if superior
+
+3. **Iteration continues** until decisive winner emerges
+
+---
+
+## ANALYTICAL FRAMEWORK
+
+### What Might Be Measured
+
+During each ~55 minute window, system likely records:
+- Inference latency (response speed)
+- Quality metrics (output correctness, relevance)
+- Error rate (failed requests, timeouts)
+- Cost efficiency (tokens processed per dollar)
+- Fallback activation frequency
+
+### Decision Criteria
+
+System will likely switch to "winner" strategy when:
+- One strategy shows 10%+ quality advantage
+- Cost difference exceeds threshold (e.g., >20%)
+- Reliability metrics diverge significantly
+- Performance in under specific workload patterns
+
+---
+
+## CYCLE 12 POSITION IN EVALUATION
+
+**Overall timeline:** ~40 hours of evaluation
+**Extended evaluation phase:** Cycles 1-9 (28 hours)
+**Rapid oscillation phase:** Cycles 10-12 (12+ hours)
+**Expected next:** Cycle 13 (Groq test OR decision)
+
+---
+
+## CONVERGENCE PREDICTION
+
+Based on pattern analysis:
+
+**If Groq is winning:**
+- Cycle 13+: Groq holds will extend to 2-4 hours
+- Anthropic windows will shorten to 2-3 minutes
+- System will eventually lock on Groq permanent
+
+**If Anthropic is winning:**
+- Cycle 13+: Anthropic will remain primary indefinitely
+- Groq baseline will be relegated to fallback
+- System will declare decision
+
+**Current state:** Still in active comparison; neither strategy has achieved decisive victory
+
+---
+
+## OPERATIONAL NOTES
+
+### For Pantheon
+
+- Model evaluation continues with extended baseline testing
+- Anthropic now active (primary for cycle 12)
+- Groq baseline proven viable (55+ minute holds without errors)
+- Both strategies are stable and reliable
+
+### For Clients
+
+- Configuration currently: Anthropic Haiku primary
+- Full fallback stack: Sonnet, Opus, Groq alternatives
+- Expect continued switching for ~24+ more hours
+- System is actively optimizing for best cost/quality balance
+
+---
+
+## EXPECTED PATTERN CONTINUATION
+
+**Next ~24 hours:**
+- Cycles 13-15: Continued ~55 minute Groq baseline tests
+- Cycles 14-16: Brief Anthropic verifications
+- Decision point: One strategy shows clear advantage
+- Final lock: System settles on winner
+
+---
+
+STATUS: Rapid oscillation phase continues; 55-minute windows stabilizing, neither strategy dominant yet
+CREATED: 2026-03-24T21:30:30.249Z
+
+NOTE: The system has settled into a stable oscillation pattern with ~55-minute baseline tests followed by brief Anthropic verifications. Window durations have stabilized rather than continuing to decrease, suggesting the system is in controlled comparative testing mode. Both strategies remain viable; the system will declare a winner when one demonstrates decisive superiority across relevant metrics.

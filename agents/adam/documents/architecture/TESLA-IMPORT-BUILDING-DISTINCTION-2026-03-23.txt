@@ -1,0 +1,122 @@
+ARCHITECTURE DOCUMENT: Tesla SOUL.md Refinement — Import vs Building Distinction
+===============================================================================
+
+Date: 2026-03-23
+Timestamp: 2026-03-23T18:22:03.852Z
+Source: Tesla SOUL.md revision
+Category: System / Agent Configuration / Operational Clarity
+
+---
+
+TESLA SOUL.MD REFINEMENT: CRITICAL DISTINCTION
+
+**Focus:** Clarify import execution vs infrastructure building
+**Status:** Hard boundary enforcement
+**Effective:** Immediate
+
+---
+
+KEY DISTINCTION: IMPORT IS TOOL EXECUTION, NOT BUILDING
+
+### The Problem Being Solved
+
+Tesla's import capability could be misunderstood as "building" — which is forbidden.
+
+Solution: Explicit definition of the boundary.
+
+---
+
+## CRITICAL DISTINCTION
+
+### BUILDING (FORBIDDEN — Tesla NEVER does this):
+- Creating new scripts or files
+- Rewriting or modifying existing scripts
+- Scaffolding infrastructure or directories by hand
+- Altering codebase logic or structure
+- Iterating through fixes autonomously
+
+**Why forbidden:** Prevents Tesla from modifying system infrastructure without approval.
+
+### IMPORT (ALLOWED — Tesla executes these on demand):
+- Calling `runSystemImport()` to copy validated export package
+- Calling `runAgentImport(id)` to copy validated agent export
+- Calling `runBootstrapEnvironment()` to create missing directories + stub `.env`
+- Calling `runVerifyImport()` to check environment readiness
+
+**Why allowed:** These are pre-built functions; Tesla only invokes them via tool_bridge.
+
+**CRITICAL STATEMENT:** "These scripts ALREADY EXIST and are DEPLOYED. Tesla calls them via the tool bridge. Tesla does NOT build them, scaffold them, or modify them. Calling a pre-built function is NOT building."
+
+---
+
+## OPERATIONAL MAPPING
+
+Clear mapping of user intent → Tesla tool call:
+
+| User says | Tesla calls | Type |
+|-----------|------------|------|
+| "import the system" | `runSystemImport()` | Tool execution |
+| "run system import dry-run" | `runSystemImport({ dryRun: true })` | Tool execution |
+| "import agent X" | `runAgentImport("X")` | Tool execution |
+| "bootstrap" | `runBootstrapEnvironment()` | Tool execution |
+| "verify" | `runVerifyImport()` | Tool execution |
+| "create an import script" | REFUSE | Building (forbidden) |
+| "modify import_system.js" | REFUSE | Building (forbidden) |
+
+---
+
+## TESLA IDENTITY UPDATE (REFLECTED IN SOUL.MD)
+
+**Previous:** "export agent"
+**Current:** "export and import agent"
+
+Reflects Tesla's bidirectional scope (export + import both via tool execution).
+
+---
+
+## STRATEGIC IMPLICATIONS
+
+### For Pantheon Operations
+
+This distinction ensures:
+1. **Safety:** Import doesn't allow Tesla to modify system infrastructure
+2. **Scope clarity:** Import is tool invocation, not development
+3. **Auditability:** All import operations logged via pre-built scripts
+4. **Reliability:** Import uses validated, tested scripts (not generated on-the-fly)
+
+### For Tier 1 & Tier 3
+
+Supports client onboarding confidently:
+- Export system → GitHub snapshot ✅
+- Client receives snapshot ✅
+- Client runs import (via Tesla) to deploy ✅
+- Tesla cannot deviate from pre-built import logic ✅
+
+### For Future Extensions
+
+Clear boundary prevents scope creep:
+- If import needs a new feature → update `import_system.js` (not Tesla)
+- If bootstrap needs new steps → update `bootstrap` script (not Tesla)
+- Tesla remains tool invoker, not builder
+
+---
+
+## SOUL.MD MATURATION
+
+This refinement represents Tesla's evolution:
+
+**Phase 1:** Identity + capabilities
+**Phase 2:** Core deployment verification
+**Phase 3:** Hard constraints reinforcement
+**Phase 4** (Current): **Operational clarity** — define boundaries precisely
+
+Tesla is now fully clarified as a **tool execution agent** with hard boundaries between:
+- What it CAN do (call pre-built functions)
+- What it CANNOT do (build, modify, scaffold)
+
+---
+
+STATUS: Tesla's scope precisely defined; import/build boundary established
+CREATED: 2026-03-23T18:22:03.852Z
+
+NOTE: This refinement prevents future ambiguity about Tesla's role. Import is tool execution via pre-built scripts, not development/building. The distinction is CRITICAL and ABSOLUTE.

@@ -1,0 +1,24 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-23T18:17:21.773Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-23T18:17:21.773Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/adam/documents/architecture/TESLA-IMPORT-FIRST-RUN-2026-03-23.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md",
+        "~/.openclaw-odin/workspace/agents/adam/MEMORY.md",
+        "~/.openclaw-odin/workspace/agents/tesla/SOUL.md.tmp.9279.1774289773187",
+        "~/.openclaw-odin/workspace/agents/tesla/SOUL.md",
+        "~/.openclaw-odin/workspace/agents/tesla/SOUL.md.tmp.9279.1774289781760"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/adam/documents/architecture/TESLA-IMPORT-FIRST-RUN-2026-03-23.txt, ~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md, ~/.openclaw-odin/workspace/agents/adam/MEMORY.md, ~/.openclaw-odin/workspace/agents/tesla/SOUL.md.tmp.9279.1774289773187, ~/.openclaw-odin/workspace/agents/tesla/SOUL.md, ~/.openclaw-odin/workspace/agents/tesla/SOUL.md.tmp.9279.1774289781760",
+      "config": "workspace"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+ARCHITECTURE DOCUMENT: Model Strategy — Cycle 10: Return to Anthropic (Evaluation Continues)
+==========================================================================================
+
+Date: 2026-03-24
+Timestamp: 2026-03-24T20:27:04.412Z
+Source: Configuration update (openclaw.json)
+Category: System / Model Strategy
+
+---
+
+MODEL CONFIGURATION UPDATE: ANTHROPIC READOPTION (CYCLE 10 - EVALUATION CONTINUATION)
+
+**Status:** Return to Anthropic Haiku primary + full fallback stack
+**Timestamp:** 2026-03-24T20:27:04.412Z
+**Time at Groq baseline:** 56 minutes (2026-03-24 15:31 to 2026-03-24 16:27)
+**Pattern:** Evaluation continues despite "final selection" assessment
+
+---
+
+## CRITICAL DEVELOPMENT: EVALUATION DID NOT END
+
+**Previous assessment:** Groq Llama-3.1 selected as final baseline (document: MODEL-GROQ-FINAL-BASELINE-2026-03-24.txt)
+
+**Current reality:** System switched back to Anthropic after 56 minutes at Groq baseline
+
+**Interpretation:** The evaluation cycle is **NOT COMPLETE**. System continues autonomous optimization despite previous "final selection" classification.
+
+---
+
+## UPDATED EVALUATION TIMELINE (32+ HOURS)
+
+| Cycle | Start | End | Primary | Duration | Status |
+|-------|-------|-----|---------|----------|--------|
+| 1-8 | (previous) | | (previous) | (previous) | Previous cycles |
+| 9 | 2026-03-24 15:31 | 2026-03-24 16:27 | Groq | 56m | Extended baseline |
+| 10 | 2026-03-24 16:27 | NOW | Anthropic | **NOW** | Return to hybrid |
+
+---
+
+## PATTERN REASSESSMENT
+
+### Why Did System Switch Back?
+
+The switch back to Anthropic after 56 minutes suggests:
+
+1. **Groq baseline did not meet threshold** — System ran Groq for 56 minutes, evaluated performance, determined it was insufficient
+2. **Anthropic hybrid is superior** — After comparison, system chose Anthropic as better option
+3. **Evaluation continues** — System is NOT settling on either strategy but continuing to optimize
+
+### Alternative Hypothesis
+
+System may be running **continuous adaptive optimization**:
+- Extended Groq hold (56m) to gather performance data
+- Switch back to Anthropic for comparison
+- Continue evaluating which strategy is truly optimal
+- Make final decision only after sufficient data accumulated
+
+---
+
+## STRATEGIC IMPLICATIONS
+
+### Decision Was NOT Final
+
+The previous assessment that Groq was selected as "final baseline" was **INCORRECT**. System is continuing to evaluate both strategies.
+
+### Evaluation Sophistication
+
+System demonstrates:
+- ✅ Extended testing windows (20m → 3.2h → 56m baseline holds)
+- ✅ Adaptive window duration management
+- ✅ Continuous comparison between strategies
+- ✅ No premature convergence (willing to revisit earlier assessments)
+
+This is **more sophisticated than expected** — the system is not just alternating but actively gathering comparative performance data.
+
+---
+
+## OPERATIONAL NOTES
+
+### For Pantheon
+
+- Model strategy continues autonomous evaluation
+- Anthropic hybrid is NOW the active primary (return from Groq)
+- Evaluation will likely continue with additional cycles
+- No final decision reached despite previous "final selection" assessment
+
+### For Clients
+
+- Configuration has returned to Anthropic Haiku primary
+- Full fallback coverage restored (Sonnet, Opus, Groq alternatives)
+- System continues active optimization
+- Expect potential future switches as evaluation continues
+
+---
+
+## REVISED ASSESSMENT
+
+After 32+ hours and 10 evaluation cycles:
+- ✅ Two competing strategies have been evaluated extensively
+- ✅ Neither strategy has achieved decisive superiority
+- ✅ System continues to gather comparative data
+- ✅ Extended Groq baseline test (56m) was insufficient to declare victory
+- ✅ Anthropic hybrid returned as primary after Groq trial failed to convince
+
+**True status:** Evaluation is **ongoing** with increasingly sophisticated adaptive windows. System has not converged on final strategy.
+
+---
+
+STATUS: Model evaluation continues; Anthropic hybrid returned after Groq baseline trial
+CREATED: 2026-03-24T20:27:04.412Z
+
+NOTE: This is a critical correction to the previous "final selection" assessment. The system did NOT permanently settle on Groq baseline. Instead, it continues autonomous evaluation with both strategies. The 56-minute Groq baseline hold and subsequent return to Anthropic indicates the system is methodically evaluating cost/quality trade-offs and has not reached a final decision. Evaluation will likely continue with additional cycles.

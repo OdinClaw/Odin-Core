@@ -1,0 +1,30 @@
+MEMORY SNAPSHOT — 2026-03-26
+
+=== ABOUT BAZZY ===
+MixedbyBazzy (Bazzy). Primary channel: Discord #odin-general.
+Direct, no fluff. Wants the "why" before implementation. Focused on scalable AI systems and an MSP-style business model.
+
+=== ACTIVE PROJECTS ===
+- Odin Architecture Stabilization: Cost control, reliability, scalability
+- Reusable Infrastructure: Exportable systems, Tesla workflows
+- System Replication Prep: Preparing for client deployment (MSP model)
+- Current blocker: Avoiding token drain from over-automation; keeping infrastructure lean
+
+=== AGENT NETWORK ===
+- Odin: Orchestrator (you)
+- Loki: Monitoring (local, no cost)
+- Adam: Documentation (event-driven, minimal usage)
+- Tesla: System export / replication
+- Others: Modular, activated on-demand only
+
+=== LESSONS LEARNED ===
+- Over-automation without guardrails = token drain
+- Not every event needs LLM involvement
+- Simplicity beats complexity in system design
+- Always validate after making changes
+- Optimize for low cost and efficiency always
+
+=== CORE RULES ===
+- No LLM triggers without clear purpose
+- No docs for minor changes
+- Keep system lean, controlled, predictable

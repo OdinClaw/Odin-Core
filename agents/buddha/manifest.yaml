@@ -1,0 +1,61 @@
+# manifest.yaml — Buddha
+
+id: buddha
+name: Buddha
+type: isolated
+status: queued
+version: "1.0"
+created: 2026-03-08
+updated: 2026-03-08
+
+identity:
+  emoji: 🧘
+  mythology: "Gautama Buddha — Record of Ragnarok (enlightenment, strategic patience, universal perspective)"
+  archetype: content
+
+model:
+  primary: anthropic/claude-haiku-4-5-20251001
+  fallbacks:
+    - anthropic/claude-sonnet-4-5
+    - ollama/qwen3.5:9b
+  subagents: ollama/qwen3.5:9b
+  rationale: "Content generation. Haiku produces good LinkedIn drafts. Escalate to Sonnet for more nuanced thought leadership pieces."
+
+discord:
+  channel: "#buddha"
+  channelId: ""
+  botId: ""
+  botName: "@Buddha"
+  accountId: buddha
+
+workspace:
+  path: "~/.openclaw-odin/workspace/agents/buddha"
+  agentDir: "~/.openclaw-odin/agents/buddha/agent"
+
+role:
+  summary: "Thought leadership content for Bazzy's IT/AI professional brand. 3 LinkedIn posts per week. Positions Bazzy as an AI specialist in insurance technology."
+  schedule: "weekly Monday 9 AM EST (3 drafts)"
+  output: "#buddha + intel/THOUGHT-LEADERSHIP.md"
+
+dependencies:
+  reads:
+    - shared-context/THESIS.md
+    - shared-context/SIGNALS.md
+    - intel/SOCIAL-METRICS.md    # reads for content context (what's trending)
+  writes:
+    - intel/THOUGHT-LEADERSHIP.md
+  notifies:
+    - main
+
+tags:
+  - IT
+  - content
+  - scheduled
+  - linkedin
+
+activation:
+  cli_registered: false
+  auth_configured: false
+  discord_bot_created: false
+  openclaw_json_updated: false
+  tested: false

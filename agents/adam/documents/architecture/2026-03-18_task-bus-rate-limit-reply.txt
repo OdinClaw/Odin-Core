@@ -1,0 +1,10 @@
+Architecture Note
+Date: 2026-03-18
+System: Odin AI
+Change: Task bus dispatcher now supports rate-limit aware reply handling
+
+Details: The task_bus/dispatcher module has been enhanced to handle rate limiting transparently for reply-dependent tasks. When a task requires a response (e.g., a documentation handoff expecting a completion status), the dispatcher now queues the reply rather than blocking the task. This prevents deadlock scenarios where rate limiting would prevent both the task AND its reply from being processed.
+
+Impact: Documentation tasks can now safely be subject to rate limiting without compromising the handoff confirmation flow. Tasks hit the cooldown gracefully; their completion status is queued and delivered in the next available processing window. This improves system reliability and prevents cascading request failures during high-volume documentation periods.
+
+Related Agents: odin (dispatcher), adam (task recipient), task_bus (routing layer)

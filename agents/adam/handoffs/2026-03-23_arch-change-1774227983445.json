@@ -1,0 +1,68 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-23T01:06:23.445Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "component": "agent_added",
+      "agent": "tesla",
+      "previous": "null",
+      "current": "tesla",
+      "timestamp": "2026-03-23T01:06:23.443Z",
+      "config": "~/.openclaw-odin/openclaw.json"
+    },
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "component": "agent_model",
+      "agent": "tesla",
+      "previous": "null",
+      "current": "anthropic/claude-haiku-4-5-20251001",
+      "timestamp": "2026-03-23T01:06:23.443Z",
+      "config": "~/.openclaw-odin/openclaw.json"
+    },
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "component": "discord_account_added",
+      "agent": "tesla",
+      "previous": "null",
+      "current": "tesla",
+      "timestamp": "2026-03-23T01:06:23.443Z",
+      "config": "~/.openclaw-odin/openclaw.json"
+    },
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "component": "binding_added",
+      "agent": "tesla",
+      "previous": "null",
+      "current": "tesla",
+      "timestamp": "2026-03-23T01:06:23.443Z",
+      "config": "~/.openclaw-odin/openclaw.json"
+    },
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-23T01:06:23.445Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/tesla/IDENTITY.md.tmp.87248.1774227770025",
+        "~/.openclaw-odin/workspace/agents/tesla/IDENTITY.md",
+        "~/.openclaw-odin/workspace/agents/tesla/SOUL.md.tmp.87248.1774227817055",
+        "~/.openclaw-odin/workspace/agents/tesla/SOUL.md",
+        "~/.openclaw-odin/workspace/agents/tesla/MISSION.md.tmp.87248.1774227852623",
+        "~/.openclaw-odin/workspace/agents/tesla/MISSION.md",
+        "~/.openclaw-odin/workspace/agents/tesla/SKILLS.md.tmp.87248.1774227887496",
+        "~/.openclaw-odin/workspace/agents/tesla/SKILLS.md",
+        "~/.openclaw-odin/workspace/agents/tesla/manifest.yaml.tmp.87248.1774227911889",
+        "~/.openclaw-odin/workspace/agents/tesla/manifest.yaml"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/tesla/IDENTITY.md.tmp.87248.1774227770025, ~/.openclaw-odin/workspace/agents/tesla/IDENTITY.md, ~/.openclaw-odin/workspace/agents/tesla/SOUL.md.tmp.87248.1774227817055, ~/.openclaw-odin/workspace/agents/tesla/SOUL.md, ~/.openclaw-odin/workspace/agents/tesla/MISSION.md.tmp.87248.1774227852623, ~/.openclaw-odin/workspace/agents/tesla/MISSION.md, ~/.openclaw-odin/workspace/agents/tesla/SKILLS.md.tmp.87248.1774227887496, ~/.openclaw-odin/workspace/agents/tesla/SKILLS.md, ~/.openclaw-odin/workspace/agents/tesla/manifest.yaml.tmp.87248.1774227911889, ~/.openclaw-odin/workspace/agents/tesla/manifest.yaml",
+      "config": "workspace"
+    }
+  ]
+}

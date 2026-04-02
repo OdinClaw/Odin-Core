@@ -1,0 +1,28 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-17T20:06:48.724Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-17T20:06:48.724Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/adam/documents/architecture/2026-03-17_task_bus_routing.txt",
+        "~/.openclaw-odin/workspace/agents/adam/documents/decisions/2026-03-17_bench_provider_bypass.txt",
+        "~/.openclaw-odin/workspace/agents/adam/documents/summaries/2026-03-17_memory_index_planning.txt"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/adam/documents/architecture/2026-03-17_task_bus_routing.txt, ~/.openclaw-odin/workspace/agents/adam/documents/decisions/2026-03-17_bench_provider_bypass.txt, ~/.openclaw-odin/workspace/agents/adam/documents/summaries/2026-03-17_memory_index_planning.txt",
+      "config": "workspace"
+    }
+  ],
+  "status": "complete",
+  "processed_by": "adam",
+  "processed_at": "2026-03-17T16:06:00Z",
+  "kb_document": "ODIN-KNOWLEDGE-BUNDLE-2026-03-17.txt",
+  "kb_category": "architecture",
+  "documents_indexed": 3,
+  "summary": "Three substantive Odin documents captured: task_bus routing, benchmark bypass decision, memory index planning. Created meta-document in kb/ and updated INDEX.md."
+}

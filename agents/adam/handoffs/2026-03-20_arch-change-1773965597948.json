@@ -1,0 +1,16 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-20T00:13:17.948Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "component": "default_model_fallbacks",
+      "previous": "[anthropic/claude-sonnet-4-5, groq/llama-3.1-8b-instant, groq/llama-3.3-70b-versatile, ollama/llama3.2:3b]",
+      "current": "[anthropic/claude-sonnet-4-5, anthropic/claude-opus-4-6, groq/llama-3.1-8b-instant, groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b]",
+      "timestamp": "2026-03-20T00:13:17.946Z",
+      "config": "~/.openclaw-odin/openclaw.json"
+    }
+  ]
+}

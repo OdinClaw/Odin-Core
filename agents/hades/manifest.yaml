@@ -1,0 +1,61 @@
+# manifest.yaml — Hades
+
+id: hades
+name: Hades
+type: subagent
+status: paused
+version: "1.0"
+created: 2026-03-08
+updated: 2026-03-08
+
+identity:
+  emoji: 💀
+  mythology: "Hades — Greek ruler of the underworld, Record of Ragnarok (unseen guardian, keeper of order beneath the surface)"
+  archetype: research
+
+model:
+  primary: anthropic/claude-sonnet-4-5
+  fallbacks:
+    - anthropic/claude-opus-4-6
+  subagents: ollama/qwen3.5:9b
+  rationale: "Security auditing requires careful reasoning — Sonnet minimum. Do not use Haiku for security-critical analysis."
+
+discord:
+  channel: ""    # TBD — activate after core Pantheon is stable
+  channelId: ""
+  botId: ""
+  botName: none
+  accountId: default
+
+workspace:
+  path: "~/.openclaw-odin/workspace/agents/hades"
+  agentDir: "~/.openclaw-odin/agents/hades/agent"
+
+role:
+  summary: "Security auditor. Reviews the Pantheon system for vulnerabilities, credential exposure, access control gaps, and configuration risks. Activated when core system is stable enough to audit."
+  schedule: "on-demand (periodic audits)"
+  output: "Security reports to Odin + Bazzy"
+
+dependencies:
+  reads:
+    - kernel/DOCTRINE.md
+    - kernel/PANTHEON-REGISTRY.md
+    - openclaw.json    # audits config for security gaps
+  writes:
+    - agents/hades/audits/    # audit reports
+  notifies:
+    - main
+
+tags:
+  - security
+  - ops
+  - on-demand
+  - paused
+
+activation:
+  cli_registered: false
+  auth_configured: false
+  discord_bot_created: false
+  openclaw_json_updated: false
+  tested: false
+  blocker: "Paused — activate after Phase 4 agents are stable. Security audit of a half-built system wastes effort."

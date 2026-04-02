@@ -1,0 +1,105 @@
+ODIN KNOWLEDGE BUNDLE — TASK BUS & MEMORY INDEX
+Date: 2026-03-17 16:06 EDT
+Event timestamp: 2026-03-17T20:06:48.724Z
+Source: Odin system integration
+Documents received: 3
+
+---
+
+OVERVIEW
+
+Odin has promoted three substantive knowledge documents to Adam's documents/ directory.
+These capture recent architecture changes and decisions in the task routing and memory
+index systems. This document serves as an index and audit trail for the bundle.
+
+---
+
+DOCUMENTS IN BUNDLE
+
+1. TASK BUS MODEL ROUTING ARCHITECTURE
+   File: documents/architecture/2026-03-17_task_bus_routing.txt
+   Topic: Model router layer added to task_bus/router/
+   Details:
+     • Each task class has assigned model_lane (primary + fallbacks)
+     • Orchestration tasks → Haiku
+     • Reasoning tasks → Sonnet
+     • Documentation tasks → groq
+   Impact:
+     • All agent dispatches now carry: assigned_agent, model_lane, fallback_models
+     • Dispatcher overhead minimal
+   Related agents: odin, thor, adam
+
+2. BENCHMARK PROVIDER BYPASS DECISION
+   File: documents/decisions/2026-03-17_bench_provider_bypass.txt
+   Topic: Benchmark tasks routed outside normal agent/session path
+   Decision: Use test_lane bypass for direct API provider benchmarks
+   Rationale:
+     • Provider benchmarks should not consume agent context or session tokens
+     • Direct API calls provide accurate latency metrics without gateway overhead
+   Implementation:
+     • Tasks with test_lane=kimi or test_lane=nemotron routed to bench_runner.js
+     • Results stored in provider_lab/benchmarks/
+   Related components: task_bus, bench_runner, kimi, nemotron
+
+3. MEMORY INDEX PLANNING SUMMARY
+   File: documents/summaries/2026-03-17_memory_index_planning.txt
+   Topic: Memory retrieval index implementation for Adam's knowledge base
+   Status: Implemented and live
+   Details:
+     • Three index files created (architecture, decision, summary categories)
+     • document_indexer auto-watches Adam's output directories
+     • index_manager.js provides: query, search, append, update, remove
+     • Full-text search uses keyword scoring
+     • LaunchAgent keeps indexer running
+   Actions:
+     • Monitor index growth
+     • Add agent tagging to summary template
+
+---
+
+IMPACT
+
+This bundle represents a major integration point:
+
+TASK ROUTING: OpenClaw now has explicit model routing per task class. Adam's documentation
+tasks are assigned to groq by default, enabling cost-efficient capture of large documents.
+
+BENCHMARKING: A bypass path for provider benchmarks prevents session token pollution
+and gives accurate performance metrics for model selection decisions.
+
+MEMORY INDEXING: Adam's knowledge base is now auto-indexed. This enables rapid retrieval
+without full-text scanning. Index is live and growing.
+
+---
+
+WORKFLOW IMPLICATION
+
+These three documents represent the infrastructure that enables Adam to function at scale:
+• Task bus routes documentation work efficiently (groq lane)
+• Benchmarking system isolates performance testing from production agent work
+• Memory index makes the KB searchable and maintainable
+
+This is foundational architecture. All of Adam's future work depends on these systems.
+
+---
+
+NEXT STEPS
+
+1. Verify documents/architecture/, documents/decisions/, documents/summaries/ are
+   being auto-indexed by document_indexer
+2. Monitor provider_lab/benchmarks/ for benchmark results
+3. Confirm groq task_lane is being used for documentation class tasks
+4. Add index entries to kb/INDEX.md for these three documents (or mirror structure)
+
+---
+
+NOTES
+
+These documents were created by Odin and detected by the handoff system at
+2026-03-17T20:06:48.724Z. They are canonical knowledge records and should be
+treated as authoritative sources for task bus, benchmarking, and memory index
+decisions.
+
+The documents/ directory structure (architecture/, decisions/, summaries/) appears
+to be a parallel organization layer to kb/. Adam should understand both structures
+and keep them in sync via kb/INDEX.md.

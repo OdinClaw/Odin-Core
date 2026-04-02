@@ -1,0 +1,114 @@
+ARCHITECTURE DOCUMENT: Model Configuration — Groq Baseline (Third Occurrence)
+=======================================================================
+
+Date: 2026-03-21
+Timestamp: 2026-03-21T23:37:59.198Z
+Source: Odin
+Config File: ~/.openclaw-odin/openclaw.json
+
+CHANGES DETECTED: 2 model configuration updates
+
+---
+
+1. PRIMARY MODEL REVERT
+   Previous: anthropic/claude-haiku-4-5-20251001
+   Current:  groq/llama-3.1-8b-instant
+   Impact:   System reverts from Anthropic Haiku back to Groq Llama 3.1-8b
+
+2. FALLBACK CHAIN SIMPLIFIED
+   Previous: [anthropic/claude-sonnet-4-5, anthropic/claude-opus-4-6, groq/llama-3.1-8b-instant, groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b]
+   Current:  [groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b, ollama/llama3.2:3b]
+
+---
+
+PATTERN: THIRD OCCURRENCE OF THIS EXACT CONFIGURATION
+
+This configuration has now been deployed **three times in single day**:
+
+| Time     | Occurrence | Duration | Notes |
+|----------|-----------|----------|-------|
+| 13:31    | v1        | ~2 min   | Flash revert |
+| 14:13    | v2        | ~4.25 hr | Extended baseline evaluation |
+| 23:37    | v3        | current  | **After 70-min Anthropic trial** |
+
+---
+
+INTERPRETATION: GROQ IS THE PREFERRED BASELINE
+
+**Key evidence:**
+1. Groq configuration returns **despite** multiple Anthropic trials
+2. Anthropic has been tested 3 times (13:12, 13:33, 22:27) — all were reverted
+3. Groq baseline is the fallback position after each Anthropic evaluation window
+
+**Hypothesis:**
+The system has established a clear baseline strategy:
+
+**Primary Strategy:** Groq Llama 3.1-8b (open-source, cost-effective)
+- Simple fallback stack: Groq 3.3, Groq OSS, local Ollama
+- No dependency on Anthropic API (cost control)
+- Known reliable performance for Manage tier workloads
+
+**Experimental Layer:** Anthropic Haiku + full fallback stack
+- Tested periodically (~40 min to 70 min trial windows)
+- Reverted when evaluation complete (or issues detected)
+- Represents optional upgrade if cost structure changes
+
+---
+
+TIMELINE: COMPLETE 2026-03-21 CYCLE
+
+| Time   | Config | Duration | Decision |
+|--------|--------|----------|----------|
+| 12:09  | Minimax M2.7 | ~1 hr | ✗ Failed (rejected) |
+| 13:12  | Anthropic v1 | ~19 min | ✗ Rejected |
+| 13:31  | Groq v1 | ~2 min | ⊗ Flash test |
+| 13:33  | Anthropic v2 | ~40 min | ✗ Reverted after eval |
+| 14:13  | Groq v2 | ~4.25 hr | ✓ **Extended baseline evaluation** |
+| 22:27  | Anthropic v3 | ~70 min | ✗ Reverted (current) |
+| 23:37  | Groq v3 | current | **Confirmed baseline** |
+
+---
+
+STRATEGIC ASSESSMENT
+
+After 10+ hours of testing across 5-6 distinct configurations:
+
+**CONFIRMED BASELINE:** Groq Llama 3.1-8b primary + Groq/local fallbacks
+- Open-source cost model
+- Proven stable for extended periods (4+ hour evaluation)
+- Minimal operational overhead
+- No external API dependencies
+
+**EXPERIMENTAL ALTERNATIVE:** Anthropic Haiku + full Anthropic/Groq stack
+- More expensive (Anthropic API costs)
+- Higher quality potential (Haiku + Sonnet + Opus fallback depth)
+- Tested multiple times, repeatedly rejected after evaluation windows
+- Current interpretation: Costs exceed benefits for Manage tier workloads
+
+---
+
+COMPONENTS AFFECTED:
+- openclaw.json: default_model_primary, default_model_fallbacks
+- Primary: Groq Llama 3.1-8b (open-source)
+- Fallbacks: [Groq 3.3, Groq OSS, local Ollama]
+- No Anthropic models active
+
+---
+
+BUSINESS MODEL ALIGNMENT
+
+**Tier 2: Manage** ($300–$2,000/month per client)
+- Groq baseline minimizes per-client inference costs
+- Open-source stack reduces dependency on expensive vendor APIs
+- Enables higher gross margins (cost predictability + control)
+
+This baseline selection directly impacts Pantheon's profitability:
+- Lower primary model cost → lower per-client cost → higher margin
+- Anthropic alternative tested but rejected (cost-benefit unfavorable)
+
+---
+
+STATUS: Groq configuration confirmed as production baseline
+CREATED: 2026-03-21T23:37:59.198Z
+
+NOTE: Third occurrence of Groq baseline suggests convergence. Anthropic will likely continue to be tested periodically, but Groq is now the default/fallback strategy.

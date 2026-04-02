@@ -1,0 +1,90 @@
+ARCHITECTURE DOCUMENT: Model Strategy Hybrid — Anthropic Primary with Full Fallback Stack
+========================================================================================
+
+Date: 2026-03-21
+Timestamp: 2026-03-21T17:33:10.577Z
+Source: Odin
+Config File: ~/.openclaw-odin/openclaw.json
+
+CHANGES DETECTED: 2 major model configuration updates (+ 1 self-referential event)
+
+---
+
+1. PRIMARY MODEL REASSIGNMENT (BACK TO ANTHROPIC)
+   Previous: groq/llama-3.1-8b-instant
+   Current:  anthropic/claude-haiku-4-5-20251001
+   Impact:   Primary model reverted to Anthropic Haiku (2nd time today)
+
+2. FALLBACK CHAIN EXPANDED
+   Previous: [groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b, ollama/llama3.2:3b]
+   Current:  [anthropic/claude-sonnet-4-5, anthropic/claude-opus-4-6, groq/llama-3.1-8b-instant, groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b]
+   
+   Changes:
+   - Added:   anthropic/claude-sonnet-4-5 (new 1st fallback)
+   - Added:   anthropic/claude-opus-4-6 (new 2nd fallback)
+   - Added:   groq/llama-3.1-8b-instant (new 3rd fallback, moved from primary)
+   - Kept:    groq/llama-3.3-70b-versatile (now 4th fallback)
+   - Kept:    groq/openai/gpt-oss-120b (now 5th fallback)
+   - Removed: ollama/llama3.2:3b (local fallback removed)
+   
+   Impact: Hybrid strategy: Anthropic primary with full Anthropic/Groq fallback depth
+
+---
+
+INTERPRETATION
+
+This represents a stabilization attempt after rapid cycling:
+
+PATTERN OBSERVED (2026-03-21, within ~24 minutes):
+- 12:09: Minimax M2.7 primary + Anthropic fallbacks
+- 12:30: (self-referential event)
+- 13:12: Anthropic Haiku primary + Anthropic/Groq fallbacks
+- 13:14: (self-referential event)
+- 13:31: Groq Llama primary + Groq/Ollama fallbacks (simplified)
+- 13:33: (self-referential event)
+- 13:33: Anthropic Haiku primary + Anthropic/Groq fallbacks (CURRENT - hybrid)
+
+THEORY: COST-OPTIMAL HYBRID STRATEGY
+- Anthropic Haiku: cost-efficient primary (proven stable)
+- Anthropic fallback chain: quality assurance layer (Sonnet, Opus)
+- Groq backup: open-source redundancy if Anthropic unavailable
+- Ollama removed: local fallback deprioritized
+
+COMPONENTS AFFECTED:
+- openclaw.json: default_model_primary, default_model_fallbacks
+- All agents route through Anthropic Haiku as primary
+- Full fallback depth: 5 models (3 Anthropic + 2 Groq variants)
+- Maximum coverage with cost containment
+
+---
+
+HISTORICAL CONTEXT (2026-03-21 detailed):
+
+| Time     | Change                      | Config                                       |
+|----------|------------------------------|----------------------------------------------|
+| 12:09    | Minimax M2.7 adoption       | Primary: M2.7; Fallback: [Anthrop+, Groq+]   |
+| 13:12    | Anthropic Haiku primary     | Primary: Haiku; Fallback: [Sonnet, Opus, ...] |
+| 13:31    | Groq Llama primary (simp.)  | Primary: Llama 3.1; Fallback: [Groq+, Ollama] |
+| 13:33    | Anthropic Haiku + full FB   | Primary: Haiku; Fallback: [Sonnet, Opus, Groq+] (CURRENT) |
+
+Total cycle time: 24 minutes
+Total model strategy revisions: 4
+Pattern: Rapid convergence toward hybrid model
+
+---
+
+CONFIGURATION DECISION LOGIC
+This appears to be settling on:
+1. PRIMARY (cost + speed): Anthropic Haiku
+2. FALLBACK (quality): Anthropic Sonnet/Opus
+3. FALLBACK (redundancy): Groq open-source models
+4. NO LOCAL: Ollama removed from rotation
+
+Suggested rationale: Maximize uptime + minimize costs + maintain quality
+
+---
+
+STATUS: Ready for deployment
+CREATED: 2026-03-21T17:33:10.577Z
+
+NOTE: Self-referential event also detected (Adam's MODEL-REVERT-GROQ-2026-03-21.txt document creation). Ignored per intake protocol.

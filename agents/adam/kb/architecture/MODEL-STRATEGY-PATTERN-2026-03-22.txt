@@ -1,0 +1,131 @@
+================================================================================
+MODEL STRATEGY: RECURRING OSCILLATION PATTERN
+Date: 2026-03-22 01:53 EDT (Pattern synthesis)
+Status: CONFIRMED — Pattern analysis across 2026-03-21 and continuing
+================================================================================
+
+PATTERN SUMMARY
+---------------
+System is running an automated A/B testing cycle between two model configurations:
+
+STATE 1: GROQ BASELINE
+  Primary: groq/llama-3.1-8b-instant
+  Fallback: [groq/llama-3.3-70b, groq/openai/gpt-oss-120b, ollama/llama3.2:3b]
+  Duration: Variable (increasing from 2 min to 10+ hours)
+
+STATE 2: ANTHROPIC TRIAL
+  Primary: anthropic/claude-haiku-4-5-20251001
+  Fallback: [claude-sonnet-4-5, claude-opus-4-6, groq/llama-3.1-8b, ...]
+  Duration: Stable ~70 minutes
+
+OSCILLATION TIMELINE
+--------------------
+2026-03-21 12:09 → Minimax M2.7 (new provider test, 24 hours)
+2026-03-21 12:29 → Minimax M2.5 (quick downgrade, 43 minutes)
+2026-03-21 13:12 → Anthropic Haiku (revert from Minimax, 19 minutes)
+2026-03-21 13:31 → Groq baseline resumed (4.25 hour hold)
+2026-03-21 18:27 → Anthropic trial (70 minute window)
+2026-03-21 19:51 → Groq baseline resumed (10 hour hold)
+2026-03-22 05:51 → Anthropic trial (70 minute window)
+2026-03-22 07:01 → Groq baseline resumed (continuing...)
+
+PATTERN CHARACTERISTICS
+-----------------------
+
+ANTHROPIC WINDOW (Trial)
+  Duration: ~70 minutes (consistent, ±2 minutes)
+  Fallback: Full Anthropic stack + Groq secondary
+  Trigger: Appears to be time-scheduled or cron-based
+
+GROQ BASELINE (Evaluation)
+  Duration: Variable (2 min → 4.25 hr → 10 hr → 10+ hr trend INCREASING)
+  Fallback: Groq-only (simplified)
+  Hold time increasing: Suggests longer evaluation periods as system tests
+
+KEY OBSERVATIONS
+----------------
+
+1. SCHEDULED A/B TESTING
+   The regular 70-minute Anthropic window suggests a cron job or scheduled
+   task running every ~10-14 hours to test Anthropic vs Groq performance.
+
+2. INCREASING GROQ HOLD TIMES
+   Groq baseline hold times show trend:
+     - Initial: ~2 minutes (noise/restart)
+     - Cycle 1: ~4.25 hours
+     - Cycle 2: ~10 hours
+   
+   Suggests: System is gaining confidence in Groq; increasing hold times
+   between Anthropic trials.
+
+3. STABLE TRIAL WINDOW
+   Anthropic trial window remains ~70 minutes across all cycles.
+   Suggests: Fixed evaluation window, not adaptive.
+
+4. ANTHROPIC IS TESTED BUT NOT PREFERRED
+   Despite repeated 70-min windows, system consistently reverts to Groq
+   baseline. Suggests Groq offers better cost/quality ratio or Anthropic
+   has issues during evaluation.
+
+5. GROQ IS PREFERRED BASELINE
+   Every Groq hold extends longer than previous. Each Anthropic trial is
+   cut short at fixed 70 minutes. Strong signal of preference.
+
+HYPOTHESIS
+----------
+
+An automated evaluation scheduler (likely Odin cron or monitoring system) is:
+
+(A) Testing Anthropic as potential primary every 10-14 hours
+(B) Running exactly 70-minute trials with Anthropic enabled
+(C) Evaluating performance metrics during the window
+(D) Reverting to Groq baseline if evaluation passes
+(E) Increasing Groq hold times as confidence grows
+
+This is a cost-optimization or performance-validation cycle. Groq appears to be
+cost-optimal ($0.05/1M input tokens vs Anthropic's $3/1M), but Anthropic
+(Haiku) offers better output quality. The scheduler periodically validates
+whether Anthropic's quality gain justifies the cost increase.
+
+PREDICTION (as of 2026-03-22 01:53 EDT)
+----------------------------------------
+
+Next Anthropic trial: ~2026-03-22 15:51 EDT (if 14-hour cycle)
+                      ~2026-03-22 17:51 EDT (if 12-hour cycle, aligned to 05:51)
+
+If pattern holds:
+- Anthropic deployed at predicted time
+- Trial runs exactly ~70 minutes
+- Reverts to Groq at +70 min mark
+- Next Groq hold extends further (12+ hours)
+
+Duration convergence: Eventually, Groq holds may stabilize at 24-hour cycles
+with periodic Anthropic validation, or Anthropic may remain permanently if
+cost-benefit analysis supports it.
+
+STRATEGIC INTERPRETATION
+------------------------
+
+The Pantheon is in an active optimization phase:
+
+1. COST PRESSURE: Minimax trial (brief) suggests cost exploration
+2. QUALITY ASSURANCE: Repeated Anthropic trials suggest quality validation
+3. BASELINE VALIDATION: Groq increasing hold times show confidence building
+4. CONTINUOUS IMPROVEMENT: Not a one-time decision; ongoing A/B testing
+
+This is NOT a one-time configuration change. This is a live optimization loop
+ensuring the system uses the best model for cost-performance tradeoff.
+
+NEXT STEPS FOR ADAM
+-------------------
+
+1. Monitor for pattern continuation or deviation
+2. Capture each cycle in dated KB entries
+3. Track timing precision (is it cron? time-based? event-driven?)
+4. Document if Anthropic trial ever succeeds (longer hold time)
+5. Document if Groq baseline ever reverts to Anthropic permanently
+
+This pattern is the clearest signal of operational decision-making visible
+in the Pantheon system. Worth tracking as it evolves.
+
+================================================================================

@@ -1,0 +1,58 @@
+# manifest.yaml — Shiva
+
+id: shiva
+name: Shiva
+type: subagent
+status: paused
+version: "1.0"
+created: 2026-03-08
+updated: 2026-03-08
+
+identity:
+  emoji: 🔱
+  mythology: "Shiva — Hindu god of destruction and transformation, Record of Ragnarok (power of creation through destruction, cycles)"
+  archetype: finance
+
+model:
+  primary: anthropic/claude-sonnet-4-5
+  fallbacks:
+    - anthropic/claude-opus-4-6
+  subagents: ollama/qwen3.5:9b
+  rationale: "Trading strategy analysis requires strong reasoning. Do not use Haiku for financial logic."
+
+discord:
+  channel: ""
+  channelId: ""
+  botId: ""
+  botName: none
+  accountId: default
+
+workspace:
+  path: "~/.openclaw-odin/workspace/agents/shiva"
+  agentDir: "~/.openclaw-odin/agents/shiva/agent"
+
+role:
+  summary: "Trading bot foundation. Builds and backtests trading strategies. Paused indefinitely — requires capital allocation decision from Bazzy before any live trading."
+  schedule: "on-demand (research only)"
+  output: "Research reports to Odin + Bazzy"
+
+dependencies:
+  reads:
+    - shared-context/SIGNALS.md
+  writes:
+    - agents/shiva/research/
+  notifies:
+    - main
+
+tags:
+  - finance
+  - research
+  - paused
+
+activation:
+  cli_registered: false
+  auth_configured: false
+  discord_bot_created: false
+  openclaw_json_updated: false
+  tested: false
+  blocker: "HARD PAUSE — requires explicit capital allocation decision from Bazzy. No trading without approval."

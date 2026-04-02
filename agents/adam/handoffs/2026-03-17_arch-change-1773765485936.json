@@ -1,0 +1,13 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-17T16:38:05.936Z",
+  "component": "~/.openclaw-odin/openclaw.json",
+  "change": "configuration modified",
+  "status": "complete",
+  "processed_by": "adam",
+  "processed_at": "2026-03-17T12:38:00Z",
+  "kb_document": "OPENCLAW-CONFIG-MOD-EVENT-2026-03-17-1638.txt",
+  "kb_category": "architecture",
+  "note": "Configuration modification event logged as audit trail entry. Specific change details not provided in handoff."
+}

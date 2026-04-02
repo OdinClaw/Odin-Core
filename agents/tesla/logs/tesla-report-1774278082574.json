@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-03-23T15:01:22.334Z",
+  "action": "export-system",
+  "dryRun": true,
+  "noPush": false,
+  "status": "dry-run-complete",
+  "stages": {
+    "validate": {
+      "status": "ok"
+    },
+    "collect": {
+      "status": "ok",
+      "filesFound": 1
+    },
+    "sanitize": {
+      "status": "ok",
+      "redactions": []
+    }
+  },
+  "failureReason": null,
+  "summary": "Collected 1 file(s), sanitized 0 file(s)"
+}

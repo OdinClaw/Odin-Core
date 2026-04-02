@@ -1,0 +1,21 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-21T23:39:38.017Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-21T23:39:38.017Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/adam/documents/architecture/MODEL-GROQ-BASELINE-FINAL-2026-03-21.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md",
+        "~/.openclaw-odin/workspace/agents/adam/MEMORY.md"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/adam/documents/architecture/MODEL-GROQ-BASELINE-FINAL-2026-03-21.txt, ~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md, ~/.openclaw-odin/workspace/agents/adam/MEMORY.md",
+      "config": "workspace"
+    }
+  ]
+}

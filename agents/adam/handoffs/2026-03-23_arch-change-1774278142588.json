@@ -1,0 +1,28 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-23T15:02:22.587Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-23T15:02:22.587Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/tesla/scripts",
+        "~/.openclaw-odin/workspace/agents/tesla/logs",
+        "~/.openclaw-odin/workspace/agents/tesla/context",
+        "~/.openclaw-odin/workspace/agents/tesla/scripts/validate_export.js",
+        "~/.openclaw-odin/workspace/agents/tesla/scripts/collect_files.js",
+        "~/.openclaw-odin/workspace/agents/tesla/scripts/sanitize_export.js",
+        "~/.openclaw-odin/workspace/agents/tesla/scripts/export_system.js",
+        "~/.openclaw-odin/workspace/agents/tesla/logs/tesla-report-1774278037551.json",
+        "~/.openclaw-odin/workspace/agents/tesla/logs/latest.json",
+        "~/.openclaw-odin/workspace/agents/tesla/logs/tesla-report-1774278082574.json"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/tesla/scripts, ~/.openclaw-odin/workspace/agents/tesla/logs, ~/.openclaw-odin/workspace/agents/tesla/context, ~/.openclaw-odin/workspace/agents/tesla/scripts/validate_export.js, ~/.openclaw-odin/workspace/agents/tesla/scripts/collect_files.js, ~/.openclaw-odin/workspace/agents/tesla/scripts/sanitize_export.js, ~/.openclaw-odin/workspace/agents/tesla/scripts/export_system.js, ~/.openclaw-odin/workspace/agents/tesla/logs/tesla-report-1774278037551.json, ~/.openclaw-odin/workspace/agents/tesla/logs/latest.json, ~/.openclaw-odin/workspace/agents/tesla/logs/tesla-report-1774278082574.json",
+      "config": "workspace"
+    }
+  ]
+}

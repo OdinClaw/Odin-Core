@@ -1,0 +1,66 @@
+================================================================================
+MODEL CONFIG — GROQ PRIMARY (SECOND REVERT)
+Date: 2026-03-21 19:51 EDT (reverted from deployment at 18:27)
+Status: BASELINE RESUMED (held ~10 hours until 2026-03-22 05:51)
+================================================================================
+
+CHANGE SUMMARY
+--------------
+Primary model changed from: anthropic/claude-haiku-4-5-20251001
+Primary model changed to: groq/llama-3.1-8b-instant
+(Second revert to Groq baseline in single day)
+
+CONTEXT
+-------
+Anthropic trial window closed after ~70 minutes. Groq baseline resumed.
+Fallback chain simplified. This is the third occurrence of Groq Llama 3.1-8b
+as primary model in 2026-03-21.
+
+MODEL DETAILS
+-------------
+Provider: Groq
+Model ID: llama-3.1-8b-instant
+Status: PRIMARY (resumed)
+Authentication: Groq API key
+
+FALLBACK CHAIN (SIMPLIFIED)
+---------------------------
+1. groq/llama-3.1-8b-instant (PRIMARY)
+2. groq/llama-3.3-70b-versatile
+3. groq/openai/gpt-oss-120b
+4. ollama/llama3.2:3b
+
+CHANGE RATIONALE
+----------------
+Anthropic trial window (~70 minutes) completed. Groq baseline resumed for
+extended evaluation period. Pattern suggests:
+- Anthropic is tested but not preferred as stable baseline
+- Groq Llama 3.1-8b is cost-optimal and reliable primary
+- Extended Groq holds evaluate baseline stability across time
+
+DURATION
+--------
+Deployment: 2026-03-21 19:51 EDT
+Next change (Anthropic trial): 2026-03-22 05:51 EDT
+Baseline hold: ~10 hours
+
+PATTERN ANALYSIS
+----------------
+Groq baseline hold times:
+1. 2026-03-21 13:31 → 18:27 = ~4.25 hours
+2. 2026-03-21 19:51 → 2026-03-22 05:51 = ~10 hours (INCREASING)
+
+Anthropic trial window: Consistent ~70 minutes
+
+Interpretation: Groq is confirmed as preferred baseline. Extended Groq holds
+with increasing duration suggests system is evaluating stability while keeping
+Anthropic option available for periodic validation/comparison.
+
+OUTCOME
+-------
+Groq baseline established as production-ready primary. Anthropic periodic
+testing validates alternative without destabilizing main operations.
+
+See MODEL-STRATEGY-PATTERN-2026-03-22.txt for pattern continuation and full analysis.
+
+================================================================================

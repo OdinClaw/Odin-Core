@@ -1,0 +1,57 @@
+ARCHITECTURE DOCUMENT: Model Strategy Evaluation — Ongoing Status Report (Cycle 25+)
+===================================================================================
+
+Date: 2026-03-25
+Timestamp: 2026-03-25T12:40:01.837Z
+Source: Configuration update (openclaw.json)
+Category: System / Model Strategy
+
+---
+
+EVALUATION STATUS: ONGOING AFTER 78+ HOURS
+
+**Current cycle:** 25+
+**Evaluation duration:** 78+ hours
+**Configuration changes:** 25+
+**Primary strategy:** Groq Llama-3.1 (current cycle)
+**Status:** STABLE OSCILLATION CONTINUING
+
+---
+
+## ESTABLISHED PATTERN SUMMARY
+
+### Structure
+1. **Extended baseline holds:** 200-280 minutes per strategy
+2. **Brief verification windows:** 2-8 minutes alternating
+3. **Return to baseline:** Pattern repeats
+
+### Current phase
+- Extended evaluation underway
+- Both Groq and Anthropic competitive
+- No consolidation detected
+- Pattern is repeatable and stable
+
+---
+
+## OPERATIONAL STATUS
+
+✅ **Stability:** Both strategies proven stable for 4+ hours
+✅ **Pattern:** Repeatable oscillation cycle established
+✅ **Decision pending:** Still gathering performance data
+⏳ **Timeline:** 48-96+ hours estimated for final decision
+📊 **Outcome:** 50/50 Groq vs Anthropic
+
+---
+
+## MONITORING NOTE
+
+This document consolidates ongoing evaluation cycles. Individual cycle documentation (Cycle 25+) will continue to be captured by Adam in the KB. This serves as a status checkpoint for the extended evaluation process.
+
+**Next decision expected:** 2026-03-26 12:40 EDT to 2026-03-27 12:40 EDT
+
+---
+
+STATUS: Extended evaluation continuing; oscillation pattern stable; decision timeline 48-96+ hours
+CREATED: 2026-03-25T12:40:01.837Z
+
+NOTE: The model strategy evaluation has entered a mature, stable phase after 78+ hours and 25 cycles. Both Groq and Anthropic continue to receive equal evaluation time through extended baseline holds and brief verifications. The system is methodically accumulating performance data and will declare a final decision when confidence threshold is met. Current prediction: decision within 48-96 hours with outcome genuinely uncertain at 50/50.

@@ -1,0 +1,87 @@
+# manifest.yaml — Tesla V4
+# Source of truth for Tesla's configuration, role, and activation state.
+# Updated: 2026-03-27 — V4 template generator alignment
+
+id: tesla
+name: Tesla
+type: isolated
+status: live
+version: "4.0"
+created: 2026-03-08
+updated: 2026-03-27
+
+identity:
+  emoji: ⚡
+  mythology: "Nikola Tesla — precise inventor, builder of reliable systems, operator at the boundary"
+  archetype: ops
+
+model:
+  primary: anthropic/claude-haiku-4-5-20251001
+  fallbacks:
+    - anthropic/claude-sonnet-4-5     # escalate only for complex failure analysis
+    - ollama/qwen3.5:9b               # local fallback when subscription limits hit
+  subagents: ollama/qwen3.5:9b
+  rationale: "Template generation and export management are structured, rule-following work. Haiku sufficient. Sonnet only for complex multi-failure diagnosis."
+
+discord:
+  channel: "#tesla"
+  channelId: "REPLACE_WITH_TESLA_CHANNEL_ID"
+  botId: "REPLACE_WITH_TESLA_BOT_ID"
+  botName: "@Tesla"
+  accountId: tesla
+
+workspace:
+  path: "~/.openclaw-odin/workspace/agents/tesla"
+  agentDir: "~/.openclaw-odin/agents/tesla/agent"
+
+role:
+  summary: "Template generation and release management agent. Owns the safe transfer of Odin's codebase and agent workspaces into a portable installable template. Conversational interface to the template-based export system (Tesla V4)."
+  schedule: "on-demand (Discord) + weekly automated (Sundays 03:00 via launchd)"
+  output: "#tesla channel"
+  layer_a: "Tesla V4 Generator — deterministic template generation layer"
+  layer_b: "Tesla Agent — LLM-backed conversational layer"
+
+dependencies:
+  reads:
+    - tesla/logs/latest.json
+    - tesla/logs/tesla-report-*.json
+    - tesla_template/setup/template_manifest.json
+    - tesla_template/.env.example
+  invokes:
+    - tesla_v4/generate_template.js
+  writes:
+    - workspace/agents/tesla/memory/YYYY-MM-DD.md
+  notifies:
+    - main    # escalate unexpected failures to Odin
+
+tags:
+  - export
+  - ops
+  - on-demand
+  - weekly
+  - github
+  - safety-critical
+
+activation:
+  cli_registered: true
+  auth_configured: true
+  openclaw_json_updated: true
+  discord_bot_created: false    # MANUAL STEP REQUIRED — see MISSION.md
+  tested: false                 # run after Discord bot is configured
+
+# ── DISCORD SETUP CHECKLIST ───────────────────────────────────────────────────
+# 1. Go to https://discord.com/developers/applications
+# 2. Create new application "Tesla"
+# 3. Bot section: create bot, copy token
+# 4. Privileged Gateway Intents: enable MESSAGE_CONTENT
+# 5. OAuth2: invite bot to guild with Send Messages + Read Messages + Read Message History
+# 6. Create #tesla channel in the Discord guild, copy channel ID
+# 7. Update openclaw.json:
+#      channels.discord.accounts.tesla.token      → paste bot token
+#      channels.discord.accounts.tesla.guilds
+#        .1477047631950643244.channels             → replace REPLACE_WITH_TESLA_CHANNEL_ID
+#      agents.list (tesla entry).id, workspace, agentDir already set
+# 8. Update this manifest.yaml: channelId + botId
+# 9. launchctl unload/load ~/Library/LaunchAgents/ai.openclaw.odin.plist
+# 10. Test: send any message in #tesla — @Tesla should respond
+# 11. Set activated: discord_bot_created: true, tested: true

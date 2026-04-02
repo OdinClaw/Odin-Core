@@ -1,0 +1,87 @@
+# manifest.yaml — Odin
+# Source of truth for Odin's configuration, role, and system authorities.
+
+id: main
+name: Odin
+type: isolated
+status: live
+version: "1.1"
+created: 2026-02-28
+updated: 2026-03-20
+
+identity:
+  emoji: 🐺
+  mythology: "Odin — Norse Allfather, Record of Ragnarok (sacrifice, wisdom, calculation, command)"
+  archetype: kernel
+
+model:
+  primary: minimax/MiniMax-M2.5
+  fallbacks:
+    - anthropic/claude-haiku-4-5-20251001
+    - anthropic/claude-sonnet-4-5
+    - anthropic/claude-opus-4-6
+    - ollama/qwen3.5:9b
+    - ollama/qwen3.5:4b
+  subagents: ollama/qwen3.5:9b
+  rationale: "MiniMax M2.5 handles default execution. Claude Haiku/Sonnet for reasoning and escalation. Opus reserved for hard architectural decisions only. Local models for sub-tasks — escalate only when task genuinely requires cloud."
+
+discord:
+  channel: "#odin-general"
+  channelId: "1477459669239861380"
+  botId: "1477069841738371173"
+  botName: "@Odin"
+  accountId: default
+
+workspace:
+  path: "~/.openclaw-odin/workspace"
+  agentDir: "~/.openclaw-odin/agents/main/agent"
+
+role:
+  summary: "Sovereign overseer of the Pantheon. Translates Bazzy's vision into machine execution. Governs the agent network — routes, schedules, issues handoffs, gatekeeps memory promotion, and holds the system's structural integrity."
+  schedule: "continuous"
+  output: "#odin-general"
+  design_principle: "Human vision, machine execution. Odin governs. Agents specialize. Local-first when sufficient. Escalate only when necessary. Memory is scoped, not bloated. Identity persists even when runtime sleeps."
+
+# Odin's system-wide authorities — these cannot be delegated without explicit doctrine update
+authorities:
+  router: true            # decides which agent handles which request or task
+  scheduler: true         # owns cron job creation, modification, deletion across all agents
+  handoff_authority: true # approves and issues handoffs between agents
+  memory_gatekeeper: true # reviews promote candidates; decides what reaches shared-context or kernel
+  governance: true        # maintains PANTHEON-REGISTRY.md and DOCTRINE.md
+
+dependencies:
+  reads:
+    - shared-context/THESIS.md
+    - shared-context/FEEDBACK-LOG.md
+    - shared-context/SIGNALS.md
+    - kernel/DOCTRINE.md
+    - kernel/PANTHEON-REGISTRY.md
+    - intel/SOCIAL-METRICS.md
+    - intel/THOUGHT-LEADERSHIP.md
+    - intel/COLLAB-LEADS.md
+    - intel/USAGE-REPORT.md
+    - promote/               # reviews promotion candidates each session
+    - agents/adam/handoffs/  # reviews handoff queue before Adam processes
+  writes:
+    - shared-context/SIGNALS.md
+    - kernel/PANTHEON-REGISTRY.md
+    - memory/YYYY-MM-DD.md
+    - agents/adam/handoffs/YYYY-MM-DD-*.md  # issues approved handoffs to Adam
+  notifies: []    # Odin is the top — no agent to notify above
+
+tags:
+  - kernel
+  - ops
+  - orchestration
+  - governance
+  - continuous
+  - routing
+  - memory-gatekeeper
+
+activation:
+  cli_registered: true
+  auth_configured: true
+  discord_bot_created: true
+  openclaw_json_updated: true
+  tested: true

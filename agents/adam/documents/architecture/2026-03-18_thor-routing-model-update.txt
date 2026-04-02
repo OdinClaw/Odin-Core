@@ -1,0 +1,10 @@
+Architecture Note
+Date: 2026-03-18
+System: Odin AI
+Change: Thor agent routing model upgraded from Haiku to Sonnet
+
+Details: Thor's model assignment in task bus routing has been updated. Previously routed to anthropic/claude-haiku-4-5, Thor now receives anthropic/claude-sonnet-4-5 for orchestration and systems tasks. This reflects Thor's specialization in complex system analysis requiring reasoning overhead that Haiku cannot efficiently handle.
+
+Impact: All task_bus dispatches to Thor now carry model_lane=sonnet with fallback chain. This increases latency slightly but significantly improves reasoning quality and reduces request retries. Tasks assigned to Thor are now guaranteed the cognitive capacity needed for detailed system reviews.
+
+Related Agents: odin (dispatcher), thor (recipient), adam (routing documentation)

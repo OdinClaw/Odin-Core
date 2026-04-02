@@ -1,4 +1,11 @@
-# HEARTBEAT.md - Periodic Health Checks
+# HEARTBEAT.md - LEGACY (Odin root workspace)
+
+> ⚠️ LEGACY FILE — Do not create new cron jobs pointing here.
+> Routine heartbeat is Loki's responsibility. See: workspace/agents/loki/HEARTBEAT.md
+> The "Odin Heartbeat" cron job that read this file has been disabled (2026-03-11).
+> Odin is invoked only for escalation, coordination, and scheduled knowledge-mirror tasks.
+
+---
 
 Every 30 minutes, perform these checks and post results to Discord (#status-heartbeat).
 

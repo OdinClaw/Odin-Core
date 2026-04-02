@@ -1,0 +1,96 @@
+# manifest.yaml — Adam
+
+id: adam
+name: Adam
+type: isolated
+status: active
+version: "1.2"
+created: 2026-03-08
+updated: 2026-03-16
+
+identity:
+  emoji: 📚
+  mythology: "Adam — First Man, Record of Ragnarok (origin, knowledge, the foundation of all things)"
+  archetype: knowledge
+
+model:
+  primary: anthropic/claude-haiku-4-5-20251001
+  fallbacks:
+    - anthropic/claude-sonnet-4-5
+    - anthropic/claude-opus-4-6
+    - ollama/qwen3.5:9b
+  subagents: ollama/qwen3.5:9b
+  rationale: "Documentation is structured work — Haiku handles it. Escalate to Sonnet only for complex synthesis. Never Opus for documentation work."
+
+discord:
+  channel: "#adam"
+  channelId: "1478133176386715870"
+  botId: "1481338240823853110"
+  botName: "@Adam"
+  accountId: adam
+
+workspace:
+  path: "~/.openclaw-odin/workspace/agents/adam"
+  agentDir: "~/.openclaw-odin/agents/adam/agent"
+
+role:
+  summary: "Documentation and knowledge archive agent. Receives direct prompts and system events. Creates structured .txt documents. Posts confirmations to #adam."
+  schedule: "on-demand + event-triggered"
+  output: "#adam + documents/{architecture,decisions,summaries}/"
+  memory_role: destination
+
+scope:
+  - architecture notes (system design changes)
+  - decision records (what was decided and why)
+  - discussion summaries (channel or session captures)
+  - knowledge index maintenance (memory/knowledge_index.json)
+  - post-write Discord confirmations
+
+triggers:
+  - direct Discord prompt in #adam
+  - event: system.architecture.changed
+  - event: system.decision.record
+
+rate_limit:
+  max_auto_docs_per_hour: 2
+  cooldown_minutes: 20
+  manual_bypass: true
+
+output_format:
+  extension: ".txt"
+  filename_pattern: "YYYY-MM-DD_<short-slug>.txt"
+  routing:
+    architecture: "documents/architecture/"
+    decision: "documents/decisions/"
+    summary: "documents/summaries/"
+
+dependencies:
+  reads:
+    - templates/architecture_template.txt
+    - templates/decision_template.txt
+    - templates/summary_template.txt
+    - memory/knowledge_index.json
+    - agents/adam/handoffs/
+  writes:
+    - documents/architecture/
+    - documents/decisions/
+    - documents/summaries/
+    - memory/knowledge_index.json
+  notifies:
+    - discord:#adam (after each document)
+
+tags:
+  - knowledge
+  - documentation
+  - memory-destination
+  - on-demand
+  - event-triggered
+
+activation:
+  cli_registered: true
+  auth_configured: true
+  discord_bot_created: true
+  openclaw_json_updated: true
+  workspace_configured: true
+  tested: false
+  next_step: "Send a message to @Adam in #adam to verify end-to-end response"

@@ -1,0 +1,23 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-23T18:24:02.040Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-23T18:24:02.040Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/adam/documents/architecture/TESLA-IMPORT-BUILDING-DISTINCTION-2026-03-23.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md",
+        "~/.openclaw-odin/workspace/agents/adam/MEMORY.md",
+        "~/.openclaw-odin/workspace/agents/tesla/logs/tesla-import-1774290181976.json",
+        "~/.openclaw-odin/workspace/agents/tesla/logs/latest.json"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/adam/documents/architecture/TESLA-IMPORT-BUILDING-DISTINCTION-2026-03-23.txt, ~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md, ~/.openclaw-odin/workspace/agents/adam/MEMORY.md, ~/.openclaw-odin/workspace/agents/tesla/logs/tesla-import-1774290181976.json, ~/.openclaw-odin/workspace/agents/tesla/logs/latest.json",
+      "config": "workspace"
+    }
+  ]
+}

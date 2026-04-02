@@ -1,0 +1,74 @@
+Architecture Note
+Date: 2026-03-18
+System: Odin Task Bus — Discord Attachment Pipeline
+Change: Task Bus Dispatcher now supports Discord file attachments for agent-generated documents
+
+Details:
+
+COMPONENTS CHANGED:
+
+  dispatcher.js (findGeneratedDocument)
+    - New function to detect .txt documents in Adam's documents/ directory
+    - Search window: 15 seconds after task start timestamp
+    - Returns full file path if document found, null otherwise
+    - Validates file existence before returning to caller
+
+  send_reply.js (--file argument)
+    - Extended message send handler to accept --file parameter
+    - Receives file path from dispatcher
+    - Passes file to openclaw message send via --file flag
+    - Attaches document to Discord reply as native file upload
+
+  RULES.md (STRICT MODE update)
+    - Codified Adam's STRICT MODE behavior for task-bus-dispatched work
+    - Specifies one-line confirmation + file attachment
+    - Example: "📄 Architecture note created. [file: 2026-03-18_task-bus-discord-attachment-pipeline.txt]"
+
+WORKFLOW:
+
+  1. Task Bus dispatches documentation task to Adam (task_id, priority, preprocessed content)
+  2. Adam processes task in STRICT MODE (no chat, generate file only)
+  3. Adam creates .txt document in documents/architecture/ with YYYY-MM-DD_<slug>.txt naming
+  4. Adam returns control to dispatcher
+  5. Dispatcher calls findGeneratedDocument(task_start_time)
+  6. If document found, dispatcher receives file path
+  7. send_reply.js attaches file to Discord reply via --file parameter
+  8. User receives agent response + .txt file in Discord channel
+  9. Adam posts one-line confirmation to #adam channel
+
+IMPACT:
+
+VALIDATION & OBSERVABILITY:
+  ✓ Documents are automatically attached to Discord upon creation
+  ✓ Task Bus dispatcher validates file existence (no orphaned tasks)
+  ✓ File attachment happens synchronously in reply chain (no race conditions)
+  ✓ Adam's confirmation message confirms receipt (independent verification)
+
+SEPARATION OF CONCERNS:
+  ✓ Adam creates document (.txt file) — responsibility complete
+  ✓ Dispatcher finds and attaches document — no Adam involvement needed
+  ✓ send_reply.js handles Discord upload — abstracted from agent logic
+  ✓ RULES.md documents contract — no drift between components
+
+TESTING STATUS:
+  ✓ Pipeline validated: 2026-03-18
+  ✓ Attachment mechanism confirmed working (see task_id 46ba5d43-3101-408b-974e-8e9b69dd0df3)
+  ✓ End-to-end flow: Task Bus → Adam → dispatcher → Discord reply + file
+
+Related Agents:
+  • Odin (Task Bus dispatcher) — emits documentation tasks, orchestrates attachment
+  • Adam (documentation engine) — creates .txt files in response to tasks
+  • Discord (message send) — handles file attachment to reply
+
+NOTES:
+
+This architecture enables self-contained documentation workflows:
+  - User requests documentation via Discord
+  - Task Bus dispatches to Adam with preprocessed content
+  - Adam creates document (file-only, silent)
+  - Dispatcher automatically attaches to reply
+  - User sees both agent response + downloadable .txt file
+
+The 15-second search window provides reasonable grace period for file I/O without causing dispatch delays. If document not found, attachment is skipped (non-fatal).
+
+RULES.md STRICT MODE is now the single source of truth for Adam's behavior in task-bus contexts. Any changes to file naming, output format, or confirmation messaging must update RULES.md first.

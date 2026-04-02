@@ -1,0 +1,26 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-18T18:54:09.993Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-18T18:54:09.993Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/adam/RULES.md.tmp.43346.1773859989884",
+        "~/.openclaw-odin/workspace/agents/adam/RULES.md"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/adam/RULES.md.tmp.43346.1773859989884, ~/.openclaw-odin/workspace/agents/adam/RULES.md",
+      "config": "workspace"
+    }
+  ],
+  "status": "complete",
+  "processed_by": "adam",
+  "processed_at": "2026-03-18T14:54:00Z",
+  "kb_document": "2026-03-18_adam-operational-rules.txt",
+  "kb_category": "architecture",
+  "note": "RULES.md established. Adam operational framework documented. Knowledge index initialized with full rate limit tracking."
+}

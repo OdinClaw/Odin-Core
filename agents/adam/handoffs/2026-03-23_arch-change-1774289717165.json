@@ -1,0 +1,21 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-23T18:15:17.164Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-23T18:15:17.164Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/tesla/scripts/import_system.js",
+        "~/.openclaw-odin/workspace/agents/tesla/logs/tesla-import-1774289657150.json",
+        "~/.openclaw-odin/workspace/agents/tesla/logs/latest.json"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/tesla/scripts/import_system.js, ~/.openclaw-odin/workspace/agents/tesla/logs/tesla-import-1774289657150.json, ~/.openclaw-odin/workspace/agents/tesla/logs/latest.json",
+      "config": "workspace"
+    }
+  ]
+}

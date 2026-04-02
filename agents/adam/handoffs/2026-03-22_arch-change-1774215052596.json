@@ -1,0 +1,31 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-22T21:30:52.595Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-22T21:30:52.595Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/adam/kb/architecture/TESLA-ACTIVATION-2026-03-22.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-CONFIG-CHANGE-2026-03-20.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-UPDATE-2026-03-21.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-SWITCH-BACK-2026-03-21.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-REVERT-GROQ-2026-03-21.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-ANTHROPIC-HYBRID-2026-03-21.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-GROQ-REVERT-FINAL-2026-03-21.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-STRATEGY-PATTERN-2026-03-22.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-CYCLE-CONTINUATION-2026-03-22.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-CYCLE-ANTHROPIC-WINDOW-2026-03-22.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-GROQ-REVERT-SCHEDULED-2026-03-22.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-CYCLE-ANTHROPIC-DEPLOYED-2026-03-22.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-CYCLE-GROQ-REVERT-2026-03-22.txt"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/adam/kb/architecture/TESLA-ACTIVATION-2026-03-22.txt, ~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-CONFIG-CHANGE-2026-03-20.txt, ~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-UPDATE-2026-03-21.txt, ~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-SWITCH-BACK-2026-03-21.txt, ~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-REVERT-GROQ-2026-03-21.txt, ~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-ANTHROPIC-HYBRID-2026-03-21.txt, ~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-GROQ-REVERT-FINAL-2026-03-21.txt, ~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-STRATEGY-PATTERN-2026-03-22.txt, ~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-CYCLE-CONTINUATION-2026-03-22.txt, ~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-CYCLE-ANTHROPIC-WINDOW-2026-03-22.txt, ~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-GROQ-REVERT-SCHEDULED-2026-03-22.txt, ~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-CYCLE-ANTHROPIC-DEPLOYED-2026-03-22.txt, ~/.openclaw-odin/workspace/agents/adam/kb/architecture/MODEL-CYCLE-GROQ-REVERT-2026-03-22.txt",
+      "config": "workspace"
+    }
+  ]
+}

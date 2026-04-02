@@ -1,0 +1,140 @@
+ARCHITECTURE DOCUMENT: Model Strategy — Cycle 21: Groq Return (Pattern Continues, Decision Still Uncertain)
+===============================================================================================================
+
+Date: 2026-03-25
+Timestamp: 2026-03-25T11:53:38.656Z
+Source: Configuration update (openclaw.json)
+Category: System / Model Strategy
+
+---
+
+MODEL CONFIGURATION UPDATE: GROQ BASELINE (CYCLE 21 - OSCILLATION CONTINUES)
+
+**Status:** Groq Llama-3.1 primary + simplified fallback
+**Timestamp:** 2026-03-25T11:53:38.656Z
+**Time at Anthropic:** 7 minutes (2026-03-25 11:46 to 2026-03-25 11:53)
+**Pattern:** Brief Anthropic verification followed by return to Groq
+
+---
+
+## PATTERN RECURRENCE: NOT CONSOLIDATION, CONTINUED OSCILLATION
+
+### Critical revision to previous assessment
+
+**Previous assessment:** Brief Groq check (7m) signals Anthropic consolidation
+**Current observation:** Brief Anthropic check (7m) followed by return to Groq
+**Revised assessment:** Pattern is NOT consolidation but continued oscillation with brief verifications
+
+---
+
+## OSCILLATION PATTERN ANALYSIS (COMPLETE 72-HOUR WINDOW)
+
+### Extended Hold Phase + Brief Verification Phase
+
+| Cycle | Strategy | Duration | Notes |
+|-------|----------|----------|-------|
+| 15 | Groq | 224m | **Extended hold** |
+| 16 | Anthropic | 4m | **Brief check** |
+| 17 | Groq | 272m | **Extended hold** |
+| 18 | Anthropic | 276m | **Extended hold** |
+| 19 | Groq | 7m | **Brief check** |
+| 20 | Anthropic | 7m | **Brief check** |
+| 21 | Groq | **NOW** | **Return after brief check** |
+
+---
+
+## PATTERN INTERPRETATION (REVISED)
+
+System appears to be cycling between:
+1. **Extended baseline holds** (200+ minutes) for comprehensive stress testing
+2. **Brief verification windows** (4-7 minutes) for quick re-checks
+3. **Return to primary** for next evaluation cycle
+
+**Key observation:** System is NOT consolidating on either strategy. Both receive extended testing, and oscillation continues after verification.
+
+---
+
+## DECISION UNCERTAINTY REMAINS
+
+### The challenge of predicting this system:
+
+The oscillation pattern suggests:
+- ✅ Both strategies are stable for 4+ hours
+- ✅ Both strategies show merit
+- ✅ System is methodically evaluating both
+- ❓ No clear winner has emerged
+
+**Possible reasons oscillation continues:**
+1. **Metrics are equivalent** — Both strategies perform similarly
+2. **Trade-offs are complex** — Cost vs. quality decision not yet clear
+3. **Additional test scenarios** — System may be testing different workloads
+4. **Threshold not met** — System requires more decisive differentiation before deciding
+
+---
+
+## FORECAST REVISION (AGAIN)
+
+### Previous: 12-24 hours, 70% Anthropic
+### REVISED: 48-96+ hours, 50/50 uncertainty
+
+**Reasoning:**
+- Extended oscillation with brief checks suggests ongoing evaluation
+- No consolidation pattern emerging
+- Both strategies receiving equal treatment
+- System appears undecided after 72+ hours of testing
+
+---
+
+## WHAT THIS TELLS US ABOUT THE SYSTEM
+
+1. **Rigorous evaluation methodology** — System is thorough and deliberate
+2. **No obvious winner** — If one strategy was clearly superior, oscillation would have ended
+3. **Complex optimization** — Decision depends on factors beyond simple performance metrics
+4. **Patience with uncertainty** — System is willing to run extended evaluation cycles
+
+---
+
+## OPERATIONAL IMPLICATIONS
+
+### For Pantheon
+
+- Configuration will continue changing for indefinite period
+- Both Groq and Anthropic are genuinely competitive
+- System will eventually choose when confidence threshold is met
+- Expect 48-96+ more hours of evaluation cycles
+
+### For Clients
+
+- Continued configuration instability for 2-4 days
+- Both strategies proven reliable under extended testing
+- Final choice will be data-driven but based on criteria we cannot observe
+- Either outcome is acceptable from reliability perspective
+
+---
+
+## META-OBSERVATION: FORECASTING DIFFICULTY
+
+This evaluation process demonstrates:
+- Pattern analysis alone is insufficient to predict outcome
+- Early patterns (6:1 Groq ratio) proved misleading
+- Brief verification windows don't necessarily indicate consolidation
+- System behavior is more complex than linear oscillation
+
+**Lesson:** Avoid premature decision forecasts when system hasn't yet declared a winner
+
+---
+
+## NEXT EXPECTED CYCLES
+
+**Likely pattern for next 48-96 hours:**
+- Continued oscillation with brief verifications (4-7 min)
+- Interspersed with extended baseline holds (200+ min)
+- No consolidation until decisive metrics emerge
+- Decision point: Unclear (requires 50+ more hours minimum)
+
+---
+
+STATUS: Oscillation pattern continues; no consolidation detected; decision timeline uncertain (48-96+ hours)
+CREATED: 2026-03-25T11:53:38.656Z
+
+NOTE: The return to Groq after a brief Anthropic verification indicates this is not a consolidation phase but continued oscillation. The system has run 72+ hours of evaluation with extended baseline testing for both strategies, yet remains undecided. This suggests the strategies are genuinely competitive with no clear technical advantage. The system will likely continue oscillation with brief verifications until it gathers sufficient evidence for a final decision. Timeline is extended to 48-96+ hours, with outcome remaining genuinely uncertain at 50/50.

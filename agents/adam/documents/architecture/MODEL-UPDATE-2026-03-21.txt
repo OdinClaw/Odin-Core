@@ -1,0 +1,62 @@
+ARCHITECTURE DOCUMENT: Model Version Update — Minimax M2.5
+=========================================================
+
+Date: 2026-03-21
+Timestamp: 2026-03-21T16:29:18.405Z
+Source: Odin
+Config File: ~/.openclaw-odin/openclaw.json
+
+CHANGES DETECTED: 4 model updates (version downgrade with allowlist adjustment)
+
+---
+
+1. MAIN AGENT MODEL UPDATE
+   Previous: minimax/minimax-m2.7
+   Current:  minimax/MiniMax-M2.5
+   Impact:   Main agent model downgraded from M2.7 to M2.5
+
+2. MODEL ALLOWLIST: M2.5 ADDED
+   Added:    minimax/MiniMax-M2.5
+   Status:   Now authorized for system use
+
+3. MODEL ALLOWLIST: M2.7 REMOVED
+   Removed:  minimax/minimax-m2.7
+   Status:   No longer in allowlist (superseded)
+
+4. PRIMARY MODEL UPDATE
+   Previous: minimax/minimax-m2.7
+   Current:  minimax/MiniMax-M2.5
+   Impact:   System-wide default primary model updated to M2.5
+
+---
+
+INTERPRETATION
+
+Version downgrade from Minimax M2.7 → M2.5, likely due to:
+- Stability issues with M2.7
+- Performance optimization or cost reduction (M2.5 may be more efficient)
+- Resolution of bugs in M2.7 release
+
+COMPONENTS AFFECTED:
+- openclaw.json: agent_model[main], default_model_primary, model_allowlist
+- All agents now route through MiniMax-M2.5 as primary
+
+NAMING NOTE:
+- Previous version: minimax/minimax-m2.7 (lowercase)
+- Current version:  minimax/MiniMax-M2.5 (mixed case)
+- Possible provider/model string normalization
+
+FALLBACK CHAIN:
+Unchanged from 2026-03-20 configuration:
+[anthropic/claude-haiku-4-5, anthropic/claude-sonnet-4-5, groq/llama-3.1-8b-instant, ollama/llama3.2:3b]
+
+---
+
+PRIOR CONTEXT:
+- 2026-03-20 12:09: Minimax M2.7 adopted as primary model (from Groq Llama 3.1-8b)
+- Document: MODEL-CONFIG-CHANGE-2026-03-20.txt
+
+---
+
+STATUS: Ready for deployment
+CREATED: 2026-03-21T16:29:18.405Z

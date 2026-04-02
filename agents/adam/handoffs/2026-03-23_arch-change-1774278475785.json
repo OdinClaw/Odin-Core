@@ -1,0 +1,23 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-23T15:07:55.785Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-23T15:07:55.785Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/adam/documents/architecture/TESLA-SOUL-CONSTRAINT-UPDATE-2026-03-23.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md",
+        "~/.openclaw-odin/workspace/agents/adam/MEMORY.md",
+        "~/.openclaw-odin/workspace/agents/tesla/logs/tesla-report-1774278415609.json",
+        "~/.openclaw-odin/workspace/agents/tesla/logs/latest.json"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/adam/documents/architecture/TESLA-SOUL-CONSTRAINT-UPDATE-2026-03-23.txt, ~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md, ~/.openclaw-odin/workspace/agents/adam/MEMORY.md, ~/.openclaw-odin/workspace/agents/tesla/logs/tesla-report-1774278415609.json, ~/.openclaw-odin/workspace/agents/tesla/logs/latest.json",
+      "config": "workspace"
+    }
+  ]
+}

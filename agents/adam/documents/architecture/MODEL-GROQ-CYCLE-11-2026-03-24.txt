@@ -1,0 +1,107 @@
+ARCHITECTURE DOCUMENT: Model Strategy — Cycle 11: Rapid Oscillation Resumes
+===========================================================================
+
+Date: 2026-03-24
+Timestamp: 2026-03-24T20:35:09.975Z
+Source: Configuration update (openclaw.json)
+Category: System / Model Strategy
+
+---
+
+MODEL CONFIGURATION UPDATE: GROQ BASELINE (CYCLE 11 - OSCILLATION RESUMES)
+
+**Status:** Groq Llama-3.1 primary + simplified fallback
+**Timestamp:** 2026-03-24T20:35:09.975Z
+**Time at Anthropic:** 8 minutes (2026-03-24 16:27 to 2026-03-24 16:35)
+**Pattern:** Rapid oscillation returning after brief "final selection" pause
+
+---
+
+## CRITICAL OBSERVATION: EVALUATION PATTERN SHIFT
+
+**Previous cycles (1-9):** Extended evaluation windows (20m - 3.2h)
+**Cycles 10-11:** Rapid switching (56m Groq → 8m Anthropic → NOW Groq)
+
+**Interpretation:** System is transitioning from extended evaluation to **rapid oscillatory comparison**.
+
+---
+
+## UPDATED TIMELINE (34+ HOURS)
+
+| Cycle | Start | End | Primary | Duration | Status |
+|-------|-------|-----|---------|----------|--------|
+| 1-9 | (prior) | 2026-03-24 15:31 | (various) | (various) | Extended evaluation |
+| 9 | 2026-03-24 15:31 | 2026-03-24 16:27 | Groq | 56m | Extended baseline |
+| 10 | 2026-03-24 16:27 | 2026-03-24 16:35 | Anthropic | 8m | Brief return |
+| 11 | 2026-03-24 16:35 | NOW | Groq | **NOW** | Rapid oscillation |
+
+---
+
+## WINDOW DURATION TREND
+
+**After "final selection" (Cycle 9 onwards):**
+- Cycle 9: 56 minutes (Groq baseline)
+- Cycle 10: 8 minutes (Anthropic)
+- Cycle 11: NOW (Groq, starting new window)
+
+**Pattern shift:** From 56-minute holds to 8-minute holds — **10x faster oscillation**
+
+---
+
+## HYPOTHESIS: RAPID CONVERGENCE PHASE
+
+System may be entering a **rapid comparison phase** where:
+1. Extended evaluation (Cycles 1-9) gathered baseline performance data
+2. Brief trial runs (Cycles 10-11) are rapid comparisons
+3. Short windows allow quick assessment of which strategy performs better in current conditions
+4. System will eventually settle on one or the other
+
+---
+
+## PATTERN BEHAVIOR
+
+### Extended Evaluation Phase (COMPLETE)
+- Duration: ~28 hours
+- Cycles: 1-9
+- Window duration: 20 minutes to 3.2 hours
+- Purpose: Establish performance baseline for both strategies
+
+### Rapid Oscillation Phase (NOW BEGINNING)
+- Starting duration: ~34 hours
+- Window duration: 8 minutes (rapidly decreasing from 56 minutes)
+- Purpose: Rapid comparative sampling to detect which strategy is superior
+
+---
+
+## OPERATIONAL IMPLICATIONS
+
+### For Pantheon
+
+- Model evaluation entering new phase with rapid switches
+- Groq is currently active (Cycle 11)
+- Expect frequent configuration changes in coming hours
+- Pattern suggests system is actively converging on decision
+
+### For Clients
+
+- Configuration may change frequently (8+ minute intervals)
+- Groq baseline is currently active
+- Full fallback coverage in both strategies maintained
+- System is intensively comparing cost/quality trade-offs
+
+---
+
+## WHAT TO EXPECT
+
+Based on pattern progression:
+- Cycle 12: Likely Anthropic return (~8m window)
+- Cycles 13+: Continued rapid oscillation until decision reached
+- Exit condition: One strategy will show decisive superiority
+- Final decision: System will settle on winner and reduce oscillation
+
+---
+
+STATUS: Model evaluation entering rapid oscillation phase; Groq currently active
+CREATED: 2026-03-24T20:35:09.975Z
+
+NOTE: The evaluation cycle has transitioned from extended baseline testing to rapid comparative sampling. Window durations have dropped from 56 minutes to 8 minutes, suggesting the system is now in high-frequency comparison mode. This phase will likely last until one strategy demonstrates clear superiority.

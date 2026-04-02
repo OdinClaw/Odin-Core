@@ -1,0 +1,61 @@
+# manifest.yaml — Zeus
+
+id: zeus
+name: Zeus
+type: subagent
+status: research
+version: "1.0"
+created: 2026-03-08
+updated: 2026-03-08
+
+identity:
+  emoji: ⚡
+  mythology: "Zeus — King of the Greek gods, Record of Ragnarok (absolute authority, lightning judgment, ruler of systems)"
+  archetype: research
+
+model:
+  primary: anthropic/claude-sonnet-4-5
+  fallbacks:
+    - anthropic/claude-opus-4-6
+    - ollama/qwen3.5:9b
+  subagents: ollama/qwen3.5:9b
+  rationale: "Insurance workflow analysis requires strong reasoning — Sonnet minimum. This is complex domain knowledge synthesis."
+
+discord:
+  channel: ""    # TBD — research phase, no channel yet
+  channelId: ""
+  botId: ""
+  botName: none
+  accountId: default
+
+workspace:
+  path: "~/.openclaw-odin/workspace/agents/zeus"
+  agentDir: "~/.openclaw-odin/agents/zeus/agent"
+
+role:
+  summary: "Insurance workflow analyzer. Collects and analyzes insurance brokerage workflows from AIM/Imageright/Titan. Identifies AI automation opportunities. Research phase only — no implementation until security vetting complete."
+  schedule: "manual (Bazzy feeds data, Zeus analyzes incrementally)"
+  output: "Research reports to Odin + Bazzy"
+
+dependencies:
+  reads:
+    - shared-context/THESIS.md
+    - shared-context/SIGNALS.md
+  writes:
+    - agents/zeus/research/    # analysis outputs
+  notifies:
+    - main
+
+tags:
+  - IT
+  - insurance
+  - research
+  - manual
+
+activation:
+  cli_registered: false
+  auth_configured: false
+  discord_bot_created: false
+  openclaw_json_updated: false
+  tested: false
+  blocker: "Research phase — no build until sufficient workflow data collected AND security review complete"

@@ -1,0 +1,103 @@
+ARCHITECTURE DOCUMENT: Model Strategy — Anthropic Readoption (Extended Trial)
+========================================================================
+
+Date: 2026-03-21
+Timestamp: 2026-03-21T22:27:31.356Z
+Source: Odin
+Config File: ~/.openclaw-odin/openclaw.json
+
+CHANGES DETECTED: 2 model configuration updates
+
+---
+
+1. PRIMARY MODEL READOPTION
+   Previous: groq/llama-3.1-8b-instant
+   Current:  anthropic/claude-haiku-4-5-20251001
+   Impact:   System readopts Anthropic Haiku as primary (3rd time today)
+
+2. FALLBACK CHAIN EXPANDED (AGAIN)
+   Previous: [groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b, ollama/llama3.2:3b]
+   Current:  [anthropic/claude-sonnet-4-5, anthropic/claude-opus-4-6, groq/llama-3.1-8b-instant, groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b]
+   
+   Configuration: Identical to 13:33 EDT occurrence (Anthropic Haiku + full Anthropic/Groq fallbacks)
+
+---
+
+PATTERN ANALYSIS: RECURRING CONFIGURATION CYCLE
+
+This exact configuration has now been deployed **twice today**:
+
+| Time     | Config                      | Duration | Notes |
+|----------|------------------------------|----------|-------|
+| 13:33    | Anthropic Hybrid (v1)       | ~40 min  | First hybrid trial |
+| 14:13    | Groq Baseline               | ~4.25 hr | Extended baseline evaluation |
+| 22:27    | Anthropic Hybrid (v2)       | current  | **Readoption after 4+ hours** |
+
+---
+
+INTERPRETATION
+
+**Two possible theories:**
+
+### Theory 1: Extended Evaluation Cycle
+- Deploy Anthropic hybrid config (v1): ~40 min observation window
+- Revert to Groq baseline: ~4+ hours real-world testing
+- Readopt Anthropic hybrid (v2): Preliminary decision to stick with Anthropic?
+
+This suggests Odin is running a **staged evaluation**:
+1. Test new config (Anthropic) — short observation
+2. Revert to baseline (Groq) — extended real-world test
+3. Decide: If Groq issues emerge over 4+ hours, readopt Anthropic
+
+### Theory 2: Time-Based Configuration Experiment
+- Different times of day may have different workload patterns
+- Morning/afternoon (13:33-14:13): Anthropic hybrid for build/implementation tier
+- Late afternoon (14:13-22:27): Groq baseline for manage tier
+- Evening (22:27+): Back to Anthropic for different workload profile
+
+This would suggest **time-of-day-specific routing** (not visible in current config, but potentially managed at agent level).
+
+---
+
+COMPONENTS AFFECTED:
+- openclaw.json: default_model_primary, default_model_fallbacks
+- Primary: Anthropic Haiku (cost-efficient quality)
+- Fallbacks: [Sonnet, Opus, Groq variants, No local]
+- Same as 13:33 EDT config
+
+---
+
+HISTORICAL CONTEXT (Complete 2026-03-21 Cycle):
+
+| Time   | Config | Duration | Comment |
+|--------|--------|----------|---------|
+| 12:09  | Minimax M2.7 | ~1 hr | Initial experiment |
+| 13:12  | Anthropic Haiku | ~19 min | Quick trial |
+| 13:31  | Groq Llama | ~2 min | Flash revert |
+| 13:33  | Anthropic Hybrid (v1) | ~40 min | Extended observation |
+| 14:13  | Groq Baseline | ~4.25 hr | Real-world evaluation |
+| 22:27  | Anthropic Hybrid (v2) | current | Readoption |
+
+**Total configs tested: 5 distinct strategies**
+**Total transitions: 5 changes**
+**Span: 10+ hours**
+
+---
+
+DECISION PATTERN
+
+The system appears to follow a **test-evaluate-decide** cycle:
+1. **Short observation** of new config (19-40 min)
+2. **Extended baseline test** (hours to verify stability)
+3. **Readopt if baseline shows issues** (indicates acceptance of new config)
+
+The readoption of Anthropic hybrid after 4+ hours of Groq suggests:
+- Either Groq config showed issues/limitations during real-world use
+- Or Anthropic config is now deemed preferred (cost + quality balance)
+
+---
+
+STATUS: Ready for deployment
+CREATED: 2026-03-21T22:27:31.356Z
+
+NOTE: This marks the third distinct deployment of Anthropic Haiku primary (+ Anthropic/Groq fallback stack). Pattern suggests convergence toward this configuration as system baseline.

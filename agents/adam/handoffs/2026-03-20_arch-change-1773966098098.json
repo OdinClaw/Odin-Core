@@ -1,0 +1,17 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-20T00:21:38.098Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-20T00:21:38.098Z",
+      "component": "~/.openclaw-odin/workspace/agents/adam/documents/architecture/document_index_update.txt",
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/adam/documents/architecture/document_index_update.txt",
+      "config": "workspace"
+    }
+  ]
+}

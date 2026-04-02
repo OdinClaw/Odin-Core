@@ -1,0 +1,60 @@
+# manifest.yaml — Beelzebub
+
+id: beelzebub
+name: Beelzebub
+type: subagent
+status: queued
+version: "1.0"
+created: 2026-03-08
+updated: 2026-03-08
+
+identity:
+  emoji: 🪰
+  mythology: "Beelzebub — Lord of the Flies, Record of Ragnarok (chaos into order, swarm intelligence, relentless iteration)"
+  archetype: research
+
+model:
+  primary: anthropic/claude-haiku-4-5-20251001
+  fallbacks:
+    - anthropic/claude-sonnet-4-5
+    - ollama/qwen3.5:9b
+  subagents: ollama/qwen3.5:9b
+  rationale: "R&D work is exploratory — Haiku for initial research, Sonnet for deep architecture analysis."
+
+discord:
+  channel: "#workshop"
+  channelId: "1477459675082522790"
+  botId: ""
+  botName: none    # sub-agent, no dedicated bot; Odin posts on behalf
+  accountId: default    # Odin's bot posts Beelzebub's output
+
+workspace:
+  path: "~/.openclaw-odin/workspace/agents/beelzebub"
+  agentDir: "~/.openclaw-odin/agents/beelzebub/agent"
+
+role:
+  summary: "Odin's R&D lab. Explores new architecture ideas, evaluates emerging tools, incubates improvements before they graduate to production. On-demand — invoked when Odin needs to explore something."
+  schedule: "on-demand"
+  output: "#workshop"
+
+dependencies:
+  reads:
+    - kernel/DOCTRINE.md
+    - kernel/PANTHEON-REGISTRY.md
+    - shared-context/SIGNALS.md
+  writes:
+    - agents/beelzebub/research/    # research output directory
+  notifies:
+    - main
+
+tags:
+  - research
+  - ops
+  - on-demand
+
+activation:
+  cli_registered: false
+  auth_configured: false
+  discord_bot_created: false    # no bot needed — sub-agent
+  openclaw_json_updated: false
+  tested: false

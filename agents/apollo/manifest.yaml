@@ -1,0 +1,61 @@
+# manifest.yaml — Apollo
+
+id: apollo
+name: Apollo
+type: isolated
+status: queued
+version: "1.0"
+created: 2026-03-08
+updated: 2026-03-08
+
+identity:
+  emoji: 📊
+  mythology: "Apollo — Greek god of light and prophecy, Record of Ragnarok (precision, foresight, divine insight)"
+  archetype: analytics
+
+model:
+  primary: anthropic/claude-haiku-4-5-20251001
+  fallbacks:
+    - anthropic/claude-sonnet-4-5
+    - ollama/qwen3.5:9b
+  subagents: ollama/qwen3.5:9b
+  rationale: "Daily analytics is structured data aggregation — Haiku handles it efficiently."
+
+discord:
+  channel: "#apollo"
+  channelId: ""    # create channel when activating
+  botId: ""
+  botName: "@Apollo"
+  accountId: apollo
+
+workspace:
+  path: "~/.openclaw-odin/workspace/agents/apollo"
+  agentDir: "~/.openclaw-odin/agents/apollo/agent"
+
+role:
+  summary: "Daily social media analytics across Instagram, TikTok, YouTube, Spotify. Feeds all downstream agents. The data source the rest of the Pantheon depends on."
+  schedule: "daily 8 AM EST"
+  output: "#apollo + intel/SOCIAL-METRICS.md"
+
+dependencies:
+  reads:
+    - shared-context/THESIS.md
+    - shared-context/SIGNALS.md
+  writes:
+    - intel/SOCIAL-METRICS.md
+  notifies:
+    - main
+
+tags:
+  - music
+  - analytics
+  - scheduled
+  - api-dependent
+
+activation:
+  cli_registered: false
+  auth_configured: false
+  discord_bot_created: false
+  openclaw_json_updated: false
+  tested: false
+  blocker: "Waiting on social media API keys from Bazzy (Instagram, TikTok, YouTube, Spotify)"

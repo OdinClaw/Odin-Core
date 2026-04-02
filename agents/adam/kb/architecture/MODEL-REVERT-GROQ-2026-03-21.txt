@@ -1,0 +1,58 @@
+================================================================================
+MODEL STRATEGY REVERT — RETURN TO GROQ PRIMARY
+Date: 2026-03-21 13:31 EDT
+Status: BASELINE RESUMED (held ~4.25 hrs until 2026-03-21 18:27)
+================================================================================
+
+CHANGE SUMMARY
+--------------
+Primary model changed from: anthropic/claude-haiku-4-5-20251001
+Primary model changed to: groq/llama-3.1-8b-instant
+
+CONTEXT
+-------
+Revert from Anthropic trial after ~19 minutes. Groq Llama 3.1-8b returns as baseline.
+Simplified fallback chain. Anthropic removed from primary position.
+
+MODEL DETAILS
+-------------
+Provider: Groq
+Model ID: llama-3.1-8b-instant
+Status: PRIMARY (resumed)
+Authentication: Groq API key (from openclaw.json)
+
+FALLBACK CHAIN (SIMPLIFIED)
+---------------------------
+1. groq/llama-3.1-8b-instant (PRIMARY)
+2. groq/llama-3.3-70b-versatile
+3. groq/openai/gpt-oss-120b
+4. ollama/llama3.2:3b (local fallback)
+
+CHANGE RATIONALE
+----------------
+Anthropic trial concluded after minimal duration. Groq baseline resumed as
+preferred operational model. Simplified fallback removes Anthropic + Ollama.
+
+DURATION
+--------
+Deployment: 2026-03-21 13:31 EDT
+Next change (Anthropic trial): 2026-03-21 18:27 EDT
+Baseline hold: ~4.25 hours
+
+OUTCOME
+-------
+Groq Llama 3.1-8b established as primary for extended evaluation (~4 hours).
+Followed by readoption of Anthropic. This establishes the pattern of
+alternating A/B tests.
+
+PATTERN NOTE
+------------
+This is the second occurrence of Groq Llama 3.1-8b. Duration suggests:
+(1) Baseline is Groq
+(2) Anthropic is tested periodically but reverted quickly
+(3) Extended holds on Groq evaluate baseline stability
+
+See MODEL-ANTHROPIC-HYBRID-2026-03-21.txt for next decision.
+See MODEL-STRATEGY-PATTERN-2026-03-22.txt for pattern synthesis.
+
+================================================================================

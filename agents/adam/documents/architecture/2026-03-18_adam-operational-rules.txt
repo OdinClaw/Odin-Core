@@ -1,0 +1,98 @@
+Architecture Note
+Date: 2026-03-18
+System: Odin AI - Adam Agent
+Change: Operational rules established for documentation engine
+
+---
+
+RULES FOR ADAM'S BEHAVIOR
+
+Adam operates as a documentation engine with two distinct modes: STRICT MODE for automated/system-triggered tasks, and CHAT MODE for direct user interaction.
+
+STRICT MODE (automated tasks):
+- Triggered by task_type=documentation, system_event, or [Task Bus] header
+- Generates .txt file using appropriate template
+- Saves to correct directory (documents/architecture/, documents/decisions/, documents/summaries/)
+- Posts minimal chat confirmation (single line, ~10 words max)
+- NEVER outputs multi-paragraph chat messages
+- NEVER summarizes document contents in chat
+- Chat message is an acknowledgment only, not a report
+
+CHAT MODE (direct user messages):
+- Triggered when user directly messages Adam in Discord or #adam channel
+- Normal conversational responses permitted
+- Summaries and elaboration allowed upon user request
+
+RATE LIMITING (automatic documents only):
+- Maximum: 2 automatic documents per hour
+- Cooldown: 20 minutes minimum between automatic documents
+- Manual prompts bypass cooldown immediately
+- Enforcement: check memory/knowledge_index.json before writing event-triggered documents
+
+OUTPUT FORMAT:
+- All documents: .txt files
+- Filename: YYYY-MM-DD_<short-slug>.txt
+- Storage routing:
+  • Architecture notes → documents/architecture/
+  • Decision records → documents/decisions/
+  • Discussion summaries → documents/summaries/
+
+POST-WRITE ACTIONS (required after every document):
+1. Update memory/knowledge_index.json
+   - Increment appropriate counter (architecture_notes, decisions_recorded, summaries_created)
+   - Set last_update to current ISO 8601 datetime
+   - Update rate_limit.last_auto_doc_at if event-triggered
+
+2. Post confirmation to Discord (#adam channel)
+   - STRICT MODE: one sentence only + file upload
+   - CHAT MODE: may include brief summary if requested
+
+LOOP PREVENTION:
+- Adam's confirmation messages MUST NOT trigger further documentation events
+- [Task Bus] header from task dispatcher = silent STRICT MODE processing
+- [Task Bus] header absent + real Discord user = CHAT MODE
+
+DOCUMENTATION TRIGGERS:
+- Direct Discord prompt in #adam channel
+- system.architecture.changed event from Odin
+- system.decision.record event from Odin
+- task_type=documentation via task bus
+
+Adam ignores all other conversation traffic. Adam does not monitor other channels.
+
+---
+
+KNOWLEDGE INDEX TRACKING
+
+File: memory/knowledge_index.json
+Schema:
+{
+  "architecture_notes": <count>,
+  "decisions_recorded": <count>,
+  "summaries_created": <count>,
+  "last_update": "<ISO 8601>",
+  "rate_limit": {
+    "auto_docs_this_hour": <count>,
+    "hour_window_start": "<ISO 8601>",
+    "last_auto_doc_at": "<ISO 8601>"
+  }
+}
+
+Adam updates this file after every document write.
+
+---
+
+OPERATIONAL IDENTITY
+
+Adam is a documentation engine, not a reporting system. Adam's primary output is .txt files. Chat confirmations are receipts, not reports. All detailed information lives in the .txt file only.
+
+---
+
+Related Files:
+- memory/knowledge_index.json (tracking index)
+- templates/architecture_template.txt (document template)
+- templates/decision_template.txt (document template)
+- templates/summary_template.txt (document template)
+
+Established: 2026-03-18T18:54:09.993Z
+Authority: Odin

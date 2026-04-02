@@ -1,0 +1,74 @@
+ARCHITECTURE DOCUMENT: Model Configuration — Anthropic Deployed (Cycle 6, Early Redeployment)
+======================================================================================
+
+Date: 2026-03-22
+Timestamp: 2026-03-22T19:51:02.084Z
+Source: Odin
+Config File: ~/.openclaw-odin/openclaw.json
+
+CHANGES DETECTED: 2 model configuration updates (early cycle continuation)
+
+---
+
+1. PRIMARY MODEL CHANGE
+   Previous: groq/llama-3.1-8b-instant
+   Current:  anthropic/claude-haiku-4-5-20251001
+   Impact:   Anthropic trial deployment (6th occurrence)
+
+2. FALLBACK CHAIN EXPANDED
+   Previous: [groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b, ollama/llama3.2:3b]
+   Current:  [anthropic/claude-sonnet-4-5, anthropic/claude-opus-4-6, groq/llama-3.1-8b-instant, groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b]
+
+---
+
+TIMING DEVIATION: EARLIER THAN PREDICTED
+
+| Event | Predicted | Actual | Deviation |
+|-------|-----------|--------|-----------|
+| Anthropic revert | ~18:19 | ✓ 18:19 | On time |
+| Groq hold | ~9-11 hr | **1.5 hr** | **Early** |
+| Anthropic redeploy | ~03:19-05:19 EDT next day | **19:51 EDT same day** | **~8 hours early** |
+
+---
+
+INTERPRETATION
+
+This represents a **deviation from the established pattern**:
+
+### Possible Explanations:
+
+1. **Schedule Changed**: Cycle frequency reduced from ~10 hr to ~1.5 hr holds
+2. **Issue Detection**: Groq baseline may have shown problems during 1.5 hr window, triggering early Anthropic trial
+3. **Workload Shifting**: Time-of-day different workload profiles may trigger different evaluation schedules
+4. **Manual Intervention**: Odin may have triggered early evaluation for testing/debugging
+
+### Most Likely: Schedule Changed or Issue Detected
+
+- The 2-6 hour pattern was consistent (cycles 1-5)
+- Sudden 1.5 hr hold suggests something changed
+- Either schedule was adjusted OR Groq showed stability issues during baseline
+
+---
+
+CYCLE 6 CHARACTERISTICS
+
+| Metric | Cycle 5 | Cycle 6 | Pattern |
+|--------|---------|---------|---------|
+| Groq hold | 10 hr | 1.5 hr | **Decreased** |
+| Anthropic window | ~70 min | Upcoming | Expected ~70 min |
+| Deployment time | 17:09 | 19:51 | Evening time (both) |
+| Timing | Daytime eval | Evening eval | Possible shift to evening testing |
+
+---
+
+COMPONENTS AFFECTED:
+- openclaw.json: default_model_primary, default_model_fallbacks
+- Primary: Anthropic Haiku (6th deployment)
+- Fallbacks: [Sonnet, Opus, Groq variants]
+
+---
+
+STATUS: Cycle continues, pattern deviation noted
+CREATED: 2026-03-22T19:51:02.084Z
+
+NOTE: Early redeployment suggests pattern shift. Possible explanations: (1) Schedule changed from ~10-hr cycle to shorter interval, (2) Groq baseline showed issues during 1.5-hr hold. Next revert predicted ~20:59 EDT (if 70-min window holds). Monitor for pattern stabilization.

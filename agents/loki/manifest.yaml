@@ -1,0 +1,61 @@
+# manifest.yaml — Loki
+# Source of truth for Loki's configuration, role, and dependencies.
+
+id: loki
+name: Loki
+type: isolated
+status: live
+version: "1.1"
+created: 2026-03-04
+updated: 2026-03-08
+
+identity:
+  emoji: 🔮
+  mythology: "Loki — Norse trickster god, Record of Ragnarok (cunning, adaptability, chaos-to-order)"
+  archetype: monitor
+
+model:
+  primary: ollama/llama3.2:3b
+  fallbacks:
+    - anthropic/claude-haiku-4-5-20251001    # only if Ollama is completely down
+  subagents: ollama/llama3.2:3b
+  rationale: "Local-first by design. Monitoring must never depend on cloud rate limits or subscription windows. Groq is never used — monitoring doesn't need escalation."
+
+discord:
+  channel: "#loki"
+  channelId: "1478591775558996122"
+  botId: "1478590584372461641"
+  botName: "@Loki"
+  accountId: loki
+
+workspace:
+  path: "~/.openclaw-odin/workspace/agents/loki"
+  agentDir: "~/.openclaw-odin/agents/loki/agent"
+
+role:
+  summary: "Heartbeat relay + system status interpreter + low-cost ops aide. Monitors all cron jobs every 30 minutes. Interprets system health in plain language. Answers direct operational questions from Bazzy. Always-on, always-local."
+  schedule: "every 30 minutes (launchd plist) + on-demand for direct questions"
+  output: "#loki"
+  design_principle: "Local-first always. Cloud only if Ollama is completely down or diagnosis explicitly requires cloud reasoning. Groq never used under any circumstance."
+
+dependencies:
+  reads:
+    - shared-context/THESIS.md
+    - shared-context/FEEDBACK-LOG.md
+  writes:
+    - agents/loki/memory/YYYY-MM-DD.md
+  notifies:
+    - main    # escalates to Odin on critical failures
+
+tags:
+  - infra
+  - monitoring
+  - local-first
+  - continuous
+
+activation:
+  cli_registered: true
+  auth_configured: true
+  discord_bot_created: true
+  openclaw_json_updated: true
+  tested: true

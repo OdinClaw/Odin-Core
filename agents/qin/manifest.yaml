@@ -1,0 +1,59 @@
+# manifest.yaml — Qin Shi Huang
+
+id: qin
+name: Qin Shi Huang
+type: isolated
+status: paused
+version: "1.0"
+created: 2026-03-08
+updated: 2026-03-08
+
+identity:
+  emoji: 💰
+  mythology: "Qin Shi Huang — First Emperor of China, Record of Ragnarok (control, empire-building, ruthless efficiency)"
+  archetype: finance
+
+model:
+  primary: anthropic/claude-haiku-4-5-20251001
+  fallbacks:
+    - anthropic/claude-sonnet-4-5
+    - ollama/qwen3.5:9b
+  subagents: ollama/qwen3.5:9b
+  rationale: "Cost tracking is structured data work — Haiku is sufficient. No reasoning-heavy tasks."
+
+discord:
+  channel: "#usage-limits"
+  channelId: "1477459671890526322"
+  botId: ""
+  botName: "@Qin"
+  accountId: qin
+
+workspace:
+  path: "~/.openclaw-odin/workspace/agents/qin"
+  agentDir: "~/.openclaw-odin/agents/qin/agent"
+
+role:
+  summary: "Usage and spending tracker. Monitors Anthropic subscription consumption. Fires alerts at 50/75/90/95% thresholds. Posts weekly summaries to Discord and Telegram."
+  schedule: "every 30 minutes (integrated with usage-monitor.mjs) + weekly summary"
+  output: "#usage-limits + Telegram"
+
+dependencies:
+  reads:
+    - shared-context/SIGNALS.md
+  writes:
+    - intel/USAGE-REPORT.md
+  notifies:
+    - main    # critical alerts go to Odin
+
+tags:
+  - finance
+  - monitoring
+  - ops
+  - scheduled
+
+activation:
+  cli_registered: false
+  auth_configured: false
+  discord_bot_created: false
+  openclaw_json_updated: false
+  tested: false

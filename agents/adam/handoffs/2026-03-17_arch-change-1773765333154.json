@@ -1,0 +1,12 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-17T16:35:33.154Z",
+  "component": "~/.openclaw-odin/openclaw.json/openclaw.json",
+  "change": "configuration modified",
+  "status": "complete",
+  "processed_by": "adam",
+  "processed_at": "2026-03-17T12:35:00Z",
+  "kb_document": "ADAM-ACTIVATION-CONFIG-2026-03-17.txt",
+  "kb_category": "architecture"
+}

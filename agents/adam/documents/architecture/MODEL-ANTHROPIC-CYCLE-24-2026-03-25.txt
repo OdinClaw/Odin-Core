@@ -1,0 +1,52 @@
+ARCHITECTURE DOCUMENT: Model Strategy — Cycle 24: Anthropic Return (Evaluation Continues, Pattern Repeats)
+===========================================================================================================
+
+Date: 2026-03-25
+Timestamp: 2026-03-25T12:34:57.539Z
+Source: Configuration update (openclaw.json)
+Category: System / Model Strategy
+
+---
+
+MODEL CONFIGURATION UPDATE: ANTHROPIC READOPTION (CYCLE 24)
+
+**Status:** Anthropic Haiku primary + full fallback stack
+**Timestamp:** 2026-03-25T12:34:57.539Z
+**Time at Groq baseline:** 31 minutes (2026-03-25 12:03 to 2026-03-25 12:34)
+**Pattern:** Brief Groq hold followed by Anthropic return
+
+---
+
+## EVALUATION STATUS: ONGOING AFTER 78+ HOURS
+
+### Summary
+- **Total elapsed time:** 78+ hours
+- **Total cycles:** 24
+- **Pattern:** Extended holds + brief verifications
+- **Status:** Stable, repeating
+
+---
+
+## BRIEF GROQ HOLD (31 MINUTES)
+
+The 31-minute Groq hold represents:
+- **Longer than brief verification** (2-8 min)
+- **Shorter than extended baseline** (200+ min)
+- **Intermediate testing window**
+
+---
+
+## ASSESSMENT
+
+After 78+ hours and 24 cycles:
+- Pattern is stable and repeating
+- Both strategies remain under active evaluation
+- Verification windows shortening (optimization)
+- Decision timeline remains 48-96+ hours
+
+---
+
+STATUS: Cycle 24 continues; evaluation pattern stable after 78+ hours
+CREATED: 2026-03-25T12:34:57.539Z
+
+NOTE: System continues methodical evaluation with stable oscillation pattern. No consolidation detected. Both strategies remain competitive. Decision pending.

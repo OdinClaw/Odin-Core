@@ -1,0 +1,87 @@
+ARCHITECTURE DOCUMENT: Model Strategy Revert — Return to Groq Llama Primary
+==========================================================================
+
+Date: 2026-03-21
+Timestamp: 2026-03-21T17:31:42.014Z
+Source: Odin
+Config File: ~/.openclaw-odin/openclaw.json
+
+CHANGES DETECTED: 2 major model configuration updates
+
+---
+
+1. PRIMARY MODEL REVERT
+   Previous: anthropic/claude-haiku-4-5-20251001
+   Current:  groq/llama-3.1-8b-instant
+   Impact:   System-wide primary model reverted from Anthropic Haiku back to Groq Llama 3.1-8b
+
+2. FALLBACK CHAIN SIMPLIFIED
+   Previous: [anthropic/claude-sonnet-4-5, anthropic/claude-opus-4-6, groq/llama-3.1-8b-instant, groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b]
+   Current:  [groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b, ollama/llama3.2:3b]
+   
+   Changes:
+   - Removed: anthropic/claude-sonnet-4-5 (1st fallback removed)
+   - Removed: anthropic/claude-opus-4-6 (2nd fallback removed)
+   - Removed: groq/llama-3.1-8b-instant (moved to primary role)
+   - Kept:    groq/llama-3.3-70b-versatile (now 1st fallback)
+   - Kept:    groq/openai/gpt-oss-120b (now 2nd fallback)
+   - Re-added: ollama/llama3.2:3b (3rd fallback, local)
+   
+   Impact: Anthropic models completely removed from fallback chain; all Groq open-source + local
+
+---
+
+INTERPRETATION
+
+Rapid model cycling pattern across single day (2026-03-21):
+- 12:09: Minimax M2.5 primary
+- 13:12: Anthropic Haiku primary (19-minute trial)
+- 13:31: Groq Llama 3.1-8b primary (current)
+
+THEORY 1 — EVALUATION/BENCHMARK WINDOW
+- Odin may be running model comparison tests
+- Each model gets ~15-20 min trial window in production
+- Groq strategy: open-source, cost-effective, fallback to larger models (Llama 3.3) + local
+
+THEORY 2 — COST OPTIMIZATION SWING
+- Anthropic may be more expensive than Groq for primary workload
+- Llama 3.1-8b known efficient performer
+- Fallback chain still has depth (3.3 variant, gpt-oss, local)
+
+THEORY 3 — PROVIDER AVAILABILITY/RELIABILITY
+- Possible issues with Anthropic or Minimax in last ~20 minutes
+- Groq reverting as safer/more stable primary
+- Fallback chain emphasizes redundancy (multiple Groq flavors + local)
+
+COMPONENTS AFFECTED:
+- openclaw.json: default_model_primary, default_model_fallbacks
+- All agents now route through Groq Llama 3.1-8b as primary
+- Fallback order: Groq 3.3 (larger), Groq OSS (alternative), local Ollama
+- Anthropic stack removed from rotation entirely
+
+---
+
+HISTORICAL CONTEXT (2026-03-21):
+- 12:09 (12:09 EDT): Minimax M2.5 adoption
+- 12:30 (12:30 EDT): Self-referential event (M2.5 docs created)
+- 13:12 (13:12 EDT): Revert to Anthropic Haiku
+- 13:14 (13:14 EDT): Self-referential event (Haiku docs created)
+- 13:31 (13:31 EDT): Revert to Groq Llama 3.1-8b (current)
+
+Total time under Anthropic primary: ~19 minutes
+Total Minimax trial: ~1 hour (across M2.7 and M2.5)
+
+---
+
+RAPID ITERATION PATTERN
+The system appears to be in an active optimization or comparison phase. Three major revisions in 22 minutes suggests:
+- Automated testing of model configurations
+- Manual experimentation by Odin
+- Response to performance/cost metrics in real-time
+
+Next revert likely if Groq performance issues surface.
+
+---
+
+STATUS: Ready for deployment
+CREATED: 2026-03-21T17:31:42.014Z

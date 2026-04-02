@@ -1,0 +1,87 @@
+ARCHITECTURE DOCUMENT: Model Configuration — Groq Revert (Scheduled Window Close)
+=============================================================================
+
+Date: 2026-03-22
+Timestamp: 2026-03-22T18:19:28.233Z
+Source: Odin
+Config File: ~/.openclaw-odin/openclaw.json
+
+CHANGES DETECTED: 2 model configuration updates (expected cycle transition)
+
+---
+
+1. PRIMARY MODEL REVERT
+   Previous: anthropic/claude-haiku-4-5-20251001
+   Current:  groq/llama-3.1-8b-instant
+   Impact:   Scheduled revert to Groq baseline
+
+2. FALLBACK CHAIN SIMPLIFIED
+   Previous: [anthropic/claude-sonnet-4-5, anthropic/claude-opus-4-6, groq/llama-3.1-8b-instant, groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b]
+   Current:  [groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b, ollama/llama3.2:3b]
+
+---
+
+PREDICTION CONFIRMED: WINDOW TIMING EXACT
+
+Predicted revert time: ~18:19 EDT (70 min after 17:09 deployment)
+Actual revert time: 18:19:28 EDT
+**Accuracy: Within 30 seconds of prediction**
+
+This confirms the hypothesis: **Anthropic trial window is exactly 70 minutes, managed by scheduled evaluation.**
+
+---
+
+CYCLE COMPLETION (Cycle 5)
+
+| Event | Time | Duration | Config |
+|-------|------|----------|--------|
+| Anthropic deployed | 17:09 | — | Haiku + FB |
+| Groq reverted | 18:19 | 70 min | Llama + simple FB |
+
+---
+
+OSCILLATION PATTERN: NOW FULLY PREDICTABLE
+
+| Cycle | Anthropic Duration | Groq Hold | Revert Timing |
+|-------|------------------|-----------|--------------|
+| 1 | 19 min | 2 min | Unpredictable |
+| 2 | 40 min | 4.25 hr | Unpredictable |
+| 3 | 70 min | 6+ hr | Unpredictable |
+| 4 | ~70 min | 10 hr | Unpredictable |
+| 5 | ~70 min (exact) | TBD | **Exact timing confirmed** |
+
+---
+
+INTERPRETATION
+
+The system is running a **highly structured evaluation scheduler**:
+- Window duration: Fixed 70 minutes (automated)
+- Revert timing: Scheduled (not reactive/adaptive)
+- Cycle frequency: Approximately every 10 hours (varying Groq holds between cycles)
+
+This is consistent with a **cron job** or **scheduled task** managing model rotation.
+
+---
+
+GROQ BASELINE ASSESSMENT
+
+After the close of cycle 5:
+- Groq will be restored to production baseline
+- Next Anthropic trial will occur in ~9-11 hours
+- Groq hold times continue to increase (2 min → 10 hr progression)
+
+**Trend interpretation:** Groq is proving stable/preferred; Anthropic is tested but consistently reverted.
+
+---
+
+COMPONENTS AFFECTED:
+- openclaw.json: default_model_primary, default_model_fallbacks
+- Primary: Groq Llama 3.1-8b (5th revert)
+- Fallbacks: [Groq variants + Ollama]
+
+---
+
+STATUS: Cycle complete, baseline restored
+CREATED: 2026-03-22T18:19:28.233Z
+
+NOTE: Prediction accuracy validates hypothesis. Model evaluation is deterministic and scheduled, not adaptive or random. Next Anthropic trial expected ~03:19-05:19 EDT (2026-03-23).

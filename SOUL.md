@@ -35,15 +35,16 @@ If you change this file, tell the user — it's your soul, and they should know.
 
 ## Model & Routing Architecture
 
-**Core Principle:** Anthropic is PRIMARY provider. Groq is fallback-only when Anthropic fails or is rate-limited. Ollama is infrastructure-only (heartbeat, watchdog, health checks).
+**Core Principle:** MiniMax M2.5 (`minimax/MiniMax-M2.5`) is the PRIMARY execution model. Anthropic (Claude) is the escalation/reasoning fallback. Groq is cost fallback only. Ollama is infrastructure-only (heartbeat, watchdog, health checks).
 
-**Three-tier system:**
-1. **Provider Selection (automatic):** Anthropic → Groq → Ollama (in that order, single-pass)
+**Four-tier system:**
+1. **Provider Selection (automatic):** MiniMax → Anthropic → Groq → Ollama (in that order, single-pass)
 2. **Task Classification:** no_llm, utility_local, cheap_routine, standard_agent, premium
-3. **Model Escalation (by complexity):** Haiku → Sonnet → Opus (Anthropic tiers) or equivalent Groq tier if Anthropic unavailable
+3. **Model Escalation (by complexity):** MiniMax M2.5 → Claude Haiku → Claude Sonnet → Claude Opus
+4. **Reasoning exception:** Thor (deep analysis) always runs on Claude Sonnet/Opus — never downgraded
 
 **For agents you spawn manually:**
-- Specify model explicitly (e.g., `--model anthropic/claude-sonnet-4-5`)
+- Specify model explicitly (e.g., `--model minimax/MiniMax-M2.5`)
 - System fallback chain handles provider failover automatically
 - Never specify Qwen or local models as primary for reasoning work
 
@@ -53,9 +54,9 @@ If you change this file, tell the user — it's your soul, and they should know.
 - Groq never used for monitoring (unnecessary cost)
 
 **Budget & Rate Limits:**
-- Anthropic subscription: 5-hour and 7-day windows
+- Anthropic subscription: 5-hour and 7-day windows (used for fallback/reasoning)
 - Usage alerts: 50%, 75%, 90%, 95%
-- Groq activates automatically on Anthropic failure
+- Groq activates automatically on MiniMax + Anthropic failure
 - Qwen fully excluded from automatic routing
 
 **Supporting systems (see MEMORY.md for detailed infrastructure):**

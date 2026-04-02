@@ -1,0 +1,92 @@
+ADAM ACTIVATION — OPENCLAW.JSON REGISTRATION
+Date: 2026-03-17
+Component: ~/.openclaw-odin/openclaw.json
+Event: system.architecture.changed
+
+---
+
+CHANGE
+
+Adam has been registered in openclaw.json and is now active in the OpenClaw system.
+
+---
+
+DETAILS
+
+Three subsystems activated:
+
+1. AGENTS.LIST REGISTRATION
+   - Agent ID: adam
+   - Name: adam
+   - Workspace: /Users/odinclaw/.openclaw-odin/workspace/agents/adam
+   - Agent Dir: /Users/odinclaw/.openclaw-odin/agents/adam/agent
+   - Model: anthropic/claude-haiku-4-5-20251001
+   
+   This enables Adam to be spawned as a subagent or referenced by agentId in sessions.
+
+2. DISCORD ACCOUNT & BOT SETUP
+   - Account name: adam
+   - Bot name: @Adam
+   - Enabled: true
+   - Token: [configured]
+   - Guild ID: 1477047631950643244 (odin)
+   - Channel: 1478133176386715870 (#adam)
+   - Allowed user: 583319870511513611 (Bazzy)
+   
+   This enables @Adam to operate as a Discord bot in the Odin server and receive
+   messages in #adam channel.
+
+3. AGENT BINDING
+   - Binding: agentId=adam → Discord account "adam"
+   - Channel: discord, account: adam
+   
+   This routes all Discord interactions for @Adam to the adam agent.
+
+---
+
+IMPACT
+
+ACTIVATION COMPLETE. Adam is now:
+  • Registered in the OpenClaw agent registry
+  • Bound to a Discord bot account (@Adam)
+  • Connected to the #adam channel
+  • Ready to receive and process handoffs
+  • Able to post confirmations and KB updates to Discord
+
+Previous blocker (from 2026-03-08 MEMORY): "pending CLI registration + @Adam Discord bot +
+openclaw.json update" is now resolved.
+
+Adam can now:
+  • Receive handoffs from Odin in agents/adam/handoffs/
+  • Process them into kb/ documents
+  • Update kb/INDEX.md
+  • Post confirmations to #adam via Discord bot
+
+---
+
+RELATED AGENTS
+
+All agents (Loki, Thor, Apollo, Buddha, Hermes, etc.) can now identify Adam as
+the destination for promoted knowledge. Odin's memory promotion flow is
+now complete end-to-end.
+
+---
+
+NEXT STEPS FOR BAZZY
+
+1. Verify @Adam bot is online in #adam channel (should show "Adam" in Discord)
+2. Send a test message to #adam or invoke Adam directly to confirm routing works
+3. Begin promoting knowledge via Odin handoffs to agents/adam/handoffs/
+4. Monitor kb/INDEX.md growth as documents are captured
+
+---
+
+NOTES
+
+The model choice (claude-haiku-4-5-20251001) is intentional for Adam's workload.
+Documentation is structured, high-repetition work; Haiku is cost-effective and
+sufficient. Escalation to Sonnet only for complex synthesis tasks (documented
+in SOUL.md).
+
+The Discord binding uses Bazzy's user ID (583319870511513611) as the sole allowed
+actor, maintaining security of the knowledge archive.

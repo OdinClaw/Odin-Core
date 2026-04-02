@@ -1,0 +1,24 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-18T19:09:24.069Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-18T19:09:24.069Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/adam/documents/architecture/2026-03-18_task-bus-rate-limit-reply.txt",
+        "~/.openclaw-odin/workspace/agents/adam/memory/knowledge_index.json"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/adam/documents/architecture/2026-03-18_task-bus-rate-limit-reply.txt, ~/.openclaw-odin/workspace/agents/adam/memory/knowledge_index.json",
+      "config": "workspace"
+    }
+  ],
+  "status": "acknowledged",
+  "processed_by": "adam",
+  "processed_at": "2026-03-18T15:09:00Z",
+  "note": "Self-referential: Adam created rate-limit reply document and updated knowledge index. No KB capture required per protocol."
+}

@@ -1,0 +1,86 @@
+ARCHITECTURE DOCUMENT: Model Configuration — Anthropic Trial Window (Cycle Continuation)
+===================================================================================
+
+Date: 2026-03-22
+Timestamp: 2026-03-22T17:09:00.487Z
+Source: Odin
+Config File: ~/.openclaw-odin/openclaw.json
+
+CHANGES DETECTED: 2 model configuration updates (expected cycle transition)
+
+---
+
+1. PRIMARY MODEL CHANGE
+   Previous: groq/llama-3.1-8b-instant
+   Current:  anthropic/claude-haiku-4-5-20251001
+   Impact:   Anthropic trial window deployment (5th occurrence)
+
+2. FALLBACK CHAIN EXPANDED
+   Previous: [groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b, ollama/llama3.2:3b]
+   Current:  [anthropic/claude-sonnet-4-5, anthropic/claude-opus-4-6, groq/llama-3.1-8b-instant, groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b]
+
+---
+
+CYCLE CONTINUATION: PREDICTED AND ON SCHEDULE
+
+| Cycle | Anthropic Window | Duration | Groq Hold | Duration | Notes |
+|-------|-----------------|----------|-----------|----------|-------|
+| 1 | 13:12–13:31 | 19 min | 13:31–13:33 | 2 min | Flash |
+| 2 | 13:33–14:13 | 40 min | 14:13–22:27 | 4.25 hr | Extended |
+| 3 | 22:27–23:37 | 70 min | 23:37–05:53 | 6+ hr | Long hold |
+| 4 | 05:53–07:03 | ~70 min | 07:03–17:09 | **10 hr** | **Longest hold yet** |
+| **5** | **17:09–???** | **~70 min** | — | — | **Current window** |
+
+---
+
+KEY OBSERVATION: GROQ HOLD TIME INCREASING
+
+Groq baseline is now being held for **extended periods**:
+- Cycle 1: 2 min
+- Cycle 2: 4.25 hr
+- Cycle 3: 6+ hr
+- Cycle 4: 10 hr
+- **Pattern:** Groq hold times are increasing
+
+This suggests:
+1. Groq baseline is proving more stable/reliable
+2. Each cycle, Odin holds Groq longer before trying Anthropic again
+3. Eventual convergence: Will Groq become the permanent baseline?
+
+---
+
+ANTHROPIC WINDOW CONSISTENCY
+
+Anthropic trial duration remains stable at **~70 minutes** (cycles 3, 4, 5):
+- Not random or adaptive
+- Likely a **fixed scheduled window** (e.g., cron job every 10 hours, trial lasts 70 min)
+- Predictable: We can estimate next Groq revert at ~17:79 (=18:19 EDT)
+
+---
+
+COMPONENTS AFFECTED:
+- openclaw.json: default_model_primary, default_model_fallbacks
+- Primary: Anthropic Haiku (5th deployment)
+- Fallbacks: [Sonnet, Opus, Groq variants]
+
+---
+
+HYPOTHESIS: TIME-BASED SCHEDULED EVALUATION
+
+The pattern suggests:
+```
+Every ~10 hours:
+  - Deploy Anthropic Haiku + full fallbacks
+  - Run for 70 minutes
+  - Revert to Groq baseline
+  - Repeat
+```
+
+This would be a cron job or similar scheduler managing model rotation for continuous A/B testing during normal operations.
+
+---
+
+STATUS: Cycle continues as expected (on schedule)
+CREATED: 2026-03-22T17:09:00.487Z
+
+NOTE: Groq hold times increasing (2 min → 10 hr) suggest Groq is "winning" the evaluation. If trend continues, eventual outcome may be permanent adoption of Groq baseline with periodic (but less frequent) Anthropic trials.

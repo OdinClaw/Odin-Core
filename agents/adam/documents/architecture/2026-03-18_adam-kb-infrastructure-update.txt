@@ -1,0 +1,58 @@
+Architecture Note
+Date: 2026-03-18
+System: Odin AI — Adam Knowledge Base Infrastructure
+Change: Adam KB Infrastructure Components Created/Modified
+Details:
+
+COMPONENTS MODIFIED:
+  • ~/.openclaw-odin/workspace/agents/adam/memory/knowledge_index.json
+    - JSON index tracking document counts, rate limits, and document registry
+    - Transitioned from placeholder to active schema
+  
+  • ~/.openclaw-odin/workspace/agents/adam/RULES.md
+    - Adam operational behavior specification
+    - Defines documentation triggers, output modes (STRICT/CHAT), rate limiting
+    - Specifies storage routing (architecture/, decisions/, summaries/)
+    - Establishes post-write actions and loop prevention rules
+  
+  • Intermediate temp file (cleanup):
+    - ~/.openclaw-odin/workspace/agents/adam/RULES.md.tmp.47070.1773863946703
+    - Atomic write safety artifact (cleaned up after successful RULES.md finalization)
+
+IMPACT:
+
+INFRASTRUCTURE READINESS:
+  ✓ knowledge_index.json now active — tracking 6 architecture notes, 1 decision, 1 summary
+  ✓ RULES.md fully specified — Adam behavior is deterministic and auditable
+  ✓ Rate limiting configured (2 docs/hour with 20-min cooldown for auto events)
+  ✓ Storage routing implemented (documents/ with subdirectories by type)
+  ✓ Loop prevention rules established (Adam's own confirmations don't re-trigger)
+  ✓ TESTING_OVERRIDE active for validation phase (rate limits suspended)
+
+OPERATIONAL READINESS:
+  ✓ Adam can now reliably receive system.architecture.changed events
+  ✓ Handoff queue (agents/adam/handoffs/) correctly populates JSON artifacts
+  ✓ STRICT MODE active for task-bus-dispatched documentation
+  ✓ CHAT MODE available for direct Discord prompts
+  ✓ Post-write actions defined (index update + Discord confirmation)
+
+TESTING STATUS:
+  • End-to-end attachment validation in progress
+  • task_id 46ba5d43-3101-408b-974e-8e9b69dd0df3 triggered this documentation
+  • Template-based generation confirmed working
+  • Discord confirmation mechanism ready (next step)
+
+Related Agents:
+  • Odin — system event emission, architecture change detection
+  • Discord (bot: @Adam) — confirmation channel #adam (ID: 1478133176386715870)
+  • Knowledge pipeline — task bus routing to Adam for auto-documentation
+
+NOTES:
+This document marks the completion of Adam's infrastructure layer. The KB is now ready for production operation:
+  1. Odin emits system events → handoff JSON files queue in agents/adam/handoffs/
+  2. Adam reads handoffs → creates .txt documents using templates
+  3. Adam updates knowledge_index.json → increments counters, records timestamp
+  4. Adam posts confirmation to #adam → one-line STRICT MODE message only
+  5. Loop prevention active → Adam's own messages don't re-trigger documentation
+
+The RULES.md file is the canonical source of truth for Adam's behavior. Any future behavior changes must update RULES.md first.

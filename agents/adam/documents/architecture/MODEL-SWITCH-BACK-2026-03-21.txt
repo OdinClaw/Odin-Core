@@ -1,0 +1,72 @@
+ARCHITECTURE DOCUMENT: Model Strategy Reversal — Back to Anthropic Primary
+========================================================================
+
+Date: 2026-03-21
+Timestamp: 2026-03-21T17:12:32.565Z
+Source: Odin
+Config File: ~/.openclaw-odin/openclaw.json
+
+CHANGES DETECTED: 2 major model configuration updates
+
+---
+
+1. PRIMARY MODEL REVERSAL
+   Previous: minimax/MiniMax-M2.5
+   Current:  anthropic/claude-haiku-4-5-20251001
+   Impact:   System-wide primary model reverted from Minimax back to Anthropic Haiku
+
+2. FALLBACK CHAIN RESTRUCTURED
+   Previous: [anthropic/claude-haiku-4-5, anthropic/claude-sonnet-4-5, groq/llama-3.1-8b-instant, ollama/llama3.2:3b]
+   Current:  [anthropic/claude-sonnet-4-5, anthropic/claude-opus-4-6, groq/llama-3.1-8b-instant, groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b]
+   
+   Changes:
+   - Removed: anthropic/claude-haiku-4-5 (moved to primary role)
+   - Added:   anthropic/claude-opus-4-6 (new 2nd fallback)
+   - Kept:    anthropic/claude-sonnet-4-5 (now 1st fallback)
+   - Kept:    groq/llama-3.1-8b-instant (3rd fallback)
+   - Added:   groq/llama-3.3-70b-versatile (4th fallback, re-added)
+   - Added:   groq/openai/gpt-oss-120b (5th fallback, re-added)
+   - Removed: ollama/llama3.2:3b (local fallback removed)
+   
+   Impact: Full Anthropic stack now primary + primary fallbacks; Groq models restored to secondary tier
+
+---
+
+INTERPRETATION
+
+Significant strategic reversal after ~1 hour with Minimax M2.5:
+
+THEORY 1 — STABILITY/PERFORMANCE
+- Minimax experiment (24 hours total, from M2.7→M2.5→abandonment) may have revealed issues
+- Haiku is known stable; switching back to proven performer
+- Fallback chain emphasis on full Anthropic lineup (Haiku primary, Sonnet/Opus fallbacks)
+
+THEORY 2 — COST/EFFICIENCY RECALIBRATION
+- Anthropic Haiku may be more cost-effective than Minimax for primary workload
+- Fallback priority to Sonnet/Opus provides quality safety net
+- Groq models relegated to lower priority (possibly expensive or unreliable recently)
+
+THEORY 3 — TESTING/EVALUATION WINDOW CLOSED
+- Brief 24-hour trial period with Minimax concluded
+- Results insufficient to justify continued use
+- Revert to baseline Anthropic strategy with enhanced fallback depth
+
+COMPONENTS AFFECTED:
+- openclaw.json: default_model_primary, default_model_fallbacks
+- All agents now route through Anthropic Haiku as primary
+- Fallback order now heavily weighted toward Anthropic (Sonnet, Opus)
+- Groq open-source and local Ollama deprioritized
+
+---
+
+HISTORICAL CONTEXT:
+- 2026-03-20 12:09: Minimax M2.7 adoption (from Groq)
+- 2026-03-21 12:29: Downgrade to Minimax M2.5
+- 2026-03-21 13:12: Revert to Anthropic Haiku (current)
+
+Total Minimax trial window: ~1 hour in production
+
+---
+
+STATUS: Ready for deployment
+CREATED: 2026-03-21T17:12:32.565Z

@@ -1,0 +1,58 @@
+================================================================================
+MODEL STRATEGY REVERSAL — BACK TO ANTHROPIC PRIMARY
+Date: 2026-03-21 13:12 EDT
+Status: BRIEF TRIAL (reverted 2026-03-21 13:31)
+================================================================================
+
+CHANGE SUMMARY
+--------------
+Primary model changed from: minimax/MiniMax-M2.5
+Primary model changed to: anthropic/claude-haiku-4-5-20251001
+
+CONTEXT
+-------
+Complete reversion from Minimax trial. Minimax removed from primary strategy.
+Anthropic Haiku reinstated as primary. Full Anthropic/Groq fallback chain restored.
+
+MODEL DETAILS
+-------------
+Provider: Anthropic
+Model ID: claude-haiku-4-5-20251001
+Status: PRIMARY (returned)
+Authentication: Anthropic API key (from openclaw.json)
+
+FALLBACK CHAIN (RESTORED)
+-------------------------
+1. anthropic/claude-haiku-4-5-20251001 (PRIMARY)
+2. anthropic/claude-sonnet-4-5
+3. anthropic/claude-opus-4-6
+4. groq/llama-3.1-8b-instant
+5. groq/llama-3.3-70b-versatile
+6. groq/openai/gpt-oss-120b
+
+CHANGE RATIONALE
+----------------
+Minimax trial window (~1 hour total across M2.7 and M2.5) concluded.
+System returned to Anthropic-primary with expanded fallback chain.
+Decision suggests Anthropic + Groq redundancy preferred over Minimax single-provider.
+
+DURATION
+--------
+Deployment: 2026-03-21 13:12 EDT
+Reverted to Groq: 2026-03-21 13:31 EDT
+Duration: ~19 minutes
+
+OUTCOME
+-------
+Brief Anthropic trial. Followed by revert to Groq baseline within 19 minutes.
+See MODEL-REVERT-GROQ-2026-03-21.txt for continuation.
+
+PATTERN NOTE
+------------
+This is the first Anthropic trial in a series of rapid model changes that
+continue throughout 2026-03-21. By end of day, pattern becomes clear:
+A/B testing between Anthropic and Groq with fixed trial window.
+
+See MODEL-STRATEGY-PATTERN-2026-03-22.txt for full pattern analysis.
+
+================================================================================

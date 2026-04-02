@@ -148,16 +148,75 @@ if [ "$PROVIDER_MODE" = "groq_fallback" ]; then
   log_heartbeat "Groq throttle — slot acquired (proceeding with openclaw)"
 fi
 
+# ── 3a. Gateway pre-check — abort if gateway is unreachable ───────────────────
+# If the gateway is down, openclaw falls back to embedded mode which has no
+# Discord channel context. This causes "Discord recipient is required" errors
+# that loop indefinitely. Skip the heartbeat entirely; the gateway watchdog
+# will restore the service. This is NOT recorded as a circuit-breaker failure.
+GATEWAY_PORT="${OPENCLAW_GATEWAY_PORT:-18789}"
+GATEWAY_TOKEN="1b10607665b5a745cd27b22a77fa7957a2e5b297452c8e39"
+GATEWAY_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+  --max-time 4 \
+  -H "Authorization: Bearer $GATEWAY_TOKEN" \
+  "http://127.0.0.1:${GATEWAY_PORT}/health" 2>/dev/null)
+
+if [ "$GATEWAY_CODE" != "200" ]; then
+  log_heartbeat "SKIP — gateway not reachable (HTTP ${GATEWAY_CODE:-000}); watchdog will restore it"
+  log_circuit "Gateway unreachable — heartbeat skipped (not a provider failure)"
+  # Mark circuit SUCCESS: gateway down is infrastructure state, not heartbeat failure
+  if [ -n "$REQUEST_ID" ]; then
+    node "$CB_SCRIPT" complete "$REQUEST_ID" success 2>/dev/null
+    log_circuit "Circuit breaker: marked SUCCESS (gateway-down skip)"
+  fi
+  exit 0
+fi
+
 # ── 3. Invoke Loki via openclaw (normal path) ─────────────────────────────────
+# Hard timeout: 60 seconds. If openclaw does not return within this window,
+# the process is killed. Max 2 retries (RETRY_CAP) before giving up.
 log_heartbeat "Starting heartbeat (requestId=$REQUEST_ID)"
 
-openclaw --profile "$PROFILE" agent \
-  --agent loki \
-  --message "$MESSAGE" \
-  --channel discord \
-  --deliver \
-  --reply-account loki
-OPENCLAW_EXIT=$?
+HEARTBEAT_TIMEOUT=60
+RETRY_CAP=2
+OPENCLAW_EXIT=1
+ATTEMPT=0
+
+while [ $ATTEMPT -le $RETRY_CAP ]; do
+  ATTEMPT=$(( ATTEMPT + 1 ))
+
+  # Run openclaw with a hard timeout (background + timer, macOS-compatible)
+  openclaw --profile "$PROFILE" agent \
+    --agent loki \
+    --message "$MESSAGE" \
+    --channel discord \
+    --deliver \
+    --reply-account loki \
+    --timeout "$HEARTBEAT_TIMEOUT" &
+  OC_PID=$!
+
+  # Watchdog timer: kill if the process outlives the timeout
+  ( sleep $(( HEARTBEAT_TIMEOUT + 5 )); \
+    kill -TERM $OC_PID 2>/dev/null; \
+    sleep 3; \
+    kill -9   $OC_PID 2>/dev/null ) &
+  TIMER_PID=$!
+
+  wait $OC_PID
+  OPENCLAW_EXIT=$?
+
+  # Cancel the timer
+  kill $TIMER_PID 2>/dev/null
+  wait $TIMER_PID 2>/dev/null
+
+  if [ $OPENCLAW_EXIT -eq 0 ]; then
+    break   # Success — stop retrying
+  fi
+
+  if [ $ATTEMPT -le $RETRY_CAP ]; then
+    log_heartbeat "Attempt $ATTEMPT failed (exit $OPENCLAW_EXIT) — retrying ($ATTEMPT/$RETRY_CAP)"
+    sleep 3
+  fi
+done
 
 # ── 4. Record outcome ─────────────────────────────────────────────────────────
 if [ -n "$REQUEST_ID" ]; then

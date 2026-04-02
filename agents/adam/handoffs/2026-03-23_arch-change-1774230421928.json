@@ -1,0 +1,21 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-23T01:47:01.928Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-23T01:47:01.928Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/adam/documents/architecture/TESLA-FULL-ACTIVATION-2026-03-23.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md",
+        "~/.openclaw-odin/workspace/agents/adam/MEMORY.md"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/adam/documents/architecture/TESLA-FULL-ACTIVATION-2026-03-23.txt, ~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md, ~/.openclaw-odin/workspace/agents/adam/MEMORY.md",
+      "config": "workspace"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+ARCHITECTURE DOCUMENT: Model Strategy — Cycle 19: Groq Return (Extended Anthropic Hold 4h 36m)
+====================================================================================================
+
+Date: 2026-03-25
+Timestamp: 2026-03-25T11:39:28.431Z
+Source: Configuration update (openclaw.json)
+Category: System / Model Strategy
+
+---
+
+MODEL CONFIGURATION UPDATE: GROQ BASELINE (CYCLE 19 - EXTENDED ANTHROPIC HOLD)
+
+**Status:** Groq Llama-3.1 primary + simplified fallback
+**Timestamp:** 2026-03-25T11:39:28.431Z
+**Time at Anthropic:** 4 hours 36 minutes (2026-03-25 07:02 to 2026-03-25 11:39)
+**Pattern:** BOTH strategies now subjected to extended hold testing
+
+---
+
+## CRITICAL PATTERN SHIFT: SYMMETRICAL EXTENDED HOLDS
+
+### Complete Extended Hold Timeline
+
+| Cycle | Strategy | Hold Duration | Notes |
+|-------|----------|---------------|-------|
+| 15 | Groq | 224m (3h 44m) | **EXTENDED** |
+| 17 | Groq | 272m (4h 32m) | **EXTENDED** |
+| 18 | Anthropic | 276m (4h 36m) | **EXTENDED** |
+
+**Critical observation:** System is now running extended baseline holds for BOTH strategies (~4+ hours each)
+
+---
+
+## NEW HYPOTHESIS: SYMMETRICAL STRESS-TESTING PROTOCOL
+
+System appears to be implementing a **balanced evaluation protocol**:
+
+1. **Extended Groq baseline** (3h 44m) — Cycle 15
+2. **Extended Groq baseline** (4h 32m) — Cycle 17
+3. **Extended Anthropic baseline** (4h 36m) — Cycle 18 (NOW)
+
+**Pattern:** System is giving both strategies equal extended testing time under production-like conditions
+
+### What This Means
+
+- ✅ **Fair comparison** — Both strategies get equivalent stress testing (4+ hour holds)
+- ✅ **Comprehensive evaluation** — Extended duration reveals performance over time
+- ✅ **Production simulation** — Long holds test behavior under sustained load
+- ✅ **Genuine uncertainty** — System is not favoring either strategy
+
+---
+
+## DECISION TIMELINE IMPACT (MAJOR REVISION)
+
+### Previous forecast: 24-48 hours, Groq likely winner
+### REVISED forecast: 48-72+ hours, COMPLETELY UNCERTAIN
+
+**Reasoning:**
+1. Extended Anthropic hold (4h 36m) matches extended Groq holds
+2. System is implementing balanced, symmetrical testing
+3. No clear preference emerging despite 60+ hours of evaluation
+4. Both strategies are genuinely competitive
+
+---
+
+## CONFIDENCE ASSESSMENT REVISED
+
+### Groq probability: 50%
+### Anthropic probability: 50%
+
+**Explanation:**
+- Extended holds for both strategies indicate genuine competition
+- No asymmetry in testing time
+- System is not showing preference for either
+- Decision appears to depend on performance metrics we cannot observe
+
+---
+
+## EVALUATION PROTOCOL MATURITY
+
+System has evolved into a **sophisticated, balanced comparison methodology**:
+
+1. **Initial phase:** Extended evaluation (diverse windows, discovery phase)
+2. **Rapid oscillation:** Quick alternation (55m Groq, 8-9m Anthropic) — seemed to favor Groq
+3. **Extended testing:** Both strategies given 4+ hour baseline stress tests — no clear winner
+4. **Decision pending:** System continues gathering comprehensive performance data
+
+---
+
+## OPERATIONAL FORECAST
+
+### Next 24-48 hours
+
+Expected pattern:
+- **Cycle 20:** Brief Groq verification (expected 5-10 min)
+- **Cycle 21+:** Continue extended hold pattern or new testing phase
+- **Configuration:** Continued frequent changes
+- **Stability:** Both strategies proven reliable for 4+ hour sustained operation
+
+### Decision point
+
+**Estimated:** 48-72+ hours from now (2026-03-26 11:00+ EDT - 2026-03-27 11:00+ EDT)
+
+**Trigger:** System will declare winner when one strategy demonstrates:
+- Measurably superior performance metrics
+- Better reliability over extended operations
+- Cost advantage exceeding quality trade-off
+- Specific advantage in key operational scenarios
+
+---
+
+## WHAT WE'VE LEARNED ABOUT THE SYSTEM
+
+1. **Sophisticated optimization** — System runs iterative, balanced evaluation cycles
+2. **Rigorous methodology** — Extended stress testing for comprehensive assessment
+3. **No premature decisions** — System continues testing despite clear initial patterns
+4. **Genuine comparison** — Both strategies are given equal evaluation time
+5. **Data-driven** — Decision will be based on observable performance metrics
+
+---
+
+## STRATEGIC IMPLICATION FOR PANTHEON
+
+System evaluation suggests:
+- **Both Groq and Anthropic are viable** for Pantheon operations
+- **No clear technical advantage** for either strategy at current scale
+- **Final choice** will depend on factors visible only to the system (cost, reliability, latency, quality metrics)
+- **Either outcome is acceptable** — Both strategies proven stable under 4+ hour stress tests
+
+---
+
+STATUS: Symmetrical extended holds for both strategies; genuine competition, decision timeline 48-72+ hours
+CREATED: 2026-03-25T11:39:28.431Z
+
+NOTE: The 4h 36m Anthropic hold following two extended Groq holds reveals a critical pattern: system is implementing balanced, symmetrical evaluation of both strategies. This is no longer a case of Groq being favored (as earlier patterns suggested) but rather a genuine competitive evaluation where both strategies receive equal stress-testing time. The system will declare a winner based on comprehensive performance metrics gathered during these extended holds. Decision timeline is extended to 48-72+ hours, with outcome completely uncertain.

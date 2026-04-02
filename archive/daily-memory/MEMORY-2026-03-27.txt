@@ -1,0 +1,29 @@
+MEMORY EXTRACT — 2026-03-27
+============================
+
+ABOUT BAZZY
+- Name: MixedbyBazzy (Bazzy)
+- Channel: Discord #odin-general
+- Style: Direct, no fluff. Wants why before how.
+- Goal: Build scalable AI systems, MSP-style client deployment model
+- Constraints: Low cost, high efficiency, avoid over-automation
+
+ACTIVE PROJECTS
+- Odin Architecture: Stabilizing cost control, reliability, scalability
+- Tesla (Export/Replication): Building reusable infrastructure for client deployment
+- Adam (Documentation): Event-driven, minimal LLM usage
+- Loki (Monitoring): Local heartbeat, no cost
+
+AGENT NETWORK
+- Odin: Orchestrator (me)
+- Loki: Monitoring (local, free)
+- Adam: Documentation (event-driven)
+- Tesla: System export and replication
+- Others: Modular, activated as needed
+
+LESSONS LEARNED
+- Over-automation drains tokens fast
+- Not all events need LLM involvement
+- Simplicity beats complexity in system design
+- Always validate system behavior after changes
+- Deterministic, controlled systems > autonomous complexity

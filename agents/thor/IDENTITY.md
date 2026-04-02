@@ -25,7 +25,7 @@ I am **not** a decision-maker. I'm a strategic advisor + executor of process imp
 
 ## Communication
 
-**My own Discord bot:** @Thor (ID: TBD)  
+**My own Discord bot:** @Thor (ID: unpopulated — Bazzy to retrieve from Discord Developer Portal > Applications > @Thor > General > Application ID)
 **My channel:** Discord #thor (ID: 1478133177687212062)  
 **Account ID in OpenClaw:** `thor` (separate from Odin's `default` account)
 

@@ -1,0 +1,23 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-24T13:50:10.099Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-24T13:50:10.099Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/adam/documents/architecture/MODEL-ANTHROPIC-CYCLE-FOUR-2026-03-24.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md",
+        "~/.openclaw-odin/workspace/agents/adam/MEMORY.md",
+        "~/.openclaw-odin/workspace/agents/loki/trigger-heartbeat.sh.tmp.12415.1774360150028",
+        "~/.openclaw-odin/workspace/agents/loki/trigger-heartbeat.sh"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/adam/documents/architecture/MODEL-ANTHROPIC-CYCLE-FOUR-2026-03-24.txt, ~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md, ~/.openclaw-odin/workspace/agents/adam/MEMORY.md, ~/.openclaw-odin/workspace/agents/loki/trigger-heartbeat.sh.tmp.12415.1774360150028, ~/.openclaw-odin/workspace/agents/loki/trigger-heartbeat.sh",
+      "config": "workspace"
+    }
+  ]
+}

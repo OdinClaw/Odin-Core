@@ -1,0 +1,30 @@
+{
+  "architecture_notes": 9,
+  "decisions_recorded": 1,
+  "summaries_created": 1,
+  "last_update": "2026-03-18T20:10:19.435Z",
+  "rate_limit": {
+    "auto_docs_this_hour": 3,
+    "hour_window_start": "2026-03-18T20:00:00.000Z",
+    "last_auto_doc_at": "2026-03-18T20:10:19.435Z"
+  },
+  "documents": {
+    "architecture": [
+      "ADAM-ACTIVATION-CONFIG-2026-03-17.txt",
+      "OPENCLAW-CONFIG-MOD-EVENT-2026-03-17-1638.txt",
+      "ODIN-KNOWLEDGE-BUNDLE-2026-03-17.txt",
+      "2026-03-18_adam-operational-rules.txt",
+      "2026-03-18_thor-routing-model-update.txt",
+      "2026-03-18_task-bus-rate-limit-reply.txt",
+      "2026-03-18_adam-kb-infrastructure-update.txt",
+      "2026-03-18_task-bus-discord-attachment-pipeline.txt",
+      "2026-03-18_task-bus-attachment-pipeline-validation.txt"
+    ],
+    "decisions": [
+      "2026-03-17_bench_provider_bypass.txt"
+    ],
+    "summaries": [
+      "2026-03-17_memory_index_planning.txt"
+    ]
+  }
+}

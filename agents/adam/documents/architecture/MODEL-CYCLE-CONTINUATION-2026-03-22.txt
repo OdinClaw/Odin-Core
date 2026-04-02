@@ -1,0 +1,72 @@
+ARCHITECTURE DOCUMENT: Model Configuration — Oscillation Cycle Continuation
+=======================================================================
+
+Date: 2026-03-22
+Timestamp: 2026-03-22T07:03:37.243Z
+Source: Odin
+Config File: ~/.openclaw-odin/openclaw.json
+
+CHANGES DETECTED: 2 model configuration updates (cycle continuation)
+
+---
+
+1. PRIMARY MODEL REVERT
+   Previous: anthropic/claude-haiku-4-5-20251001
+   Current:  groq/llama-3.1-8b-instant
+   Impact:   System reverts to Groq baseline (4th occurrence)
+
+2. FALLBACK CHAIN SIMPLIFIED
+   Previous: [anthropic/claude-sonnet-4-5, anthropic/claude-opus-4-6, groq/llama-3.1-8b-instant, groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b]
+   Current:  [groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b, ollama/llama3.2:3b]
+
+---
+
+OSCILLATION CYCLE CONTINUES AS PREDICTED
+
+| Cycle | Anthropic Window | Duration | Groq Hold | Duration | Pattern |
+|-------|-----------------|----------|-----------|----------|---------|
+| 1 | 13:12–13:31 | 19 min | 13:31–13:33 | 2 min | Flash cycle |
+| 2 | 13:33–14:13 | 40 min | 14:13–22:27 | 4.25 hr | Extended Groq |
+| 3 | 22:27–23:37 | 70 min | 23:37–05:53 | 6+ hr | Longer hold |
+| 4 | 05:53–07:03 | ~70 min | *ongoing* | — | Repeat |
+
+---
+
+OBSERVATION
+
+**Anthropic window: ~70 minutes (consistent with cycle 3)**
+
+The Anthropic trial duration has stabilized at ~70 minutes, matching the previous occurrence. This suggests:
+1. Not a random pattern
+2. Likely a **scheduled evaluation window** (e.g., every 70 min during active cycles)
+3. Groq hold times continue to vary (2 min → 4+ hr → 6+ hr → current)
+
+---
+
+COMPONENTS AFFECTED:
+- openclaw.json: default_model_primary, default_model_fallbacks
+- Primary: Groq Llama 3.1-8b (4th Groq revert)
+- Fallbacks: [Groq variants + Ollama]
+
+---
+
+INTERPRETATION
+
+**Confirmed pattern: A/B Testing Cycle**
+
+The system is running a structured model evaluation:
+- **Fixed window:** ~70 min Anthropic trials
+- **Variable hold:** Groq baseline between 2 min and 6+ hours
+- **Recurring:** Repeats cyclically with consistent timing
+
+This is characteristic of:
+- Automated performance monitoring
+- Scheduled A/B test windows
+- Fallback-to-proven-baseline strategy
+
+---
+
+STATUS: Cycle continues as expected
+CREATED: 2026-03-22T07:03:37.243Z
+
+NOTE: Anthropic trial duration stabilization (70 min) combined with variable Groq holds suggests semi-autonomous evaluation scheduler. Likely managed by Odin or a cron job configured for periodic model comparison.

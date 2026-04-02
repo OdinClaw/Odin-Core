@@ -1,0 +1,21 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-24T13:52:05.390Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-24T13:52:05.390Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/adam/documents/architecture/LOKI-HEARTBEAT-SYSTEM-2026-03-24.txt",
+        "~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md",
+        "~/.openclaw-odin/workspace/agents/adam/MEMORY.md"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/adam/documents/architecture/LOKI-HEARTBEAT-SYSTEM-2026-03-24.txt, ~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md, ~/.openclaw-odin/workspace/agents/adam/MEMORY.md",
+      "config": "workspace"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+ARCHITECTURE DOCUMENT: Model Configuration Change
+================================================
+
+Date: 2026-03-20
+Timestamp: 2026-03-20T16:09:38.664Z
+Source: Odin
+Config File: ~/.openclaw-odin/openclaw.json
+
+CHANGES DETECTED: 5 significant model configuration updates
+
+---
+
+1. MAIN AGENT MODEL ASSIGNMENT
+   Previous: undefined
+   Current:  minimax/minimax-m2.7
+   Impact:   Main agent (Odin) now uses Minimax as primary model
+
+2. MODEL ALLOWLIST EXPANSION
+   Added:    minimax/minimax-m2.7
+   Impact:   Minimax M2.7 now authorized for use across the system
+
+3. PRIMARY MODEL REASSIGNMENT
+   Previous: groq/llama-3.1-8b-instant
+   Current:  minimax/minimax-m2.7
+   Impact:   System-wide default model shifted from Groq Llama to Minimax M2.7
+
+4. FALLBACK MODEL STACK REORGANIZED
+   Previous: [groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b, ollama/llama3.2:3b]
+   Current:  [anthropic/claude-haiku-4-5, anthropic/claude-sonnet-4-5, groq/llama-3.1-8b-instant, ollama/llama3.2:3b]
+   
+   Changes:
+   - Added: anthropic/claude-haiku-4-5 (new 1st fallback)
+   - Added: anthropic/claude-sonnet-4-5 (new 2nd fallback)
+   - Restored: groq/llama-3.1-8b-instant (now 3rd fallback)
+   - Retained: ollama/llama3.2:3b (4th fallback)
+   - Removed: groq/llama-3.3-70b-versatile
+   - Removed: groq/openai/gpt-oss-120b
+   
+   Impact: Anthropic models now have priority in fallback chain; shift away from Groq large models
+
+5. MINIMAX AUTH ORDER
+   Agent: minimax
+   Previous: undefined
+   Current:  [minimax:default]
+   Impact:   Minimax authentication configured with default credentials
+
+---
+
+INTERPRETATION
+
+This represents a significant shift in the system's model strategy:
+
+PRIMARY: Minimax M2.7 is now the main model (was: Groq Llama 3.1-8b)
+FALLBACK: Anthropic models (Haiku, Sonnet) now lead the fallback chain before Groq/Ollama
+
+This suggests:
+- Strategic move toward Minimax for primary workloads
+- Anthropic models serve as first safety fallback (cost-efficient + reliable)
+- Groq open-source models relegated to 3rd position
+- Local Ollama still available as final fallback
+
+COMPONENTS AFFECTED:
+- openclaw.json: agent_model, default_model_primary, default_model_fallbacks, auth_order[minimax]
+- Authentication: Minimax credentials configured
+- Routing: All agent requests now route through Minimax primary → Anthropic fallbacks
+
+---
+
+STATUS: Ready for deployment
+CREATED: 2026-03-20T16:09:38.664Z

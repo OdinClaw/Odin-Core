@@ -1,0 +1,61 @@
+# manifest.yaml — Hermes
+
+id: hermes
+name: Hermes
+type: isolated
+status: queued
+version: "1.0"
+created: 2026-03-08
+updated: 2026-03-08
+
+identity:
+  emoji: 🪽
+  mythology: "Hermes — Greek messenger god, Record of Ragnarok (speed, connection, finding paths between worlds)"
+  archetype: analytics
+
+model:
+  primary: anthropic/claude-haiku-4-5-20251001
+  fallbacks:
+    - anthropic/claude-sonnet-4-5
+    - ollama/qwen3.5:9b
+  subagents: ollama/qwen3.5:9b
+  rationale: "Artist discovery and scoring is structured analysis — Haiku sufficient."
+
+discord:
+  channel: "#hermes"
+  channelId: ""
+  botId: ""
+  botName: "@Hermes"
+  accountId: hermes
+
+workspace:
+  path: "~/.openclaw-odin/workspace/agents/hermes"
+  agentDir: "~/.openclaw-odin/agents/hermes/agent"
+
+role:
+  summary: "Weekly collab lead discovery. Finds and scores potential collaboration artists in Bazzy's niche. Generates outreach templates. Feeds collab pipeline."
+  schedule: "weekly Wednesday 10 AM EST"
+  output: "#hermes + intel/COLLAB-LEADS.md"
+
+dependencies:
+  reads:
+    - shared-context/THESIS.md
+    - intel/SOCIAL-METRICS.md    # uses Apollo's artist trend data
+  writes:
+    - intel/COLLAB-LEADS.md
+  notifies:
+    - main
+
+tags:
+  - music
+  - analytics
+  - scheduled
+  - api-dependent
+
+activation:
+  cli_registered: false
+  auth_configured: false
+  discord_bot_created: false
+  openclaw_json_updated: false
+  tested: false
+  blocker: "Downstream of Apollo — needs SOCIAL-METRICS.md data to function"

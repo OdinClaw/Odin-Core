@@ -1,0 +1,100 @@
+# manifest.yaml — Thor
+#
+# CLASSIFICATION NOTE (read before editing):
+#
+# Thor has two dimensions that are both true simultaneously:
+#
+#   interface: isolated
+#     Thor is a registered OpenClaw agent (openclaw agents add thor).
+#     Thor has a dedicated Discord bot (@Thor) and dedicated channel (#thor).
+#     Thor has his own workspace and agentDir.
+#
+#   invocation: on-demand
+#     Thor does NOT run continuously or on a fixed schedule.
+#     Thor is called when there is specific systems work to do.
+#     Between invocations, Thor is silent — no heartbeat, no cron.
+#
+# This is not a contradiction. Think: specialist consultant with a permanent desk
+# who only shows up when there is work that requires them.
+#
+# type: isolated    → OpenClaw registration and Discord presence (reality)
+# invocation: on-demand  → execution model (operational behavior)
+# PANTHEON-REGISTRY.md lists Thor under Sub-Agents to reflect operational pattern.
+
+id: thor
+name: Thor
+type: isolated
+invocation: on-demand
+status: live
+version: "1.1"
+created: 2026-03-04
+updated: 2026-03-08
+
+identity:
+  emoji: ⚡
+  mythology: "Thor — Norse god of thunder and the forge, Record of Ragnarok (unstoppable force, relentless refinement, the hammer that shapes metal)"
+  archetype: specialist
+
+model:
+  primary: anthropic/claude-sonnet-4-5
+  fallbacks:
+    - anthropic/claude-opus-4-6
+  subagents: ollama/qwen3.5:9b
+  rationale: "Systems refinement and multi-agent workflow analysis require strong reasoning. Haiku insufficient for deep synthesis work. Local models not suitable for this role — cloud always. Opus only for most complex architectural analysis."
+
+discord:
+  channel: "#thor"
+  channelId: "1478133177687212062"
+  botId: ""    # UNPOPULATED — retrieve from Discord Developer Portal > Applications > @Thor > General > Application ID
+  botName: "@Thor"
+  accountId: thor
+
+workspace:
+  path: "~/.openclaw-odin/workspace/agents/thor"
+  agentDir: "~/.openclaw-odin/agents/thor/agent"
+
+role:
+  summary: "On-demand systems specialist. Invoked for workflow hardening, process optimization, best-practice forging, and pressure-testing. Has permanent Discord presence but does not run continuously."
+  schedule: "on-demand (invoked by Odin or Bazzy for specific tasks)"
+  output: "#thor"
+  scope:
+    - systems refinement
+    - workflow hardening
+    - process optimization and elimination of waste
+    - best-practice forging and documentation
+    - pressure-testing existing processes
+    - cross-agent workflow synthesis
+    - Artist Toolkit development tracking
+    - workshop curriculum development (music production, AI agents, content strategy)
+
+dependencies:
+  reads:
+    - shared-context/THESIS.md
+    - shared-context/FEEDBACK-LOG.md
+    - shared-context/SIGNALS.md
+    - intel/SOCIAL-METRICS.md
+    - intel/THOUGHT-LEADERSHIP.md
+    - intel/COLLAB-LEADS.md
+    - kernel/DOCTRINE.md
+    - kernel/PANTHEON-REGISTRY.md
+  writes:
+    - agents/thor/memory/YYYY-MM-DD.md
+    - agents/thor/THOR-SYSTEM-REVIEW-*.md
+    - workspace/promote/YYYY-MM-DD-thor-*.md    # promote candidates for Odin review → Adam KB
+  notifies:
+    - main    # reports findings to Odin; Odin and Bazzy decide what to implement
+
+tags:
+  - ops
+  - optimization
+  - systems
+  - on-demand
+  - specialist
+  - cloud-first
+
+activation:
+  cli_registered: true
+  auth_configured: true
+  discord_bot_created: true
+  openclaw_json_updated: true
+  tested: true

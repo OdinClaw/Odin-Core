@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-03-23T18:23:01.976Z",
+  "action": "import-system",
+  "dryRun": true,
+  "branch": "main",
+  "status": "dry-run-complete",
+  "imported": 0,
+  "skipped": 0,
+  "backed_up": 0,
+  "collisions": 0,
+  "failureReason": null,
+  "message": "Would import full system from GitHub snapshot branch: main",
+  "readiness": "NEEDS_MANUAL_SETUP",
+  "manual_setup_required": [
+    "Set openclaw.json (root config)",
+    "Set auth-profiles.json (credentials)",
+    "Configure gateway.bind",
+    "Verify all agent directories"
+  ]
+}

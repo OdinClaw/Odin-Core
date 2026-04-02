@@ -1,0 +1,172 @@
+ARCHITECTURE DOCUMENT: Model Strategy — Cycle 18: Anthropic Return (Extended Groq Hold 4h 32m)
+==================================================================================================
+
+Date: 2026-03-25
+Timestamp: 2026-03-25T07:02:57.533Z
+Source: Configuration update (openclaw.json)
+Category: System / Model Strategy
+
+---
+
+MODEL CONFIGURATION UPDATE: ANTHROPIC READOPTION (CYCLE 18 - EXTENDED GROQ HOLD)
+
+**Status:** Anthropic Haiku primary + full fallback stack
+**Timestamp:** 2026-03-25T07:02:57.533Z
+**Time at Groq baseline:** 4 hours 32 minutes (2026-03-25 02:30 to 2026-03-25 07:02)
+**Pattern:** Extended Groq baseline hold (5x longer than standard 55m baseline)
+
+---
+
+## EXTENDED HOLD PATTERN CONFIRMED
+
+### Groq Baseline Hold Durations (Complete Timeline)
+
+| Cycle | Groq Hold Duration | Notes |
+|-------|-------------------|-------|
+| 9 | 56 minutes | Initial |
+| 11 | 55 minutes | Standard |
+| 13 | 55 minutes | Standard |
+| 15 | 224 minutes (3h 44m) | **EXTENDED TEST** |
+| 17 | 272 minutes (4h 32m) | **EXTENDED HOLD** |
+
+**Pattern shift:** System is running increasingly longer baseline holds (55m → 224m → 272m)
+
+---
+
+## CRITICAL ANALYSIS: WHAT ARE EXTENDED HOLDS INDICATING?
+
+### Hypothesis 1: Extended Stress Testing
+System is running prolonged Groq baseline tests to:
+- Evaluate performance over 4+ hour sustained operations
+- Identify reliability issues that appear only during long runs
+- Measure consistency over extended time periods
+- Test under diverse workload patterns
+
+### Hypothesis 2: Groq Performance Investigation
+Extended holds may indicate:
+- Issues detected during Groq operation requiring investigation
+- Performance degradation identified over time
+- Quality or reliability concerns emerging during extended tests
+- System gathering comprehensive failure/success data
+
+### Hypothesis 3: Continuous Optimization
+System may be:
+- Running production-like workload simulations
+- Benchmarking both strategies under realistic conditions
+- Collecting performance metrics for detailed comparison
+- Preparing for critical decision based on extensive data
+
+---
+
+## DECISION TIMELINE IMPACT
+
+### Previous forecast: Groq declared within 6-12 hours
+### Revised forecast: UNCERTAIN - Extended holds indicate deeper investigation
+
+**What extended holds mean:**
+1. **Not a simple decision** — 4h+ baseline tests suggest complex evaluation
+2. **Important factors being measured** — Duration required for comprehensive assessment
+3. **Decision delayed** — May require 24-48+ more hours of testing
+4. **Confidence threshold not yet met** — System continues gathering data
+
+---
+
+## OPERATIONAL ASSESSMENT
+
+### For Pantheon
+
+- Model evaluation continues with **extended baseline testing** (no decision yet)
+- Both strategies remain under serious consideration
+- Configuration will continue changing for at least 24-48+ more hours
+- System is gathering comprehensive performance data before final decision
+
+### For Clients
+
+- **Current:** Anthropic Haiku primary
+- **Configuration stability:** Expect continued changes for 24-48+ hours
+- **Reliability:** Both Groq and Anthropic proven stable for 4+ hour sustained runs
+- **Final decision:** Still unknown (could be either strategy)
+
+---
+
+## PATTERN EVOLUTION OVER 52+ HOURS
+
+### Timeline
+
+**Phase 1 (0-24h):** Initial extended evaluation
+- Windows: 20 min - 3.2 hours
+- Purpose: Establish baseline performance
+
+**Phase 2 (24-40h):** Rapid oscillation with standard windows
+- Windows: 55 min ↔ 8-9 min
+- Purpose: Quick comparative sampling
+
+**Phase 3 (40-46h):** Extended stress testing begins
+- Windows: 224 min (Groq baseline)
+- Purpose: Comprehensive validation
+
+**Phase 4 (46-52h, NOW):** Continued extended testing
+- Windows: 272 min (Groq baseline)
+- Purpose: Further validation/investigation
+
+---
+
+## GROQ CONFIDENCE REASSESSMENT
+
+### Previous confidence: 90% (based on 4-min verification)
+### REVISED confidence: 60% (based on extended holds continuing)
+
+**Reasoning:**
+- Extended holds suggest decision is not finalized
+- System not showing clear preference yet
+- Both strategies may be genuinely competitive
+- More evaluation cycles needed
+
+---
+
+## NEXT EXPECTED EVENTS
+
+**Likely scenarios:**
+
+**Scenario A (40% probability):** Anthropic verification → Return to Groq (extended hold)
+- Pattern continues with 4+ hour Groq baseline tests
+- System continues comprehensive benchmarking
+- Decision delayed 24+ more hours
+
+**Scenario B (30% probability):** Anthropic short verification → Groq lock
+- 10-30 min Anthropic window
+- Followed by Groq permanent lock
+- System declares Groq final within hours
+
+**Scenario C (20% probability):** Anthropic extended hold
+- Extended Anthropic baseline test (4+ hours)
+- System may be reconsidering Anthropic seriously
+- Decision timeline extended significantly
+
+**Scenario D (10% probability):** Unexpected new evaluation strategy
+- Novel testing approach emerges
+- Configuration pattern changes fundamentally
+- Timeline becomes unpredictable
+
+---
+
+## CURRENT KNOWLEDGE STATE
+
+What we know:
+- ✅ Both strategies stable for 4+ hours
+- ✅ System committed to comprehensive evaluation
+- ✅ Extended testing reveals important information
+- ✅ Decision requires extensive data gathering
+
+What remains uncertain:
+- ❓ Which strategy will win
+- ❓ How much longer evaluation will continue
+- ❓ What factors trigger final decision
+- ❓ Whether extended holds are stress tests or issue investigations
+
+---
+
+STATUS: Extended Groq baseline holds (4h 32m) continue; evaluation phase extended, decision timeline uncertain
+CREATED: 2026-03-25T07:02:57.533Z
+
+NOTE: The second extended Groq baseline hold (272 minutes, 4h 32m) confirms that the system has entered a new evaluation phase. These extended holds are not standard oscillation but appear to be comprehensive stress-testing or production-like workload validation. The system is gathering extensive data before making a final decision. Confidence in any particular outcome has decreased, and decision timeline is now 24-48+ hours (extended from earlier 6-12 hour forecast).

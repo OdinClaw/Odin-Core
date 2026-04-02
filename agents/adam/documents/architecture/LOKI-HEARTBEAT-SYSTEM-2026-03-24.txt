@@ -1,0 +1,184 @@
+ARCHITECTURE DOCUMENT: Loki Heartbeat System — Deployed Infrastructure
+===================================================================
+
+Date: 2026-03-24
+Timestamp: 2026-03-24T13:50:10.099Z
+Source: Loki agent heartbeat trigger script
+Category: System / Operations / Monitoring
+
+---
+
+LOKI HEARTBEAT SYSTEM: DEPLOYED INFRASTRUCTURE
+
+**Status:** ✅ OPERATIONAL
+**Component:** trigger-heartbeat.sh (circuit breaker + degraded mode handler)
+**Location:** ~/.openclaw-odin/workspace/agents/loki/trigger-heartbeat.sh
+**Timestamp:** 2026-03-24T13:50:10.099Z
+
+---
+
+## HEARTBEAT ARCHITECTURE
+
+Loki's heartbeat is a sophisticated monitoring cycle with 4 layers of resilience:
+
+### Layer 1: Circuit Breaker Gate
+**Purpose:** Prevent heartbeat storms and exponential backoff escalation
+**Mechanism:** request-circuit-breaker.mjs
+**Flow:**
+1. Check if previous heartbeat failed
+2. If failed, apply exponential backoff before allowing next attempt
+3. Backoff schedule:
+   - 1 failure → 2 min wait
+   - 2 failures → 4 min wait
+   - 3 failures → 8 min wait
+   - 4 failures → 16 min wait
+   - 5 failures → 32 min wait (blocks one 30-min heartbeat window)
+   - 6 failures → 64 min wait (blocks two windows)
+   - 7+ failures → 60 min max (capped)
+
+**Status:** ✅ Active
+**Request ID tracking:** GUID generated for each cycle, used to record outcomes
+
+### Layer 2: Degraded Mode Handler
+**Purpose:** Serve heartbeat response when cloud providers unavailable
+**Mechanism:** degraded-mode.mjs
+**Trigger:** When all cloud providers (Anthropic + Groq) are down or rate-limited
+**Response:** Post deterministic heartbeat directly to Discord (no openclaw inference needed)
+**Recovery:** Records degraded response as success; allows circuit breaker to reset
+
+**Status:** ✅ Active
+**Fallback method:** Direct Discord POST when inference unavailable
+
+### Layer 3a: Groq Throttle Manager
+**Purpose:** Enforce rate limits when Groq is fallback provider
+**Mechanism:** groq-throttle.mjs
+**Rules:**
+- Max 1 request every 2 seconds (inter-request spacing)
+- Max 20 requests per 60-second sliding window
+- Bypass for health probes (GET /models)
+- Enqueue deferred requests when throttled
+- Auto-drop stale entries (>5 min old)
+
+**Status:** ✅ Active when mode=groq_fallback
+**Queue management:** Automatic deferred request processing
+
+### Layer 3b: Gateway Pre-check
+**Purpose:** Abort heartbeat if gateway is unreachable
+**Check:** HTTP GET /health on gateway (127.0.0.1:18789)
+**Timeout:** 4 seconds
+**Response:** Skip heartbeat if gateway down (await watchdog restoration)
+**Circuit recording:** Marked as SUCCESS (not a provider failure)
+
+**Status:** ✅ Active
+**Port:** 18789 (configurable via OPENCLAW_GATEWAY_PORT)
+
+### Layer 4: Openclaw Invocation
+**Purpose:** Main heartbeat logic (check cron, validate jobs, report to Discord)
+**Command:** openclaw --profile odin agent --agent loki [message] [channel] [timeout]
+**Timeout:** 60 seconds hard limit (kill after 60s + 5s grace + 9s force)
+**Retries:** Max 2 retries on failure (3 total attempts)
+**Outcome recording:** Success/failure logged to circuit breaker
+
+**Status:** ✅ Operational
+**Message:** "Read HEARTBEAT.md. Check cron list. For each failed job: report name, error status, last error message, and specific fix. If all OK, post '✅ Heartbeat OK'. Post findings to #loki."
+
+---
+
+## HEARTBEAT TRIGGER FLOW
+
+```
+1. Cron fires trigger-heartbeat.sh
+   ↓
+2. Circuit breaker gate: check if backoff active
+   ├─ YES → SKIP (backoff active, exit 0)
+   └─ NO → continue with requestId
+   ↓
+3. Degraded mode check: all providers down?
+   ├─ YES → post deterministic response, mark SUCCESS, exit 0
+   └─ NO → continue
+   ↓
+4a. Groq throttle check (if groq_fallback mode)
+    ├─ THROTTLED → enqueue request, mark SUCCESS, exit 0
+    └─ SLOT OK → continue
+   ↓
+4b. Gateway pre-check: gateway reachable?
+    ├─ NO → SKIP (mark SUCCESS), exit 0
+    └─ YES → continue
+   ↓
+5. Invoke openclaw (loki heartbeat)
+   ├─ SUCCESS → record SUCCESS, exit 0
+   └─ FAILURE → apply backoff, exit 0
+```
+
+---
+
+## LOGGING & MONITORING
+
+**Heartbeat log:** `/tmp/loki-heartbeat.log`
+**Circuit log:** `/tmp/loki-heartbeat-circuit.log`
+
+Both logs include timestamps and detailed state information for troubleshooting.
+
+---
+
+## OPERATIONAL STATUS
+
+**Circuit breaker:** ✅ Operational (request-circuit-breaker.mjs)
+**Degraded mode:** ✅ Operational (degraded-mode.mjs)
+**Groq throttle:** ✅ Operational (groq-throttle.mjs)
+**Gateway health:** ✅ Pre-check functional
+**Openclaw invocation:** ✅ Operational with retry logic
+**Logging:** ✅ Full instrumentation
+
+---
+
+## RESILIENCE FEATURES
+
+1. **Exponential backoff** prevents retry storms
+2. **Degraded mode** ensures heartbeat posted even if inference unavailable
+3. **Groq throttle** manages rate limits without cascading failures
+4. **Gateway health check** prevents no-op heartbeat cycles
+5. **Hard timeout** prevents hung processes
+6. **Request ID tracking** correlates outcomes
+7. **Retry logic** (max 2 retries) handles transient failures
+8. **Circuit breaker** records success/failure for trend analysis
+
+---
+
+## STRATEGIC IMPLICATIONS
+
+### For Pantheon Operations
+
+Loki's heartbeat is NOT just monitoring — it's a **resilience circuit breaker**:
+- Prevents cascading failures when providers are down
+- Degrades gracefully to direct Discord posting
+- Rate-limits requests to respect provider constraints
+- Applies exponential backoff to protect against retry storms
+- Records every outcome for trend analysis
+
+### For Client Tier 2 (MANAGE)
+
+Heartbeat system ensures:
+- No single-provider dependency
+- Graceful degradation (heartbeat always posted)
+- Respect for API rate limits
+- Automatic recovery without manual intervention
+- Full observability (logs available for debugging)
+
+---
+
+## SCRIPT DEPENDENCIES
+
+- `~/.openclaw-odin/scripts/request-circuit-breaker.mjs` — Circuit management
+- `~/.openclaw-odin/scripts/degraded-mode.mjs` — Fallback handling
+- `~/.openclaw-odin/scripts/groq-throttle.mjs` — Rate limit management
+- `~/.openclaw-odin/scripts/provider-registry.json` — Provider state
+- `/tmp/loki-heartbeat.log` — Execution log
+- `/tmp/loki-heartbeat-circuit.log` — Circuit state log
+
+---
+
+STATUS: Loki heartbeat system fully deployed and operational
+CREATED: 2026-03-24T13:50:10.099Z
+
+NOTE: This is a sophisticated, multi-layered monitoring system that goes far beyond simple health checks. It includes circuit breaker patterns, graceful degradation, rate-limit management, and comprehensive logging. Loki's heartbeat is a production-grade infrastructure component.

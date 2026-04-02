@@ -1,0 +1,57 @@
+================================================================================
+MODEL VERSION UPDATE — MINIMAX M2.5
+Date: 2026-03-21 12:29 EDT
+Status: TESTED (reverted 2026-03-21 13:12)
+================================================================================
+
+CHANGE SUMMARY
+--------------
+Primary model downgraded from: minimax/minimax-m2.7
+Primary model changed to: minimax/MiniMax-M2.5
+
+CONTEXT
+-------
+Quick downgrade, likely due to:
+- Performance issue in M2.7
+- Stability concern
+- Cost adjustment
+- Output quality feedback
+
+MODEL DETAILS
+-------------
+Provider: Minimax
+Model ID: MiniMax-M2.5 (lowercase MiniMax, version 2.5)
+Authentication: Default credentials (same as M2.7)
+Change Type: Version downgrade (M2.7 → M2.5)
+
+FALLBACK CHAIN (UNCHANGED)
+--------------------------
+1. minimax/MiniMax-M2.5 (PRIMARY — updated version)
+2. anthropic/claude-haiku-4-5-20251001
+3. anthropic/claude-sonnet-4-5
+4. anthropic/claude-opus-4-6
+5. groq/llama-3.1-8b-instant (legacy)
+
+CHANGE RATIONALE
+----------------
+M2.7 removed from allowlist; M2.5 added and assigned as primary.
+Suggests quick iteration based on evaluation feedback.
+
+DURATION
+--------
+Deployment: 2026-03-21 12:29 EDT
+Reverted to Anthropic: 2026-03-21 13:12 EDT
+Duration: ~43 minutes
+
+OUTCOME
+-------
+Minimax M2.5 trial brief. Followed by revert to Anthropic Haiku.
+See MODEL-SWITCH-BACK-2026-03-21.txt for next decision.
+
+NOTES
+-----
+M2.7 and M2.5 represented ~1 hour total evaluation of Minimax as primary.
+Pattern suggests rapid testing cycle for model provider optimization.
+After this brief, system reverted to Anthropic with full fallback chain.
+
+================================================================================

@@ -1,0 +1,64 @@
+================================================================================
+MODEL STRATEGY HYBRID — ANTHROPIC PRIMARY + FULL FALLBACK
+Date: 2026-03-21 18:27 EDT
+Status: TRIAL WINDOW (held ~70 minutes until 2026-03-21 19:51)
+================================================================================
+
+CHANGE SUMMARY
+--------------
+Primary model changed from: groq/llama-3.1-8b-instant
+Primary model changed to: anthropic/claude-haiku-4-5-20251001
+(Third occurrence of this deployment today)
+
+CONTEXT
+-------
+After ~4.25 hour Groq baseline evaluation, Anthropic readopted as primary.
+Full fallback chain re-expanded to include Anthropic redundancy + Groq secondary.
+
+MODEL DETAILS
+-------------
+Provider: Anthropic
+Model ID: claude-haiku-4-5-20251001
+Status: PRIMARY
+Authentication: Anthropic API key
+
+FALLBACK CHAIN (FULL HYBRID)
+----------------------------
+1. anthropic/claude-haiku-4-5-20251001 (PRIMARY)
+2. anthropic/claude-sonnet-4-5
+3. anthropic/claude-opus-4-6
+4. groq/llama-3.1-8b-instant (secondary)
+5. groq/llama-3.3-70b-versatile
+6. groq/openai/gpt-oss-120b
+
+CHANGE RATIONALE
+----------------
+After 4.25 hour Groq baseline evaluation, system readopts Anthropic as primary
+with expanded fallback chain. Suggests:
+(1) Groq baseline tested and acceptable
+(2) Anthropic offers value sufficient to justify re-enabling
+(3) Full redundancy (Anthropic + Groq) is preferred operational state
+
+DURATION
+--------
+Deployment: 2026-03-21 18:27 EDT
+Next change (Groq revert): 2026-03-21 19:51 EDT
+Window duration: ~70 minutes
+
+PATTERN CONFIRMATION
+--------------------
+This establishes the recurring pattern:
+- ~70 minute Anthropic trial window
+- Variable-duration Groq baseline holds
+- Full hybrid fallback chain during Anthropic trials
+- Simplified chain during Groq baseline holds
+
+OUTCOME
+-------
+Anthropic trial window lasts ~70 minutes before reverting to Groq baseline.
+Pattern repeats consistently throughout 2026-03-22.
+
+See MODEL-GROQ-REVERT-FINAL-2026-03-21.txt for next change.
+See MODEL-STRATEGY-PATTERN-2026-03-22.txt for complete pattern analysis.
+
+================================================================================

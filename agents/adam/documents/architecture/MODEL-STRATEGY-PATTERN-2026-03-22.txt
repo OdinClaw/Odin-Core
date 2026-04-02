@@ -1,0 +1,133 @@
+ARCHITECTURE DOCUMENT: Model Strategy — Recurring Oscillation Pattern Confirmed
+==============================================================================
+
+Date: 2026-03-22
+Timestamp: 2026-03-22T05:53:11.377Z
+Source: Odin
+Config File: ~/.openclaw-odin/openclaw.json
+
+CHANGES DETECTED: 2 model configuration updates
+
+---
+
+1. PRIMARY MODEL CHANGE
+   Previous: groq/llama-3.1-8b-instant
+   Current:  anthropic/claude-haiku-4-5-20251001
+   Impact:   Back to Anthropic Haiku primary (4th occurrence)
+
+2. FALLBACK CHAIN EXPANDED
+   Previous: [groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b, ollama/llama3.2:3b]
+   Current:  [anthropic/claude-sonnet-4-5, anthropic/claude-opus-4-6, groq/llama-3.1-8b-instant, groq/llama-3.3-70b-versatile, groq/openai/gpt-oss-120b]
+
+---
+
+PATTERN ANALYSIS: CONFIRMED OSCILLATION CYCLE
+
+Configuration history now shows a clear **recurring two-state cycle**:
+
+| Deployment | Time      | Config | Duration Since Last |
+|-----------|-----------|--------|----------------------|
+| Anthropic v1 | 13:12 | Haiku + FB | - |
+| Groq v1 | 13:31 | Llama + FB | 19 min |
+| Anthropic v2 | 13:33 | Haiku + FB | 2 min |
+| Groq v2 | 14:13 | Llama + FB | 40 min |
+| Anthropic v3 | 22:27 | Haiku + FB | 4+ hr |
+| Groq v3 | 23:37 | Llama + FB | 4.25 hr |
+| **Anthropic v4** | **05:53** (next day) | **Haiku + FB** | **6+ hr** |
+
+---
+
+OSCILLATION PATTERN HYPOTHESIS
+
+**Two-state system:**
+
+**State A: Anthropic Hybrid**
+- Primary: claude-haiku-4-5-20251001
+- Fallbacks: [Sonnet, Opus, Groq variants]
+- Typical duration: 19 min → 40 min → 70 min → (current)
+- Triggered after: Extended Groq baseline evaluation
+
+**State B: Groq Baseline**
+- Primary: groq/llama-3.1-8b-instant
+- Fallbacks: [Groq 3.3, Groq OSS, Ollama]
+- Typical duration: 2 min → 4.25 hr → 6+ hr
+- Triggered after: Anthropic trial evaluation window
+
+---
+
+INTERPRETATION: SYSTEMATIC EVALUATION SCHEDULE
+
+This pattern suggests **scheduled model performance evaluation**:
+
+1. **Primary Config:** Groq baseline (cost-optimized, proven)
+2. **Evaluation Window:** Deploy Anthropic hybrid periodically
+3. **Test Duration:** Run for fixed window (starts short, increases)
+4. **Decision Logic:** After evaluation, either:
+   - Stay on Anthropic (if performance/costs justify)
+   - Revert to Groq (if evaluation inconclusive)
+
+**Current pattern shows:**
+- Groq baseline: increasing duration (2 min → 4.25 hr → 6+ hr evaluations)
+- Anthropic windows: increasing duration (19 min → 40 min → 70 min)
+- Each cycle: complete test-and-revert before moving to next
+
+---
+
+COMPONENTS AFFECTED:
+- openclaw.json: default_model_primary, default_model_fallbacks
+- Primary: Anthropic Haiku (4th deployment)
+- Fallbacks: [Sonnet, Opus, Groq variants]
+
+---
+
+TIME ANALYSIS (2026-03-21 to 2026-03-22)
+
+| Phase | Start Time | Config | Duration | Type |
+|-------|-----------|--------|----------|------|
+| Early morning | 12:09 | Minimax trial | ~1 hr | Initial experiment |
+| Mid-morning | 13:12+ | Anthropic/Groq rapid cycle | 2 hr | Rapid A/B testing |
+| Afternoon | 14:13+ | Groq extended eval | 4.25 hr | Primary baseline test |
+| Evening | 22:27+ | Anthropic trial (v3) | 70 min | Re-evaluation |
+| Late evening | 23:37 | Groq baseline | 6+ hr | Extended baseline hold |
+| **Overnight** | **05:53** (next day) | **Anthropic (v4)** | *ongoing* | **Resume evaluation cycle** |
+
+---
+
+STRATEGIC IMPLICATIONS
+
+**Two possible management strategies:**
+
+### Strategy 1: Continuous Optimization
+- System is actively tuning model performance/cost
+- Each cycle compares Anthropic quality vs. Groq cost
+- Increasing Groq hold times suggest baseline is "winning" (cost argument)
+- Anthropic windows suggest quality is still worth testing
+
+### Strategy 2: Scheduled Maintenance/Testing
+- Odin runs model comparisons on fixed schedule
+- Overnight shift (01:53 → 05:53) likely lower traffic
+- Uses low-traffic windows to safely test alternatives
+- Reverts to proven baseline (Groq) when done
+
+---
+
+BUSINESS MODEL ALIGNMENT
+
+**Tier 2: Manage** ($300–$2,000/month per client)
+
+This oscillation directly impacts margin optimization:
+- **Groq holds:** Cost containment (protect per-client margins)
+- **Anthropic trials:** Performance validation (ensure quality meets SLA)
+- **Cycle repeats:** Continuous validation that cost/quality balance is optimal
+
+If Anthropic eventually "wins" (stays deployed longer), Pantheon could:
+1. Absorb costs (reduce margins, gain quality advantage)
+2. Raise pricing (pass costs to clients)
+3. Switch to hybrid pricing (premium "quality" tier)
+
+---
+
+STATUS: Ongoing pattern analysis
+CREATED: 2026-03-22T05:53:11.377Z
+
+NOTE: Fourth occurrence of Anthropic hybrid suggests this is not accidental—it's a scheduled or semi-autonomous evaluation cycle. Pattern stabilization suggests long-term model strategy is in active optimization phase.

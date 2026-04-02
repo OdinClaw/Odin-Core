@@ -1,0 +1,44 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-21T16:29:18.406Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "component": "agent_model",
+      "agent": "main",
+      "previous": "minimax/minimax-m2.7",
+      "current": "minimax/MiniMax-M2.5",
+      "timestamp": "2026-03-21T16:29:18.405Z",
+      "config": "~/.openclaw-odin/openclaw.json"
+    },
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "component": "model_allowlist_added",
+      "previous": "null",
+      "current": "minimax/MiniMax-M2.5",
+      "timestamp": "2026-03-21T16:29:18.405Z",
+      "config": "~/.openclaw-odin/openclaw.json"
+    },
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "component": "model_allowlist_removed",
+      "previous": "minimax/minimax-m2.7",
+      "current": "null",
+      "timestamp": "2026-03-21T16:29:18.405Z",
+      "config": "~/.openclaw-odin/openclaw.json"
+    },
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "component": "default_model_primary",
+      "previous": "minimax/minimax-m2.7",
+      "current": "minimax/MiniMax-M2.5",
+      "timestamp": "2026-03-21T16:29:18.405Z",
+      "config": "~/.openclaw-odin/openclaw.json"
+    }
+  ]
+}

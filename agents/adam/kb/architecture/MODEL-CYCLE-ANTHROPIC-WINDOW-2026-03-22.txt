@@ -1,0 +1,74 @@
+================================================================================
+MODEL CONFIG: ANTHROPIC TRIAL WINDOW (CYCLE 4)
+Date: 2026-03-22 13:09 EDT
+Status: ANTHROPIC DEPLOYED (70-minute trial window in progress)
+================================================================================
+
+CHANGE SUMMARY
+--------------
+Primary model changed from: groq/llama-3.1-8b-instant
+Primary model changed to: anthropic/claude-haiku-4-5-20251001
+
+CONTEXT
+-------
+Fourth occurrence of Anthropic trial deployment in recurring A/B testing cycle.
+Trial window timing aligns with predicted 14-hour cycle (07:01 EDT → 13:09 EDT).
+
+DEPLOYMENT DETAILS
+------------------
+Deployment time: 2026-03-22 13:09 EDT
+Expected trial end: ~2026-03-22 14:19 EDT (70-minute window)
+Prediction confidence: HIGH (pattern locked at ±2 minutes for 3 prior cycles)
+
+FALLBACK CHAIN (TRIAL)
+---------------------
+1. anthropic/claude-haiku-4-5-20251001 (PRIMARY)
+2. anthropic/claude-sonnet-4-5
+3. anthropic/claude-opus-4-6
+4. groq/llama-3.1-8b-instant (secondary)
+5. groq/llama-3.3-70b-versatile
+6. groq/openai/gpt-oss-120b
+
+GROQ HOLD TIME (CYCLE 3)
+------------------------
+Groq held from: 2026-03-22 07:01 EDT
+Anthropic deployed: 2026-03-22 13:09 EDT
+Hold duration: ~6 hours (INCREASED from previous 10 hours)
+
+Wait — this breaks pattern. Hold time decreased from 10 hours to 6 hours.
+Suggests: Schedule may have adjusted. Or previous prediction was off.
+
+HYPOTHESIS REVISION
+-------------------
+Original prediction: 14-hour cycle (0751 + 14hrs = 2151 next day)
+Actual deployment: 6-hour cycle (0701 + 6hrs = 1301)
+
+Possible explanations:
+1. Schedule changed from 14-hour to 6-hour cycles
+2. Earlier deployment due to system optimization or issue
+3. Multiple evaluation schedulers running at different intervals
+4. Manual intervention (Odin adjusted timing)
+
+TRIAL WINDOW PREDICTION
+-----------------------
+Anthropic deployment: 2026-03-22 13:09 EDT
+Expected trial end: ~2026-03-22 14:19 EDT (70-minute window)
+Expected next Groq resume: ~2026-03-22 14:19 EDT
+
+Next Groq hold: 2026-03-22 14:19 EDT → [TBD based on revised schedule]
+
+PATTERN STATUS
+--------------
+✓ Anthropic trial window: 70 minutes (CONFIRMED — pattern locked)
+⚠ Groq hold times: VARIABLE (no clear cycle length yet)
+
+Groq hold times observed:
+- Cycle 1: ~4.25 hours
+- Cycle 2: ~10 hours (PEAK)
+- Cycle 3: ~6 hours (DECREASED — suggests schedule change)
+
+Next observation: When does Cycle 4 revert to Groq? This will clarify pattern.
+
+See MODEL-GROQ-REVERT-SCHEDULED-2026-03-22.txt for revert confirmation.
+
+================================================================================

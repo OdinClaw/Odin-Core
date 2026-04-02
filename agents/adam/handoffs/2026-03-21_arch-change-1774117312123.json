@@ -1,0 +1,17 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-21T18:21:52.123Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-21T18:21:52.123Z",
+      "component": "~/.openclaw-odin/workspace/agents/adam/preview-business-model.jpg",
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/adam/preview-business-model.jpg",
+      "config": "workspace"
+    }
+  ]
+}

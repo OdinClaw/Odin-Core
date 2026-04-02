@@ -1,0 +1,61 @@
+# manifest.yaml — Chronus
+
+id: chronus
+name: Chronus
+type: isolated
+status: queued
+version: "1.0"
+created: 2026-03-08
+updated: 2026-03-08
+
+identity:
+  emoji: ⏳
+  mythology: "Chronus — Greek god of time, Record of Ragnarok (mastery of timing, inevitable cycles)"
+  archetype: content
+
+model:
+  primary: anthropic/claude-haiku-4-5-20251001
+  fallbacks:
+    - anthropic/claude-sonnet-4-5
+    - ollama/qwen3.5:9b
+  subagents: ollama/qwen3.5:9b
+  rationale: "Scheduling recommendations are structured analysis — Haiku sufficient."
+
+discord:
+  channel: "#chronus"
+  channelId: ""
+  botId: ""
+  botName: "@Chronus"
+  accountId: chronus
+
+workspace:
+  path: "~/.openclaw-odin/workspace/agents/chronus"
+  agentDir: "~/.openclaw-odin/agents/chronus/agent"
+
+role:
+  summary: "Content scheduling optimizer. Uses Apollo's engagement data to recommend optimal posting times per platform. On-demand: Bazzy inputs content, Chronus outputs when and where to post it."
+  schedule: "on-demand"
+  output: "#chronus"
+
+dependencies:
+  reads:
+    - shared-context/THESIS.md
+    - intel/SOCIAL-METRICS.md    # critical dependency — Apollo must be live first
+  writes:
+    - agents/chronus/memory/YYYY-MM-DD.md
+  notifies:
+    - main
+
+tags:
+  - music
+  - content
+  - on-demand
+  - api-dependent
+
+activation:
+  cli_registered: false
+  auth_configured: false
+  discord_bot_created: false
+  openclaw_json_updated: false
+  tested: false
+  blocker: "Downstream of Apollo — needs SOCIAL-METRICS.md data to function"

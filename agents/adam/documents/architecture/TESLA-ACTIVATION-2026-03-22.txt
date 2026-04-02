@@ -1,0 +1,98 @@
+ARCHITECTURE DOCUMENT: Tesla Agent Activation — Template-Based Export System
+===========================================================================
+
+Date: 2026-03-22
+Timestamp: 2026-03-22T21:07:48.230Z
+Source: Handoff event (Tesla IDENTITY.md creation)
+Category: System / Agent Activation
+
+---
+
+TESLA ROLE & MISSION
+
+**Agent ID:** tesla
+**Functional Role:** portfolio_curator_agent (hybrid template export & packaging)
+**Status:** Queued (active/ready)
+
+Tesla bridges the live OpenClaw environment to the outside world:
+- Portable template generation
+- Sanitized installable packaging
+- Secret sanitization (credentials, tokens, paths)
+- Config normalization and reporting
+- Modular export capability for future release workflows
+
+---
+
+KEY RESPONSIBILITIES
+
+1. **Template Generation** → Sanitize, normalize, and build `tesla_template/`
+2. **Portable Packaging** → Prepare config and workspace assets for installation
+3. **Secret Sanitization** → Detect and redact credentials, tokens, machine-specific paths
+4. **Config Validation** → Ensure portable env-driven configuration
+5. **Reporting** → Structured generation manifests accessible via Tesla status
+
+---
+
+TEMPLATE-BASED EXPORT SYSTEM (TESLA V4)
+
+Primary entry point:
+
+- **tesla_v4/generate_template.js** — orchestrate template generation
+- **tesla_template/** — generated portable package
+- **tesla_template/setup/install.sh** — onboarding installer
+- **tesla_template/setup/INSTALL.md** — install guide
+
+---
+
+SAFETY RULES (NON-NEGOTIABLE)
+
+- NEVER export `.env` or `.env.*` files
+- NEVER export live runtime configs containing bot tokens
+- NEVER export sessions, logs, temp files, or machine-local runtime state
+- NEVER include real secrets in generated output
+- ALWAYS fail closed when uncertain (exclude rather than expose)
+
+---
+
+STRATEGIC PURPOSE
+
+Tesla is essential to the Pantheon business model:
+
+1. **Tier 1: BUILD** — Generate sanitized starter templates for deployment
+2. **Tier 3: EXPAND** — Package agent updates and customizations for client consumption
+3. **Documentation** — Support installer-ready handoff packages
+4. **Portability** — Enable multi-environment deployment with normalized config
+
+By maintaining clean template output with portable config rules, Tesla enables:
+- Rapid onboarding
+- Safe client customization
+- Knowledge transfer
+- Infrastructure portability
+
+---
+
+ACTIVATION STATUS
+
+**Created:** 2026-03-22T21:07:48.230Z
+**Config File:** agents/tesla/IDENTITY.md
+**Temporary File:** agents/tesla/IDENTITY.md.tmp.85863.1774213608120 (write-in-progress indicator)
+**Status:** Queued/Ready for dispatch
+
+---
+
+ALIGNMENT WITH PANTHEON NETWORK
+
+| Agent | Relation to Tesla |
+|-------|------------------|
+| Odin | Issues export directives; Tesla executes |
+| Adam | Archives export records in KB |
+| Tesla | Bridges internal systems to portable installable output |
+
+Tesla is the **external-facing template layer** — it packages Pantheon's work into portable installable artifacts and future-ready export outputs.
+
+---
+
+STATUS: Tesla activation confirmed
+CREATED: 2026-03-22T21:07:48.230Z
+
+NOTE: Temporary file indicates write-in-progress; this is normal for config updates. Tesla is now ready to execute template generation commands.

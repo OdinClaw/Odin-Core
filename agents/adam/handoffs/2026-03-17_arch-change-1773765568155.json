@@ -1,0 +1,14 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-17T16:39:28.155Z",
+  "component": [
+    "~/.openclaw-odin/workspace/agents/adam/kb/architecture/OPENCLAW-CONFIG-MOD-EVENT-2026-03-17-1638.txt",
+    "~/.openclaw-odin/workspace/agents/adam/kb/INDEX.md"
+  ],
+  "change": "configuration modified",
+  "status": "acknowledged",
+  "processed_by": "adam",
+  "processed_at": "2026-03-17T12:39:00Z",
+  "note": "Self-referential system event: Adam's KB documents were detected after creation. No KB capture required. This confirms intake workflow operating correctly. Odin event detection functioning as designed."
+}

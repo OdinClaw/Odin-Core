@@ -1,0 +1,58 @@
+================================================================================
+MODEL CONFIGURATION CHANGE — MINIMAX PRIMARY
+Date: 2026-03-20 12:09 EDT
+Status: TESTED (reverted 2026-03-21 13:12)
+================================================================================
+
+CHANGE SUMMARY
+--------------
+Primary model changed from: groq/llama-3.1-8b-instant
+Primary model changed to: minimax/minimax-m2.7
+
+CONTEXT
+-------
+Strategic decision to evaluate Minimax M2.7 as primary model.
+Minimax added to allowlist with full authentication configured.
+Fallback chain reorganized with Minimax integration.
+
+MODEL DETAILS
+-------------
+Provider: Minimax
+Model ID: minimax-m2.7
+Authentication: Default credentials configured in openclaw.json
+Authentication Provider: minimax auth plugin
+
+FALLBACK CHAIN (NEW)
+--------------------
+1. minimax/minimax-m2.7 (PRIMARY)
+2. anthropic/claude-haiku-4-5-20251001
+3. anthropic/claude-sonnet-4-5
+4. anthropic/claude-opus-4-6
+5. groq/llama-3.1-8b-instant (legacy)
+
+CHANGE RATIONALE
+----------------
+Testing new model provider to evaluate:
+- Cost efficiency
+- Output quality
+- Latency performance
+- Integration stability
+
+DURATION
+--------
+Deployment: 2026-03-20 12:09 EDT
+Reverted to Minimax M2.5: 2026-03-21 12:29 EDT
+Duration: ~24 hours
+
+OUTCOME
+-------
+Minimax M2.7 trial initiated but followed by immediate downgrade to M2.5.
+See MODEL-UPDATE-2026-03-21.txt for continuation.
+
+NOTES
+-----
+This represents the beginning of a model evaluation cycle that continues
+through 2026-03-21 and beyond. See MODEL-STRATEGY-PATTERN-2026-03-22.txt
+for pattern analysis of recurring model configuration changes.
+
+================================================================================

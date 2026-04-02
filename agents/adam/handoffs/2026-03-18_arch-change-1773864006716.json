@@ -1,0 +1,21 @@
+{
+  "event": "system.architecture.changed",
+  "source": "odin",
+  "timestamp": "2026-03-18T20:00:06.716Z",
+  "changes": [
+    {
+      "event": "system.architecture.changed",
+      "source": "odin",
+      "timestamp": "2026-03-18T20:00:06.716Z",
+      "component": [
+        "~/.openclaw-odin/workspace/agents/adam/memory/knowledge_index.json",
+        "~/.openclaw-odin/workspace/agents/adam/RULES.md.tmp.47070.1773863946703",
+        "~/.openclaw-odin/workspace/agents/adam/RULES.md"
+      ],
+      "change": "configuration modified",
+      "previous": null,
+      "current": "~/.openclaw-odin/workspace/agents/adam/memory/knowledge_index.json, ~/.openclaw-odin/workspace/agents/adam/RULES.md.tmp.47070.1773863946703, ~/.openclaw-odin/workspace/agents/adam/RULES.md",
+      "config": "workspace"
+    }
+  ]
+}

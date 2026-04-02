@@ -1,0 +1,161 @@
+ARCHITECTURE DOCUMENT: Tesla Expanded Capability — Import System Implemented
+==================================================================
+
+Date: 2026-03-23
+Timestamp: 2026-03-23T17:57:45.367Z
+Source: Tesla SOUL.md revision
+Category: System / Agent Operations / Capability Expansion
+
+---
+
+TESLA CAPABILITY EXPANSION: IMPORT OPERATIONS ADDED
+
+**Status:** Expanded from export-only to bidirectional (export + import)
+**New Version:** V3 (with import commands)
+**Timestamp:** 2026-03-23T17:57:45.367Z
+
+---
+
+## WHAT'S NEW: V3 IMPORT COMMANDS
+
+Tesla now supports full **import** operations in addition to existing export operations.
+
+### Import Commands Available
+
+| Command | Function | Purpose |
+|---------|----------|---------|
+| `TOOL_CALL: import-system` | runSystemImport() | Import full system from GitHub (latest snapshot) |
+| `TOOL_CALL: import-system --dry-run` | runSystemImport({ dryRun: true }) | Preview import (no writes) |
+| `TOOL_CALL: import-system --branch <name>` | runSystemImport({ branch }) | Import specific snapshot branch |
+| `TOOL_CALL: import-agent <id>` | runAgentImport(id) | Import single agent from GitHub |
+| `TOOL_CALL: import-agent <id> --dry-run` | runAgentImport(id, { dryRun }) | Preview agent import (no writes) |
+| `TOOL_CALL: bootstrap` | runBootstrapEnvironment() | Create missing dirs, .env from .env.example |
+| `TOOL_CALL: bootstrap --dry-run` | runBootstrapEnvironment({ dryRun }) | Preview bootstrap (no writes) |
+| `TOOL_CALL: verify` | runVerifyImport() | Full environment readiness check (11 checks) |
+| `TOOL_CALL: import-status` | getImportStatus() | Last import report + verify readiness |
+
+---
+
+## OPERATIONAL MODEL: BIDIRECTIONAL EXPORT/IMPORT
+
+### Export (V2, existing)
+- Full system → GitHub (odin-core repo)
+- Single agent → GitHub (odin-agents repo)
+- Sanitized, validated, pushed
+
+### Import (V3, NEW)
+- Full system ← GitHub (from snapshot branch)
+- Single agent ← GitHub (from odin-agents)
+- Bootstrap environment (create dirs, .env)
+- Verify readiness (11-point check)
+
+---
+
+## STRATEGIC IMPLICATIONS
+
+### For Pantheon
+
+**Tier 1: BUILD** now has bidirectional capability:
+- **Export phase:** Export sanitized client config to GitHub
+- **Import phase:** Client imports into their environment
+- **Bootstrap:** Automatic environment setup
+- **Verify:** Readiness check before client starts
+
+**Tier 3: EXPAND** enabled:
+- Export agent customizations to GitHub
+- Clients import customizations into existing setup
+- Verify no conflicts, all dependencies met
+
+### For Deployment Repeatability
+
+Tesla can now:
+1. Export a working system to GitHub (production snapshot)
+2. Import that same snapshot into new environments (customer deployment, staging, backup)
+3. Bootstrap missing infrastructure
+4. Verify complete and ready
+
+This enables:
+- **Reproducible onboarding** (Tier 1)
+- **Safe customization** (Tier 3)
+- **Disaster recovery** (export baseline, import to restore)
+- **Multi-environment management** (prod, staging, test)
+
+---
+
+## HARD RULES MAINTAINED
+
+Tesla's safety constraints remain intact:
+- Still cannot create/edit files autonomously
+- Still calls tools, returns results
+- Still reads pre-existing logs
+- Still fails loud if something is broken
+
+The new import commands follow the same pattern: Tesla invokes tool, reads result, explains.
+
+---
+
+## V3 VERSIONING NOTE
+
+**V2 (Previous):** Export-only model
+- Full system export
+- Single agent export
+- Validation & sanitization
+- GitHub push
+
+**V3 (Current):** Bidirectional model
+- All V2 commands retained
+- Import operations added
+- Bootstrap operations added
+- Verify operations added
+
+Backward compatible: V2 commands still available.
+
+---
+
+## BOOTSTRAP & VERIFY OPERATIONS
+
+### Bootstrap
+Creates initial environment structure:
+- Missing directories
+- .env file from .env.example
+- Base configuration
+
+Useful for:
+- Fresh installations
+- Client onboarding (Tier 1)
+- Environment reset
+
+### Verify (11-point check)
+Comprehensive readiness validation:
+1. Config files present
+2. Scripts executable
+3. Dependencies installed
+4. Environment variables set
+5. GitHub credentials configured
+6. Network connectivity
+7. Disk space adequate
+8. Permissions correct
+9. Logs directory writable
+10. Cache directory writable
+11. Report generation working
+
+Ensures system is ready before operations begin.
+
+---
+
+## IMPORT STATUS
+
+Tracks:
+- Last import timestamp
+- What was imported
+- Success/failure status
+- Readiness verification results
+
+Answers: "Is the imported system ready to operate?"
+
+---
+
+STATUS: Tesla expanded to bidirectional export/import system
+CREATED: 2026-03-23T17:57:45.367Z
+
+NOTE: Tesla's role evolves from "export bridge" to "system replication bridge." Can now export snapshots and import them into new environments, enabling reproducible onboarding and deployment repeatability for Tier 1 and Tier 3 operations.
