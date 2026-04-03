@@ -10,12 +10,13 @@ IFS=$'\n\t'
 # ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
-INSTALLER_VERSION="4.0.0"
+INSTALLER_VERSION="4.3.0"
 DEFAULT_INSTALL_DIR="${HOME}/odin-core"
 DEFAULT_WORKSPACE_DIR="${HOME}/.openclaw-odin"
 REPO_URL="${ODIN_REPO_URL:-}"          # override via env for CI
 OPENCLAW_MIN_VERSION="2026.3.0"
-NODE_MIN_MAJOR=18
+NODE_MIN_MAJOR=22
+NODE_MIN_MINOR=12
 LOG_FILE="/tmp/odin-install-$(date +%Y%m%d-%H%M%S).log"
 
 # ANSI colours
@@ -160,6 +161,94 @@ EOF
 }
 
 # =============================================================================
+# PRE-STEP — Ensure Node.js 22.12+ is available (auto-install via NodeSource)
+# =============================================================================
+ensure_node() {
+    section "Pre-Step — Node.js 22.12+ Check"
+
+    local need_install=0
+
+    if command -v node &>/dev/null; then
+        local ver major minor
+        ver=$(node --version | tr -d 'v')
+        major="${ver%%.*}"
+        minor="${ver#*.}"; minor="${minor%%.*}"
+        if (( major > NODE_MIN_MAJOR )) || { (( major == NODE_MIN_MAJOR )) && (( minor >= NODE_MIN_MINOR )); }; then
+            success "Node.js ${ver} satisfies requirement (>= ${NODE_MIN_MAJOR}.${NODE_MIN_MINOR})"
+            return 0
+        else
+            warn "Node.js ${ver} is below ${NODE_MIN_MAJOR}.${NODE_MIN_MINOR} — will upgrade."
+            need_install=1
+        fi
+    else
+        warn "Node.js not found — will install."
+        need_install=1
+    fi
+
+    if (( need_install )); then
+        if [[ "$(uname -s)" == "Linux" ]]; then
+            info "Installing Node.js ${NODE_MIN_MAJOR}.x via NodeSource…"
+            if command -v curl &>/dev/null; then
+                curl -fsSL "https://deb.nodesource.com/setup_${NODE_MIN_MAJOR}.x" | bash - 2>&1 | tee -a "$LOG_FILE" \
+                    || fatal "NodeSource setup script failed."
+            elif command -v wget &>/dev/null; then
+                wget -qO- "https://deb.nodesource.com/setup_${NODE_MIN_MAJOR}.x" | bash - 2>&1 | tee -a "$LOG_FILE" \
+                    || fatal "NodeSource setup script failed."
+            else
+                fatal "Neither curl nor wget found — cannot auto-install Node.js. Install manually: https://nodejs.org"
+            fi
+
+            if command -v apt-get &>/dev/null; then
+                apt-get install -y nodejs 2>&1 | tee -a "$LOG_FILE" || fatal "apt-get install nodejs failed."
+            elif command -v yum &>/dev/null; then
+                yum install -y nodejs 2>&1 | tee -a "$LOG_FILE" || fatal "yum install nodejs failed."
+            else
+                fatal "No supported package manager (apt/yum) found. Install Node.js manually."
+            fi
+        else
+            fatal "Node.js ${NODE_MIN_MAJOR}.${NODE_MIN_MINOR}+ required. Install from https://nodejs.org and re-run."
+        fi
+
+        # Verify post-install
+        local ver_after major_after minor_after
+        ver_after=$(node --version 2>/dev/null | tr -d 'v') || fatal "Node.js still not available after install attempt."
+        major_after="${ver_after%%.*}"
+        minor_after="${ver_after#*.}"; minor_after="${minor_after%%.*}"
+        if (( major_after > NODE_MIN_MAJOR )) || { (( major_after == NODE_MIN_MAJOR )) && (( minor_after >= NODE_MIN_MINOR )); }; then
+            success "Node.js ${ver_after} installed successfully."
+        else
+            fatal "Node.js ${ver_after} still below required ${NODE_MIN_MAJOR}.${NODE_MIN_MINOR} after install."
+        fi
+    fi
+}
+
+# =============================================================================
+# PRE-STEP — Ensure npm is available
+# =============================================================================
+ensure_npm() {
+    if command -v npm &>/dev/null; then
+        success "npm $(npm --version) available"
+        return 0
+    fi
+
+    warn "npm not found — attempting to install…"
+    if [[ "$(uname -s)" == "Linux" ]]; then
+        if command -v apt-get &>/dev/null; then
+            apt-get install -y npm 2>&1 | tee -a "$LOG_FILE" || fatal "Failed to install npm via apt-get."
+        elif command -v yum &>/dev/null; then
+            yum install -y npm 2>&1 | tee -a "$LOG_FILE" || fatal "Failed to install npm via yum."
+        else
+            fatal "Cannot auto-install npm — no supported package manager found."
+        fi
+    else
+        fatal "npm not found. Install Node.js from https://nodejs.org (npm is included)."
+    fi
+
+    command -v npm &>/dev/null || fatal "npm still not available after install attempt."
+    success "npm $(npm --version) installed."
+}
+
+# =============================================================================
 # STEP 1 — Prerequisite validation
 # =============================================================================
 check_prerequisites() {
@@ -176,16 +265,12 @@ check_prerequisites() {
     GIT_VER=$(git --version | awk '{print $3}')
     success "git ${GIT_VER}"
 
-    # Node.js
+    # Node.js — version already enforced by ensure_node()
     require_cmd node
     NODE_VER=$(node --version | tr -d 'v')
-    NODE_MAJOR="${NODE_VER%%.*}"
-    if (( NODE_MAJOR < NODE_MIN_MAJOR )); then
-        fatal "Node.js ${NODE_MIN_MAJOR}+ required (you have ${NODE_VER}). Install from https://nodejs.org"
-    fi
     success "Node.js ${NODE_VER}"
 
-    # npm
+    # npm — availability already enforced by ensure_npm()
     require_cmd npm
     NPM_VER=$(npm --version)
     success "npm ${NPM_VER}"
@@ -215,18 +300,66 @@ install_openclaw() {
                 success "openclaw ${OC_VER} meets minimum ${OPENCLAW_MIN_VERSION}"
             else
                 warn "openclaw ${OC_VER} is below recommended ${OPENCLAW_MIN_VERSION}. Upgrading…"
-                npm install -g openclaw 2>&1 | tee -a "$LOG_FILE" || warn "Upgrade failed — continuing with existing version."
+                npm install -g --unsafe-perm=true openclaw 2>&1 | tee -a "$LOG_FILE" || warn "Upgrade failed — continuing with existing version."
             fi
         fi
     else
         info "Installing openclaw globally via npm…"
-        npm install -g openclaw 2>&1 | tee -a "$LOG_FILE" \
-            || fatal "Failed to install openclaw. Try: sudo npm install -g openclaw"
+        npm install -g --unsafe-perm=true openclaw 2>&1 | tee -a "$LOG_FILE" \
+            || fatal "Failed to install openclaw. Try: sudo npm install -g --unsafe-perm=true openclaw"
         success "openclaw installed"
+    fi
+
+    # ---------------------------------------------------------------------------
+    # CLI fix: resolve binary path and create symlink if openclaw not in PATH
+    # ---------------------------------------------------------------------------
+    if ! command -v openclaw &>/dev/null; then
+        warn "openclaw binary not found in PATH — attempting to resolve and symlink…"
+        local npm_prefix bin_path pkg_bin
+        npm_prefix=$(npm config get prefix 2>/dev/null || echo "")
+        if [[ -n "$npm_prefix" ]]; then
+            # Try standard npm bin location
+            bin_path="${npm_prefix}/bin/openclaw"
+            if [[ ! -f "$bin_path" ]]; then
+                # Try resolving from package.json bin field
+                pkg_bin=$(node -e "try{const p=require('${npm_prefix}/lib/node_modules/openclaw/package.json');const b=p.bin;const k=Object.keys(b)[0];console.log('${npm_prefix}/lib/node_modules/openclaw/'+b[k]);}catch(e){}" 2>/dev/null || echo "")
+                if [[ -n "$pkg_bin" && -f "$pkg_bin" ]]; then
+                    bin_path="$pkg_bin"
+                fi
+            fi
+            if [[ -f "$bin_path" ]]; then
+                chmod +x "$bin_path"
+                ln -sf "$bin_path" /usr/local/bin/openclaw 2>/dev/null \
+                    || ln -sf "$bin_path" /usr/bin/openclaw 2>/dev/null \
+                    || warn "Could not create symlink — you may need to add ${npm_prefix}/bin to PATH manually."
+                export PATH="${npm_prefix}/bin:${PATH}"
+                success "openclaw symlinked from ${bin_path}"
+            else
+                warn "Could not locate openclaw binary — continuing; manual PATH fix may be needed."
+            fi
+        fi
     fi
 
     require_cmd openclaw
     log "openclaw path: $(command -v openclaw)"
+}
+
+# =============================================================================
+# STEP 2b — Validate OpenClaw CLI is functional
+# =============================================================================
+validate_openclaw() {
+    info "Validating openclaw CLI…"
+    local oc_path
+    oc_path=$(command -v openclaw 2>/dev/null) || fatal "openclaw not found in PATH after install."
+    log "openclaw resolved at: ${oc_path}"
+
+    local oc_ver
+    oc_ver=$(openclaw --version 2>/dev/null | head -1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' || echo "unknown")
+    if [[ "$oc_ver" == "unknown" ]]; then
+        warn "openclaw --version returned unexpected output — binary may be broken."
+    else
+        success "openclaw ${oc_ver} validated OK"
+    fi
 }
 
 # =============================================================================
@@ -950,8 +1083,11 @@ main() {
     print_banner
     log "Installer started. PID=$$"
 
+    ensure_node
+    ensure_npm
     check_prerequisites
     install_openclaw
+    validate_openclaw
     setup_repo
     install_dependencies
     gather_config
