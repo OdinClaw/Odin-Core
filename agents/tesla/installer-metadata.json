@@ -10,39 +10,49 @@
       "enabled": true,
       "roleLabel": "Primary System Agent",
       "roleSummary": "Main system agent for general requests and orchestration.",
-      "defaultDisplayName": "Odin"
+      "defaultDisplayName": "Odin",
+      "promptDiscordConfig": true,
+      "workspaceSubpath": "."
     },
     {
-      "id": "loki",
+      "id": "monitoring",
       "primary": false,
       "enabled": true,
       "roleLabel": "Monitoring Agent",
       "roleSummary": "Heartbeat relay, system status interpreter, and low-cost ops aide.",
-      "defaultDisplayName": "Loki"
+      "defaultDisplayName": "Loki",
+      "promptDiscordConfig": true,
+      "workspaceSubpath": "agents/monitoring"
     },
     {
-      "id": "thor",
+      "id": "systems",
       "primary": false,
       "enabled": true,
       "roleLabel": "Systems Specialist Agent",
       "roleSummary": "On-demand systems specialist for workflow hardening and process optimization.",
-      "defaultDisplayName": "Thor"
+      "defaultDisplayName": "Thor",
+      "promptDiscordConfig": true,
+      "workspaceSubpath": "agents/systems"
     },
     {
-      "id": "tesla",
+      "id": "release",
       "primary": false,
       "enabled": true,
       "roleLabel": "Template and Release Agent",
       "roleSummary": "Template generation and release management agent.",
-      "defaultDisplayName": "Tesla"
+      "defaultDisplayName": "Tesla",
+      "promptDiscordConfig": true,
+      "workspaceSubpath": "agents/release"
     },
     {
-      "id": "adam",
+      "id": "documentation",
       "primary": false,
       "enabled": true,
       "roleLabel": "Documentation Agent",
       "roleSummary": "Documentation and knowledge archive agent.",
-      "defaultDisplayName": "Adam"
+      "defaultDisplayName": "Adam",
+      "promptDiscordConfig": true,
+      "workspaceSubpath": "agents/documentation"
     }
   ]
 }

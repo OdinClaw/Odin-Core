@@ -1,12 +1,12 @@
-# manifest.yaml — Tesla V4.5
+# manifest.yaml — Tesla V4.8
 # Source of truth for Tesla's configuration, role, and activation state.
-# Updated: 2026-04-03 — installer metadata ownership
+# Updated: 2026-04-03 — installer metadata ownership + functional ID consolidation
 
 id: tesla
 name: Tesla
 type: isolated
 status: live
-version: "4.5"
+version: "4.8"
 created: 2026-03-08
 updated: 2026-04-03
 
@@ -76,6 +76,7 @@ installer:
   guarantees:
     - "Installer agent prompts and defaults are derived from Tesla-managed metadata."
     - "Adding, removing, enabling, or renaming installer agents happens in Tesla metadata without installer code edits."
+    - "Installer-visible system identity is functional-ID based; display names remain user-facing only."
 
 # ── DISCORD SETUP CHECKLIST ───────────────────────────────────────────────────
 # 1. Go to https://discord.com/developers/applications

@@ -59,6 +59,8 @@ LAST_FAILURE_OUTPUT=""
 declare -A AGENT_ROLE_LABEL=()
 declare -A AGENT_ROLE_SUMMARY=()
 declare -A AGENT_DEFAULT_NAME=()
+declare -A AGENT_PROMPT_DISCORD=()
+declare -A AGENT_WORKSPACE_SUBPATH=()
 
 declare -A AGENT_ENABLED=()
 declare -A AGENT_NAME=()
@@ -348,20 +350,27 @@ const lines = [
   "PRIMARY_AGENT_ID=" + shellQuote(primaryAgents[0].id),
   "AGENT_ROLE_LABEL=()",
   "AGENT_ROLE_SUMMARY=()",
-  "AGENT_DEFAULT_NAME=()"
+  "AGENT_DEFAULT_NAME=()",
+  "AGENT_PROMPT_DISCORD=()",
+  "AGENT_WORKSPACE_SUBPATH=()"
 ];
 
 for (const agent of enabledAgents) {
-  const requiredFields = ["id", "roleLabel", "roleSummary", "defaultDisplayName"];
+  const requiredFields = ["id", "roleLabel", "roleSummary", "defaultDisplayName", "workspaceSubpath"];
   for (const field of requiredFields) {
     if (typeof agent[field] !== "string" || agent[field].trim().length === 0) {
       fail("Tesla installer metadata is missing required field '" + field + "' for agent '" + (agent.id || "unknown") + "'.");
     }
   }
+  if (typeof agent.promptDiscordConfig !== "boolean") {
+    fail("Tesla installer metadata is missing required boolean field 'promptDiscordConfig' for agent '" + agent.id + "'.");
+  }
   lines.push("ACTIVE_AGENT_LIST+=(" + shellQuote(agent.id) + ")");
   lines.push("AGENT_ROLE_LABEL[" + shellQuote(agent.id) + "]=" + shellQuote(agent.roleLabel));
   lines.push("AGENT_ROLE_SUMMARY[" + shellQuote(agent.id) + "]=" + shellQuote(agent.roleSummary));
   lines.push("AGENT_DEFAULT_NAME[" + shellQuote(agent.id) + "]=" + shellQuote(agent.defaultDisplayName));
+  lines.push("AGENT_PROMPT_DISCORD[" + shellQuote(agent.id) + "]=" + shellQuote(agent.promptDiscordConfig ? "yes" : "no"));
+  lines.push("AGENT_WORKSPACE_SUBPATH[" + shellQuote(agent.id) + "]=" + shellQuote(agent.workspaceSubpath));
 }
 
 process.stdout.write(lines.join("\n"));
@@ -735,16 +744,17 @@ enabled_agent_ids() {
 }
 
 main_agent_workspace() {
-  printf '%s' "$INSTALL_DIR"
+  agent_workspace "$PRIMARY_AGENT_ID"
 }
 
 agent_workspace() {
   local agent_id="$1"
-  if [[ "$agent_id" == "$PRIMARY_AGENT_ID" ]]; then
-    main_agent_workspace
-  else
-    printf '%s/agents/%s' "$INSTALL_DIR" "$agent_id"
+  local workspace_subpath="${AGENT_WORKSPACE_SUBPATH[$agent_id]:-}"
+  if [[ -z "$workspace_subpath" || "$workspace_subpath" == "." ]]; then
+    printf '%s' "$INSTALL_DIR"
+    return 0
   fi
+  printf '%s/%s' "$INSTALL_DIR" "$workspace_subpath"
 }
 
 agent_dir_path() {
@@ -913,6 +923,13 @@ capture_agent_prompts() {
   prompt_text "What do you want to name the ${role_label}?" "$default_name" "yes"
   is_back "$REPLY" && return 10
   AGENT_NAME["$agent_id"]="$REPLY"
+
+  if [[ "${AGENT_PROMPT_DISCORD[$agent_id]:-yes}" != "yes" ]]; then
+    AGENT_TOKEN["$agent_id"]=""
+    AGENT_GUILD_ID["$agent_id"]=""
+    AGENT_CHANNEL_ID["$agent_id"]=""
+    return 0
+  fi
 
   while true; do
     prompt_secret "${role_label} Discord bot token"
@@ -1095,9 +1112,11 @@ validate_enabled_agents_complete() {
   local id
   while IFS= read -r id; do
     [[ -n "${AGENT_NAME[$id]:-}" ]] || fatal "Enabled agent '${id}' is missing a name."
-    [[ -n "${AGENT_TOKEN[$id]:-}" ]] || fatal "Enabled agent '${id}' is missing a Discord bot token."
-    [[ -n "${AGENT_GUILD_ID[$id]:-}" ]] || fatal "Enabled agent '${id}' is missing a Discord Server ID (Guild ID)."
-    [[ -n "${AGENT_CHANNEL_ID[$id]:-}" ]] || fatal "Enabled agent '${id}' is missing a Discord Channel ID."
+    if [[ "${AGENT_PROMPT_DISCORD[$id]:-yes}" == "yes" ]]; then
+      [[ -n "${AGENT_TOKEN[$id]:-}" ]] || fatal "Enabled agent '${id}' is missing a Discord bot token."
+      [[ -n "${AGENT_GUILD_ID[$id]:-}" ]] || fatal "Enabled agent '${id}' is missing a Discord Server ID (Guild ID)."
+      [[ -n "${AGENT_CHANNEL_ID[$id]:-}" ]] || fatal "Enabled agent '${id}' is missing a Discord Channel ID."
+    fi
   done < <(enabled_agent_ids)
 }
 

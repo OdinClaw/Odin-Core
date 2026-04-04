@@ -1,0 +1,6 @@
+id: release
+display_name: Tesla
+role_label: Template and Release Agent
+role_summary: Template generation and release management agent.
+legacy_source: agents/tesla
+managed_by: tesla

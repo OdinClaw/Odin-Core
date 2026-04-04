@@ -1,0 +1,6 @@
+id: systems
+display_name: Thor
+role_label: Systems Specialist Agent
+role_summary: On-demand systems specialist for workflow hardening and process optimization.
+legacy_source: agents/thor
+managed_by: tesla
