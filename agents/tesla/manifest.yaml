@@ -1,14 +1,14 @@
-# manifest.yaml — Tesla V4
+# manifest.yaml — Tesla V4.5
 # Source of truth for Tesla's configuration, role, and activation state.
-# Updated: 2026-03-27 — V4 template generator alignment
+# Updated: 2026-04-03 — installer metadata ownership
 
 id: tesla
 name: Tesla
 type: isolated
 status: live
-version: "4.0"
+version: "4.5"
 created: 2026-03-08
-updated: 2026-03-27
+updated: 2026-04-03
 
 identity:
   emoji: ⚡
@@ -43,6 +43,7 @@ role:
 
 dependencies:
   reads:
+    - tesla/installer-metadata.json
     - tesla/logs/latest.json
     - tesla/logs/tesla-report-*.json
     - tesla_template/setup/template_manifest.json
@@ -68,6 +69,13 @@ activation:
   openclaw_json_updated: true
   discord_bot_created: false    # MANUAL STEP REQUIRED — see MISSION.md
   tested: false                 # run after Discord bot is configured
+
+installer:
+  source_of_truth: "agents/tesla/installer-metadata.json"
+  ownership: "Tesla owns installer agent definitions and installer-facing agent metadata."
+  guarantees:
+    - "Installer agent prompts and defaults are derived from Tesla-managed metadata."
+    - "Adding, removing, enabling, or renaming installer agents happens in Tesla metadata without installer code edits."
 
 # ── DISCORD SETUP CHECKLIST ───────────────────────────────────────────────────
 # 1. Go to https://discord.com/developers/applications
