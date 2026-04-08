@@ -1,0 +1,6 @@
+id: monitoring
+display_name: Loki
+role_label: Monitoring Agent
+role_summary: Heartbeat relay, system status interpreter, and low-cost ops aide.
+legacy_source: agents/loki
+managed_by: tesla

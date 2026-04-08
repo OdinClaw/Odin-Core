@@ -1,0 +1,6 @@
+id: documentation
+display_name: Adam
+role_label: Documentation Agent
+role_summary: Documentation and knowledge archive agent.
+legacy_source: agents/adam
+managed_by: tesla
