@@ -23,7 +23,7 @@ _Thor's capabilities. Cloud-first reasoning for systems work._
 
 | Skill | Why | Status | ETA |
 |-------|-----|--------|-----|
-| Artist Toolkit development tracking | Monitor Apollo/Chronus/Hercules/Hermes integration progress | active | Ongoing |
+
 | Workshop curriculum development | Music production + AI agents content | ongoing | Phase 2 |
 
 ---

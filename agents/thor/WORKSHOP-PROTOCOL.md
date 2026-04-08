@@ -10,7 +10,7 @@ _(Formerly Sasaki's protocol — absorbed by Thor on March 4, 2026)_
 
 **Formerly**: #toolkit-development channel (now consolidated into agent)  
 **Currently**: Owns:
-- Artist Toolkit development status
+
 - Project tracking + progress
 - System refinement + iteration
 - Curriculum development (for workshops)
@@ -19,8 +19,6 @@ _(Formerly Sasaki's protocol — absorbed by Thor on March 4, 2026)_
 ---
 
 ## Toolkit Development Tracking
-
-Thor owns the **Artist Toolkit** development pipeline:
 
 **Phase 1: Analytics Dashboard (Apollo)**
 - Status: Awaiting API keys

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-08T15:59:38.207Z",
+  "timestamp": "2026-04-08T15:57:09.995Z",
   "action": "export-system",
   "dryRun": false,
   "noPush": false,
@@ -10,7 +10,7 @@
     },
     "collect": {
       "status": "ok",
-      "filesFound": 61
+      "filesFound": 1
     },
     "sanitize": {
       "status": "ok",
@@ -18,5 +18,5 @@
     }
   },
   "failureReason": null,
-  "summary": "Collected 61 file(s), sanitized 0 file(s)"
+  "summary": "Collected 1 file(s), sanitized 0 file(s)"
 }
