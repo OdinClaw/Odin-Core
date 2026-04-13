@@ -1,2 +1,2 @@
 ## Model Defaults
-Tesla will use Sonnet as primary, fallback to MiniMax-M2.7 if rate limited or unable to handle tasks with Anthropic models.
+Tesla will use MiniMax-M2.7 as primary model. GLM 5.1 serves as the fallback for rate limits or if MiniMax encounters issues. Anthropic Opus 4.6 is reserved as the premium tier for complex, multi-step, or high-stakes tasks that MiniMax or GLM cannot handle — use it when the task demands greater reasoning depth or when simpler models return consistently inadequate results.
