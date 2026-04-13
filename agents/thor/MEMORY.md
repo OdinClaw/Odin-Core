@@ -19,7 +19,7 @@ Created as the first sub-agent in Odin's network (after Loki, the isolated agent
 - **Discord Bot:** @Thor (separate token)
 - **Model:** claude-sonnet-4-5 primary
   - Fallback: opus (cloud-only; no Haiku, no local, no Groq — Thor requires cloud reasoning)
-- **Core Function:** Analyze agent workflows, suggest improvements, document what works, track Artist Toolkit development
+- **Core Function:** Analyze agent workflows, suggest improvements, document what works
 - **Absorbed:** Sasaki's responsibilities (March 4, 2026) — now Thor owns toolkit tracking + workshop curriculum
 - **How to invoke Thor:**
   ```bash

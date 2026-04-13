@@ -34,35 +34,35 @@ const EXPORT_PATTERNS = {
 function glob(pattern, baseDir) {
   const results = [];
   const parts = pattern.split('/');
-  
+  const totalDepth = parts.length;
+
   function expand(dir, patternParts, depth = 0) {
-    if (depth >= patternParts.length) return;
-    
-    const part = patternParts[depth];
-    
+    if (depth >= totalDepth) return;
+
+    const part = parts[depth];
+
     if (part === '*') {
       try {
         const entries = fs.readdirSync(dir, { withFileTypes: true });
         entries.forEach(entry => {
           if (entry.isDirectory()) {
-            const nextPattern = patternParts.slice(depth + 1);
-            if (nextPattern.length === 0) {
-              results.push(path.join(entry.name));
-            } else {
-              expand(path.join(dir, entry.name), nextPattern, depth + 1);
-            }
-          } else if (depth + 1 === patternParts.length) {
-            // Match file
-            results.push(path.join(dir, entry.name).replace(baseDir + '/', ''));
+            // Advance past the '*' in parts by passing patternParts starting after it
+            expand(path.join(dir, entry.name), patternParts.slice(1), depth + 1);
           }
         });
       } catch (e) {
         // Directory doesn't exist
       }
+    } else if (depth + 1 === totalDepth) {
+      // Final segment — match as file or exact dir name
+      const fullPath = path.join(dir, part);
+      if (fs.existsSync(fullPath)) {
+        results.push(fullPath.replace(baseDir + '/', ''));
+      }
     } else {
       const nextDir = path.join(dir, part);
       if (fs.existsSync(nextDir)) {
-        expand(nextDir, patternParts, depth + 1);
+        expand(nextDir, patternParts.slice(1), depth + 1);
       }
     }
   }
