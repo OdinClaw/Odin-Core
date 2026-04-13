@@ -1,7 +1,7 @@
 # Adam KB Index
 
-_Last updated: 2026-04-06 20:31 EDT_
-_Total KB documents: 56_
+_Last updated: 2026-04-12 20:45 EDT_
+_Total KB documents: 57_
 _Total referenced documents: 56 (+ 54 external in documents/)*_
 _* External documents in documents/ created by Odin, auto-indexed_
 
@@ -50,6 +50,7 @@ _* External documents in documents/ created by Odin, auto-indexed_
 | documents/architecture/MODEL-ANTHROPIC-CYCLE-24-2026-03-25.txt* | Model Strategy: Cycle 24 - Anthropic Return (78h evaluation, pattern stable, decision pending) | 2026-03-25 | System |
 | documents/architecture/MODEL-GROQ-EVALUATION-ONGOING-STATUS-2026-03-25.txt* | Model Strategy: Ongoing Evaluation Status (78h, 25+ cycles, stable oscillation, decision 48-96h) | 2026-03-25 | System |
 | documents/architecture/MODEL-PRIMARY-CHANGE-MINIMAX-2026-04-06.txt | Model Config: Primary Changed to MiniMax-M2.7 (replaced unsafe 8B llama) | 2026-04-06 | System |
+| documents/architecture/MODEL-GLM-5.1-ADDED-2026-04-12.txt | Model Config: GLM 5.1 Added to Model Stack (thinking mode, fallback-1) | 2026-04-12 | System |
 | documents/architecture/2026-03-17_task_bus_routing.txt* | Task Bus Model Routing Architecture | 2026-03-17 | System |
 | documents/architecture/MODEL-CONFIG-CHANGE-2026-03-20.txt* | Model Configuration Change — Minimax Primary | 2026-03-20 | System |
 | documents/architecture/MODEL-UPDATE-2026-03-21.txt* | Model Version Update — Minimax M2.5 | 2026-03-21 | System |
