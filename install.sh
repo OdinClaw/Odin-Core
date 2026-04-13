@@ -537,6 +537,35 @@ ensure_node() {
   success "Using Node ${node_version} with npm $(npm --version 2>/dev/null | tr -d '\r')"
 }
 
+ensure_dependencies() {
+  section "Setup — Dependencies"
+
+  # git is required for all install paths (clone, pull, etc.)
+  require_cmd git
+
+  # rsync is preferred for repo sync (faster, preserves permissions)
+  if command -v rsync >/dev/null 2>&1; then
+    RSYNC_CMD="rsync -ac"
+    info "Using rsync for repo sync"
+  else
+    RSYNC_CMD="tar -C"
+    warn "rsync not found — falling back to tar (less efficient)"
+  fi
+
+  # jq is optional but recommended for JSON diagnostics
+  if command -v jq >/dev/null 2>&1; then
+    success "jq available"
+  else
+    info "jq not found — installing for JSON diagnostics"
+    maybe_sudo apt-get install -y jq 2>/dev/null \
+      || maybe_sudo dnf install -y jq 2>/dev/null \
+      || maybe_sudo yum install -y jq 2>/dev/null \
+      || warn "Could not install jq — continuing without it"
+  fi
+
+  success "Dependencies OK"
+}
+
 check_openclaw_valid() {
   command -v "$OPENCLAW_CMD" >/dev/null 2>&1 || return 1
   "$OPENCLAW_CMD" --version >/dev/null 2>&1
@@ -1077,7 +1106,7 @@ sync_repo_source() {
     [[ "$REPLY" == "yes" ]] || fatal "Install cancelled."
   fi
 
-  if command -v rsync >/dev/null 2>&1; then
+  if [[ "$RSYNC_CMD" == rsync* ]]; then
     rsync -a --delete \
       --exclude ".git" \
       --exclude "node_modules" \
@@ -1649,6 +1678,7 @@ main() {
   print_banner
 
   ensure_node
+  ensure_dependencies
   ensure_openclaw
   detect_schema
 
