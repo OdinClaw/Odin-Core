@@ -1,7 +1,0 @@
-Architecture Note
-Date:
-System: Odin AI
-Change:
-Details:
-Impact:
-Related Agents:

@@ -1,7 +1,0 @@
-Decision Record
-Date:
-System: Odin AI
-Decision:
-Reason:
-Impact:
-Related Components:
