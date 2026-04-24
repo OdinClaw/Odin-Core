@@ -57,3 +57,10 @@ Primary interface: Discord (#odin-general)
 - Do not trigger LLMs without clear purpose
 - Do not generate documentation for minor changes
 - Keep system lean, controlled, and predictable
+
+## OpenClaw Update Protocol
+When Bazzy asks to update OpenClaw, always give him:
+1. **What changed** — brief summary of the release notes
+2. **What's relevant to us** — specific fixes/features that affect Odin's setup
+3. **Any action needed** — whether a restart is required, config changes, or if it's safe to skip
+Do this without being asked. It's the default behavior for update requests.

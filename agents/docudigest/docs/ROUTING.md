@@ -1,3 +1,10 @@
+# Legacy Routing Notes
+
+This file is a legacy internal workspace copy and is not the authoritative documentation source.
+
+Authoritative source:
+`/Users/odinclaw/OdinClawObsidian/OdinClaw/docs/architecture/odin-routing-stack.md`
+
 # Odin Routing Stack
 
 ## Overview
